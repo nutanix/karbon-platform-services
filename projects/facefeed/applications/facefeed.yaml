@@ -1,0 +1,56 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: facefeed-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: facefeed
+      labels:
+        app: facefeed
+    spec:
+      containers:
+      - name: facefeed
+        imagePullPolicy: IfNotPresent
+        image: xiiot/facefeed-app:latest
+        ports:
+        - containerPort: 8888
+        command:
+        - sh
+        - -c
+        - "exec python main.py"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: facefeed-svc
+spec:
+  selector:
+    app: facefeed
+  ports:
+  - protocol: TCP
+    port: 8888
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: facefeed-proxy
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: facefeed-proxy
+      labels:
+        app: facefeed-proxy
+    spec:
+      containers:
+      - name: facefeed-tcp
+        image: xiiot/gcr_facefeed:latest
+        args: [ "tcp", "8888", "facefeed-svc" ]
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: tcp
+          protocol: TCP
+          containerPort: 8888
+          hostPort: 8888
