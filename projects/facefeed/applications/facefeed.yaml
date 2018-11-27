@@ -13,7 +13,7 @@ spec:
       containers:
       - name: facefeed
         imagePullPolicy: IfNotPresent
-        image: registry.nxlab.fr/xiiot-facefeed-app:latest
+        image: xiiot/facefeed-app:latest
         ports:
         - containerPort: 8888
         command:

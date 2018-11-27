@@ -1,5 +1,5 @@
-# Copyright (c) 2018 Nutanix, Inc. 
-# Use of this source code is governed by an MIT-style license  
+# Copyright (c) 2018 Nutanix, Inc.
+# Use of this source code is governed by an MIT-style license 
 # found in the LICENSE file at https://github.com/nutanix/xi-iot.
 
 import numpy
