@@ -1,10 +1,14 @@
-# Copyright (c) 2018 Nutanix, Inc. 
-# Use of this source code is governed by an MIT-style license  
+# Copyright (c) 2018 Nutanix, Inc.
+
+# Use of this source code is governed by an MIT-style license 
+
 # found in the LICENSE file at https://github.com/nutanix/xi-iot.
 
 # Parts of this code utilize the Inception ResNet v1 model pre-trained
 # from the VGGFace2 training dataset, and were adapted from the Facenet 
-# example at https://github.com/davidsandberg/facenet   
+# example at https://github.com/davidsandberg/facenet 
+
+
 
 
 import base64
