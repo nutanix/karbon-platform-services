@@ -1,6 +1,8 @@
 #!/usr/bin/python
 '''
-# (C) Copyright (c) 2018 Nutanix Inc. All rights reserved.
+Copyright (c) 2018 Nutanix, Inc.
+Use of this source code is governed by an MIT-style license 
+found in the LICENSE file at https://github.com/nutanix/xi-iot.
 
 This example Function may be used in a ML training use case or any use case where payloads
 recieved on multiple topics need to be correlated. It ingests an image payload
