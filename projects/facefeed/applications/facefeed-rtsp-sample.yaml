@@ -1,0 +1,41 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: facefeed-rtsp-sample
+  labels:
+    app: facefeed-rtsp-sample
+spec:
+  containers:
+  - name: facefeed-rtsp-sample
+    image: xiiot/facefeed-rtsp-sample:latest
+    imagePullPolicy: IfNotPresent
+    env:
+    - name: RTSP_PORT
+      value: "554"
+    - name: RTSP_FRAMERATE
+      value: "2"
+    - name: INPUT
+      value: "/input.mp4"
+    - name: RTSP_USERNAME
+      value: "admin"
+    - name: RTSP_PASSWORD
+      value: "theinternet"
+    ports:
+    - containerPort: 554
+    command:
+    - sh
+    - -c
+    - "exec /rtspatt"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: facefeed-rtsp-sample-svc
+spec:
+  selector:
+    app: facefeed-rtsp-sample
+  ports:
+  - protocol: TCP
+    name: facefeed-rtsp-sample
+    port: 554
+    targetPort: 554
