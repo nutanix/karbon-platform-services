@@ -27,6 +27,7 @@ spec:
           value: "theinternet"
         ports:
         - containerPort: 554
+          hostPort: 554
         command:
         - sh
         - -c
@@ -42,26 +43,4 @@ spec:
   ports:
   - protocol: TCP
     port: 554
----
-apiVersion: apps/v1beta1
-kind: Deployment
-metadata:
-  name: facefeed-rtsp-sample-proxy
-spec:
-  replicas: 1
-  template:
-    metadata:
-      name: facefeed-rtsp-sample-proxy
-      labels:
-        app: facefeed-rtsp-sample-proxy
-    spec:
-      containers:
-      - name: facefeed-rtsp-sample-tcp
-        image: xiiot/gcr_facefeed:latest
-        args: [ "tcp", "554", "facefeed-rtsp-sample-svc" ]
-        imagePullPolicy: IfNotPresent
-        ports:
-        - name: tcp
-          protocol: TCP
-          containerPort: 554
-          hostPort: 554
+    targetPort: 554
