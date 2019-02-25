@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
       - name: facefeed-rtsp-sample
-        image: xiiot/facefeed-rtsp-sample:latest
+        image: xiiot/facefeed-rtsp-sample:withrestart
         imagePullPolicy: IfNotPresent
         env:
         - name: RTSP_PORT
@@ -31,7 +31,7 @@ spec:
         command:
         - sh
         - -c
-        - "exec /rtspatt"
+        - "exec /run.sh"
 ---
 kind: Service
 apiVersion: v1
