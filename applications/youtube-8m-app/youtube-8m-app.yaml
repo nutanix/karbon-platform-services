@@ -1,0 +1,58 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: urlfeedapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: urlfeedapp
+  template:
+    metadata:
+      labels:
+        app: urlfeedapp
+    spec:
+      containers:
+      - name: nginx
+        image: 770301640873.dkr.ecr.us-west-2.amazonaws.com/urlfeed/nginx:221
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: http
+          containerPort: 9090
+        - name: rtmp
+          containerPort: 1935
+        volumeMounts:
+        - name: shared-vol
+          mountPath: /url-feed/www/hls
+        command: ["/usr/sbin/nginx", "-g", "daemon off;"]
+      - name: app
+        image: 770301640873.dkr.ecr.us-west-2.amazonaws.com/urlfeed/app:221
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: uwsgihttp
+          containerPort: 9797
+        volumeMounts:
+        - name: shared-vol
+          mountPath: /url-feed/www/hls
+        command: ["uwsgi", "--ini", "/url-feed/uwsgi/uwsgi.ini"]
+      volumes:
+      - name: shared-vol
+        emptyDir: {}
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx-svc
+  labels:
+    # This will show the play button in the ui -- do not change
+    uilabel: show-play-http-aba0339ef5aea2602129ed45a63d7d7f
+spec:
+  selector:
+    app: urlfeedapp
+  ports:
+  - protocol: TCP
+    name: http
+    port: 9090
+    nodePort: 30090
+    targetPort: http
+  type: NodePort
