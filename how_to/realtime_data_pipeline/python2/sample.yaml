@@ -1,0 +1,20 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: sample-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: sample
+      labels:
+        app: sample
+    spec:
+      containers:
+      - name: sample
+        imagePullPolicy: IfNotPresent
+        image: xiiot/sample:latest
+        command:
+        - sh
+        - -c
+        - "exec python main.py"

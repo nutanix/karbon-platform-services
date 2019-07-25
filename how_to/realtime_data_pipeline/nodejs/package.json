@@ -1,0 +1,11 @@
+{
+    "name": "node-sample",
+    "url": "nutanix.com",
+    "description": "Node.js sample application",
+    "license": "SEE LICENSE IN license.txt",
+    "main": "main.js",
+    "dependencies": {
+        "google-protobuf": "3.5.0",
+        "nats": "1.0.0"
+    }
+}
