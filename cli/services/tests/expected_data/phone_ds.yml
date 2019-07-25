@@ -1,0 +1,22 @@
+kind: dataSource
+name: phone
+protocol: DATAINTERFACE
+edge: DOES_NOT_MATTER
+fields:
+- name: channel1
+  topic: ch1-free
+selectors:
+- categoryName: phone
+  categoryValue: channel1
+  scope:
+  - channel1
+type: Sensor
+authType: PASSWORD
+ifcInfo:
+  class: DATAINTERFACE
+  img: dataifc/rtmp2nats:20
+  kind: IN
+  protocol: phone-rtmp
+  ports:
+  - name: rtmp
+    port: 1935

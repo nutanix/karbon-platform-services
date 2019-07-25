@@ -1,0 +1,30 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: loggingtest-NAME_SALT
+spec:
+  replicas: 2
+  strategy:
+    type: Recreate
+    rollingUpdate: null
+  template:
+    metadata:
+      name: loggingtest-NAME_SALT
+      labels:
+        app: loggingtest-NAME_SALT
+    spec:
+      containers:
+      - name: loggingtest-NAME_SALT
+        imagePullPolicy: IfNotPresent
+        image: sainandurinutanix/test:logstream
+        command:
+        - sh
+        - -c
+        - "exec /testapp --logtostderr"
+      - name: another-NAME_SALT
+        imagePullPolicy: IfNotPresent
+        image: sainandurinutanix/test:logstream
+        command:
+        - sh
+        - -c
+        - "exec /testapp --logtostderr"

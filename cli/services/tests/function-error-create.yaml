@@ -1,0 +1,23 @@
+kind: function
+name: test-error-NAME_SALT
+project: Starter
+description: test error function
+sourceCodePath: "function-error.py"
+language: python
+environment: python-env
+---
+kind: function
+name: test-error-runtime-NAME_SALT
+project: Starter
+description: test runtime error function
+sourceCodePath: "function-error-runtime.py"
+language: python
+environment: python-env
+---
+kind: function
+name: test-error-syntax-NAME_SALT
+project: Starter
+description: test syntax error function
+sourceCodePath: "function-error-syntax.py"
+language: python
+environment: python-env

@@ -1,0 +1,21 @@
+kind: datasource
+name: datasource-cli-test
+protocol: DATAINTERFACE
+type: Sensor
+authType: CERTIFICATE
+ifcInfo:
+  class: DATAINTERFACE
+  img: dataifc/mockifc:6.out
+  kind: IN
+  protocol: rtmp
+  ports:
+    - name: http
+      port: 9090
+fields:
+- name: input
+  topic: input-topic-1
+selectors:
+  - categoryName: testyaml 
+    categoryValue: datasource
+    scope:
+      - input

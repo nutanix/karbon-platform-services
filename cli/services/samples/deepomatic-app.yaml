@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deepomatic-app
+  labels:
+    app: deepomatic-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deepomatic-app
+  template:
+    metadata:
+      labels:
+        app: deepomatic-app
+    spec:
+      restartPolicy: Always
+      volumes:
+        - name: neural-worker-resources
+          emptyDir: {}
+      containers:
+      - name: runtime
+        image: 770301640873.dkr.ecr.us-west-2.amazonaws.com/edgecomputing/pankit/experiments/deepomaticruntime:1
+        env:
+        - name: AMQP_URL
+          value: amqp://user:password@localhost:5672/nutanix
+      - name: neural-worker
+        image: deepomatic/run-neural-worker:0.1.0
+        env:
+        - name: ALLOW_NO_GPU 
+          value: "1"
+        - name: AUTOSTART_WORKER
+          value: "false"
+        - name: AMQP_URL
+          value: amqp://user:password@localhost:5672/nutanix
+        - name: MODEL_LOCAL_ROOT
+          value: /var/lib/deepomatic/resources
+        - name: LICENSE_FILENAME
+          value: /var/lib/deepomatic/resources/license.bin
+        - name: WORKFLOWS_PATH
+          value: /var/lib/deepomatic/resources/workflows.json
+        volumeMounts:
+          - mountPath: /var/lib/deepomatic/
+            name: neural-worker-resources
+      - name: resource-server
+        image: deepomatic/run-resource-server:0.1.0
+        env:
+        - name: DEEPOMATIC_API_URL
+          value: https://api.deepomatic.com
+        - name: DEEPOMATIC_APP_ID
+          value: "628523897389"
+        - name: DEEPOMATIC_API_KEY
+          value: "0f8184e641cd4cee8543070bd7f76bba"
+        - name: DEEPOMATIC_SITE_ID
+          value: "3620325e-5e31-4244-b33f-7c835d5e4356"
+        - name: DOWNLOAD_ON_STARTUP
+          value: "1"
+        volumeMounts:
+          - mountPath: /app/services/worker-nn
+            name: neural-worker-resources
+      - name: rabbitmq
+        image: rabbitmq:3.6
+        env:
+        - name: RABBITMQ_DEFAULT_USER
+          value: user
+        - name: RABBITMQ_DEFAULT_PASS
+          value: password
+        - name: RABBITMQ_DEFAULT_VHOST
+          value: nutanix

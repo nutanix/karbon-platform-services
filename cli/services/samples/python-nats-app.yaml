@@ -1,0 +1,21 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: sample-python-nats-app
+  labels:
+    app: sample-python-nats-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample-python-nats-app 
+  template:
+    metadata:
+      labels:
+        app: sample-python-nats-app
+    spec:
+      containers:
+      - name: app-container
+        image: 770301640873.dkr.ecr.us-west-2.amazonaws.com/edgecomputing/dataifc/python-nats-app:pankit.thapar
+        imagePullPolicy: Always
+        command: ["/usr/local/bin/python", "demo-app.py"]

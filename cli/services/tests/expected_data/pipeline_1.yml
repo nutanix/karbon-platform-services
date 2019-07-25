@@ -1,0 +1,18 @@
+kind: dataPipeline
+name: pipeline-1-NAME_SALT
+project: Starter
+description: concat pipeline
+samplingIntervalMsec: 1
+input:
+  dataPipeline: pipeline-0-NAME_SALT
+functions:
+  - name: echo2-NAME_SALT
+    args:
+      param1: foo
+output:
+  publicCloud:
+    type: AWS
+    service: s3
+    region: us-west-2
+    profile: my-aws-profile
+    endpointName: test-pipeline-bucket-NAME_SALT

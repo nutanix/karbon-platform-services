@@ -1,0 +1,7 @@
+kind: application
+name: logging-application-NAME_SALT
+description: logging application for testing
+project: logstreamtest
+appYamlPath: LOGGING_GENERATE_FOLDER/application-logging.yaml
+edges:
+- awslogstreamb289

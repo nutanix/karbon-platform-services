@@ -1,0 +1,67 @@
+kind: category
+name: mqtt-data2-NAME_SALT
+description: mqtt data category
+values:
+  - input
+---
+kind: dataSource
+name: mqtt-test-datasource2-NAME_SALT
+protocol: MQTT
+authType: CERTIFICATE
+edge: EDGE_NAME
+fields:
+- name: input-field2
+  topic: input-mqtt-topic2
+selectors:
+  - categoryName: mqtt-data2-NAME_SALT
+    categoryValue: input
+    scope:
+      - input-field2
+---
+kind: function
+name: echo2-NAME_SALT
+project: Starter
+description: test echo function
+sourceCodePath: function-echo2.py
+language: python
+environment: python-env
+params:
+  - name: param1
+    type: string
+---
+kind: dataPipeline
+name: pipeline-0-NAME_SALT
+description: test pipeline
+project: Starter
+input:
+  categorySelectors:
+    mqtt-data2-NAME_SALT:
+      - input
+functions:
+  - name: echo2-NAME_SALT
+    args:
+      param1: foo
+output:
+  localEdge:
+    type: DataService
+    service: RealTimeStreaming
+    endpointName: my-stream-name-pipeline-0-NAME_SALT
+---
+kind: dataPipeline
+name: pipeline-1-NAME_SALT
+description: concat pipeline
+project: Starter
+samplingIntervalMsec: 1
+input:
+  dataPipeline: pipeline-0-NAME_SALT
+functions:
+  - name: echo2-NAME_SALT
+    args:
+      param1: foo
+output:
+  publicCloud:
+    type: AWS
+    service: s3
+    region: us-west-2
+    endpointName: test-pipeline-bucket-NAME_SALT
+    profile: my-aws-profile

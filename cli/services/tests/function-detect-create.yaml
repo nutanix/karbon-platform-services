@@ -1,0 +1,7 @@
+kind: function
+name: test-detect-NAME_SALT
+project: Starter
+description: test detect function
+sourceCodePath: "function-detect.py"
+language: python
+environment: tensorflow-python

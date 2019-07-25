@@ -1,0 +1,35 @@
+kind: category
+name: mqtt-data1-NAME_SALT
+values:
+  - input
+---
+kind: dataSource
+name: mqtt-test-datasource1-NAME_SALT
+protocol: MQTT
+authType: CERTIFICATE
+edge: EDGE_NAME
+fields:
+- name: input-field1-NAME_SALT
+  topic: input-mqtt-topic1
+selectors:
+- categoryName: mqtt-data1-NAME_SALT
+  categoryValue: input
+  scope:
+    - input-field1-NAME_SALT
+---
+kind: dataPipeline
+name: pipeline-2-NAME_SALT
+description: test pipeline
+project: Starter
+samplingIntervalMsec: 1
+input:
+  categorySelectors:
+    mqtt-data1-NAME_SALT:
+      - input
+output:
+  publicCloud:
+    type: AWS
+    service: s3
+    region: us-west-2
+    endpointName: test-pipeline-bucket-NAME_SALT
+    profile: my-aws-profile

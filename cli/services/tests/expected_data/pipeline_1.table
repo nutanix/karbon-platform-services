@@ -1,0 +1,2 @@
+  NAME                  PROJECT  INPUT TYPE    OUTPUT TYPE  FUNCTIONS
+  pipeline-1-NAME_SALT  Starter  dataPipeline  publicCloud  echo2-NAME_SALT

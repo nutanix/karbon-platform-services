@@ -1,0 +1,28 @@
+kind: application
+name: echo-cli-app-NAME_SALT
+description: youtube app
+project: Starter
+dataIfcEndpoints:
+- dataSource: datasource-hls-ifc-deepomatic-NAME_SALT
+  topicName: mock-ifc-app-yaml-output
+  fieldName: mock-ifc-app-yaml-output
+- dataSource: datasource-cli-test-NAME_SALT
+  topicName: input-topic-1-NAME_SALT
+  fieldName: input-NAME_SALT
+appYaml: |
+  apiVersion: v1
+  kind: Service
+  metadata:
+    labels:
+      app: echoheaders
+    name: echoheaders
+  spec:
+    ports:
+    - name: http
+      nodePort: 31234
+      port: 80
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      app: echoheaders
+    type: NodePort
