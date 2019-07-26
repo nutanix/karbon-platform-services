@@ -1,9 +1,0 @@
-name: echo2-NAME_SALT
-kind: function
-project: Starter
-description: test echo function
-language: python
-environment: python-env
-params:
-- name: param1
-  type: string

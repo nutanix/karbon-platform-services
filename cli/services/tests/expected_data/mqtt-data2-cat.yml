@@ -1,5 +1,0 @@
-kind: category
-name: mqtt-data2-NAME_SALT
-description: mqtt data category
-values:
-  - input

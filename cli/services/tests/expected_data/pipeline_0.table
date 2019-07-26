@@ -1,2 +1,0 @@
-  NAME                  PROJECT  INPUT TYPE         OUTPUT TYPE  FUNCTIONS
-  pipeline-0-NAME_SALT  Starter  categorySelectors  localEdge    echo2-NAME_SALT
