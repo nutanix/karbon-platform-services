@@ -10,13 +10,16 @@ spec:
       labels:
         app: facefeed
     spec:
+      initContainers:
+      - name: elasticsearch-ping
+        image: xiiot/facefeed-app:edge_1.12_plus
+        command: ['./waitForES.sh']
       containers:
       - name: facefeed
         imagePullPolicy: IfNotPresent
-        image: xiiot/facefeed-app:latest
+        image: xiiot/facefeed-app:edge_1.12_plus
         ports:
         - containerPort: 8888
-          hostPort: 8888
         command:
         - sh
         - -c
@@ -32,3 +35,240 @@ spec:
   ports:
   - protocol: TCP
     port: 8888
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: facefeed-proxy
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: facefeed-proxy
+      labels:
+        app: facefeed-proxy
+    spec:
+      containers:
+      - name: facefeed-tcp
+        image: xiiot/gcr_facefeed:edge_1.12_plus
+        args: [ "tcp", "8888", "facefeed-svc" ]
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: tcp
+          protocol: TCP
+          containerPort: 8888
+          hostPort: 8888
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: elasticsearch-discovery
+  labels:
+    component: elasticsearch
+    role: master
+spec:
+  selector:
+    component: elasticsearch
+    role: master
+  ports:
+  - name: transport
+    port: 9300
+    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: elasticsearch
+  labels:
+    component: elasticsearch
+    role: client
+spec:
+  selector:
+    component: elasticsearch
+    role: client
+  ports:
+  - name: http
+    port: 9200
+    protocol: TCP
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: es-master
+  labels:
+    component: elasticsearch
+    role: master
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        component: elasticsearch
+        role: master
+    spec:
+      containers:
+      - name: es-master
+        image: xiiot/es:edge_1.12_plus
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: "CLUSTER_NAME"
+          value: "myesdb"
+        - name: "NUMBER_OF_MASTERS"
+          value: "1"
+        - name: NODE_MASTER
+          value: "true"
+        - name: NODE_INGEST
+          value: "false"
+        - name: NODE_DATA
+          value: "false"
+        - name: HTTP_ENABLE
+          value: "false"
+        - name: "ES_JAVA_OPTS"
+          value: "-Xms512m -Xmx512m"
+        ports:
+        - containerPort: 9300
+          name: transport
+          protocol: TCP
+        volumeMounts:
+        - name: storage
+          mountPath: /data
+      volumes:
+          - emptyDir:
+              medium: ""
+            name: "storage"
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: es-client
+  labels:
+    component: elasticsearch
+    role: client
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        component: elasticsearch
+        role: client
+    spec:
+      containers:
+      - name: es-client
+        image: xiiot/es:edge_1.12_plus
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: "CLUSTER_NAME"
+          value: "myesdb"
+        - name: NODE_MASTER
+          value: "false"
+        - name: NODE_DATA
+          value: "false"
+        - name: HTTP_ENABLE
+          value: "true"
+        - name: "ES_JAVA_OPTS"
+          value: "-Xms512m -Xmx512m"
+        ports:
+        - containerPort: 9200
+          name: http
+          protocol: TCP
+        - containerPort: 9300
+          name: transport
+          protocol: TCP
+        volumeMounts:
+        - name: storage
+          mountPath: /data
+      volumes:
+          - emptyDir:
+              medium: ""
+            name: "storage"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: elasticsearch-data
+  labels:
+    component: elasticsearch
+    role: data
+spec:
+  ports:
+  - port: 9300
+    name: transport
+  clusterIP: None
+  selector:
+    component: elasticsearch
+    role: data
+---
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: es-data
+  labels:
+    component: elasticsearch
+    role: data
+spec:
+  serviceName: elasticsearch-data
+  replicas: 1
+  updateStrategy:
+        type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        component: elasticsearch
+        role: data
+    spec:
+      containers:
+      - name: es-data
+        image: xiiot/es:edge_1.12_plus
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: "CLUSTER_NAME"
+          value: "myesdb"
+        - name: NODE_MASTER
+          value: "false"
+        - name: NODE_INGEST
+          value: "false"
+        - name: HTTP_ENABLE
+          value: "false"
+        - name: "ES_JAVA_OPTS"
+          value: "-Xms512m -Xmx512m"
+        ports:
+        - containerPort: 9300
+          name: transport
+          protocol: TCP
+        volumeMounts:
+        - name: storage
+          mountPath: /data
+  volumeClaimTemplates:
+  - metadata:
+      name: storage
+    spec:
+      storageClassName: silver
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 2Gi
+---

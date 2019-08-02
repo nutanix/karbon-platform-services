@@ -18,7 +18,7 @@ from facerecognition import facenet
 
 
 #esIP = "10.15.232.225"
-esIP = "elasticsearch.default.svc.cluster.local"
+esIP = "elasticsearch"
 esPort = 9200
 esIndex = "datastream-faceregister"
 threshold = 0.27893
@@ -122,3 +122,18 @@ def main(ctx,msg):
     ctx.send(json.dumps(response))
     logging.info("***** Face match script End *****")
     return
+
+
+'''
+#Test
+if __name__ == '__main__':
+    faces = json.load(open('../tests/test.json'))
+    for i in range(len(data)):
+        known_face = facematch.match(np.asarray(data[i]['embedding']))
+        if known_face is None:
+            data[i]['knownface'] = False
+        else:
+            data[i]['knownface'] = True
+            data[i]['name'] = known_face[i]['name']
+        logging.info(data[i]) 
+'''
