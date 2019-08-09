@@ -1,0 +1,16 @@
+# Note: This sample requires a Xi IoT cloud instance or deployments. See https://www.nutanix.com/products/iot
+kind: application
+name: echo-ifc-app
+description: echo app
+project: Starter
+edges:
+- sjc-edge1 
+appYamlPath: echoserver-k8s.yaml
+dataIfcEndpoints:
+  - dataSource: youtube-8m # consume youtube data source as a stream of jpegs
+    topicName: https://www.youtube.com/watch?v=HqqsJkonXsA # copy this url from the UI for now
+    fieldName: youtube-8m-1  # consume youtube video for field name=youtube-8m-1
+  - dataSource: live-stream # publish jpegs to this 
+    topicName: my-echo-app # enter anything here
+    fieldName: my-echo-app # enter anything here
+

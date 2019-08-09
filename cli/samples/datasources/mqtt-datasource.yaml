@@ -1,0 +1,19 @@
+kind: category
+name: mqtt-data
+description: category for mqtt data
+values:
+  - input
+---
+kind: dataSource
+name: mqtt-sfo-datasource
+protocol: MQTT
+authType: CERTIFICATE
+edge: sfo-edge1 
+fields:
+- name: cats
+  topic: cat-images
+selectors:
+- categoryName: mqtt-data
+  categoryValue: input
+  scope:
+    - cats

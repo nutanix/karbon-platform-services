@@ -1,0 +1,21 @@
+# mqtt -> s3
+kind: dataPipeline
+name: mqtt-to-s3-pipeline
+description: This data pipeline consumes data from MQTT, then outputs to an AWS S3 bucket
+project: Starter
+samplingIntervalMsec: 1
+functions:
+- name: echo-param-fn
+  args:
+    param1: foo # pass argument param1=foo
+input:
+  categorySelectors:
+    mqtt-data:
+      - input
+output:
+  publicCloud:
+    type: AWS
+    service: S3
+    region: us-west-2
+    endpointName: mqtt-to-s3 # Specify the endpoint AWS S3 bucket name
+    profile: my-aws-profile # you would need to add this profile to project=Starter using UI for now. Ref: https://portal.nutanix.com/#/page/docs/details?targetId=Xi-IoT-Infra-Admin-Guide:edg-iot-onboarding-add-cloud-t.html
