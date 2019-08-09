@@ -1,0 +1,5 @@
+kind: application
+name: echo-sample-app
+description: my sample app
+project: Starter
+appYamlPath: echoserver-k8s.yaml 

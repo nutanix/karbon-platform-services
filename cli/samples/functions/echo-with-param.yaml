@@ -1,0 +1,10 @@
+kind: function
+name: echo-param-fn
+project: Starter
+description: this function accepts params
+sourceCodePath: "echo.py"
+language: python
+environment: python-env
+params:
+  - name: param1
+    type: string

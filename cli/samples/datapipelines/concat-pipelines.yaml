@@ -1,0 +1,38 @@
+# mqtt -> pipeline1 -> pipeline2 -> Kinesis
+kind: dataPipeline
+name: pipeline1
+description: This data pipeline takes MQTT data as input and outputs to a real-time streaming service
+project: Starter
+samplingIntervalMsec: 1
+functions:
+- name: echo-param-fn
+  args:
+    param1: foo # pass argument param1=foo
+input:
+  categorySelectors:
+    mqtt-data:
+      - input
+output:
+  localEdge:
+   type: DataService
+   service: RealTimeStreaming
+   endpointName: mqtt-to-realtimestream
+---
+kind: dataPipeline
+name: pipeline2
+description: This data pipeline consumes pipeline1 output as its input, then outputs to an AWS Kinesis stream
+project: Starter
+samplingIntervalMsec: 1
+functions:
+- name: echo-param-fn
+  args:
+    param1: foo # pass argument param1=foo
+input:
+  dataPipeline: pipeline1
+output:
+  publicCloud:
+    type: AWS
+    service: Kinesis
+    region: us-west-2
+    endpointName: pipeline2-to-kinesis # Specify a Kinesis stream name
+    profile: my-aws-profile # you would need to add this profile to project=Starter using UI for now. Ref: https://portal.nutanix.com/#/page/docs/details?targetId=Xi-IoT-Infra-Admin-Guide:edg-iot-onboarding-add-cloud-t.html

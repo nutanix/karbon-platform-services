@@ -1,0 +1,7 @@
+kind: function
+name: object-detect-fn
+project: Starter
+description: detects objects in a given frame/jpeg
+sourceCodePath: "detect.py"
+language: python
+environment: tensorflow-python # use this if your function depends on tensorflow
