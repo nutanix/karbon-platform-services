@@ -47,7 +47,7 @@ Download the xi-iot CLI for Linux:
 Optionally, from your terminal or shell, use `wget`.
 ```
 $ wget https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc1-linux_amd64.tar.gz
-$ mkdir xi-iot && tar zxvf xi-iot-v1.0.0-rc1-linux_amd64.tar.gz
+$ mkdir xi-iot && tar zxvf xi-iot-v1.0.0-rc1-linux_amd64.tar.gz -C xi-iot
 $ sudo xi-iot/install [*optional_path*]
 ```
 
@@ -80,3 +80,6 @@ To configure auto-completion for your favorite shell, run this command and follo
 ```
 xi-iot completion --help
 ```
+
+# Using samples
+Under `samples/` directory, there are samples for various Xi IoT entities including Data Sources, Data Pipelines, Applications, etc. These samples can be used as a reference when creating your own Xi IoT entities. Each entity has a README which explains the details of each individual attribute of that entity.
