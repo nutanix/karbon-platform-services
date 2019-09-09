@@ -1,0 +1,15 @@
+# mqtt -> azure blob(no transforms)
+kind: dataPipeline
+name: azure-cli-pipeline
+description: Azure blob output pipeline
+project: Default Project 
+input:
+  categorySelectors:
+    mqtt-data:
+      - input
+output:
+  publicCloud:
+    type: Azure
+    service: Blob
+    endpointName: az-cli-pipeline
+    profile: my-azure-profile 

@@ -1,0 +1,19 @@
+# mqtt -> local kafka
+kind: dataPipeline
+name: mqtt-to-kafka
+description: This data pipeline consumes incoming data from MQTT and outputs it to a Kafka service at the edge
+project: Starter
+samplingIntervalMsec: 1
+functions:
+- name: echo-param-fn
+  args:
+    param1: foo # pass argument param1=foo
+input:
+  categorySelectors:
+    mqtt-data:
+      - input
+output:
+  localEdge:
+    type: DataService
+    service: Kafka
+    endpointName: mqtt-to-kafka # Specify the Kafka topic name

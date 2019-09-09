@@ -1,0 +1,19 @@
+kind: category
+name: rtsp-data
+description: category for rtsp data
+values:
+  - input
+---
+kind: dataSource
+name: rtsp-sfo-datasource
+protocol: RTSP
+authType: PASSWORD
+edge: sfo-edge2 
+fields:
+- name: dogs
+  topic: rtsp://user1:password1/dog-images
+selectors:
+- categoryName: rtsp-data
+  categoryValue: input
+  scope:
+    - dogs
