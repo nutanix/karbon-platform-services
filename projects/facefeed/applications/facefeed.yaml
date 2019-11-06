@@ -62,206 +62,50 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: elasticsearch-discovery
-  labels:
-    component: elasticsearch
-    role: master
-spec:
-  selector:
-    component: elasticsearch
-    role: master
-  ports:
-  - name: transport
-    port: 9300
-    protocol: TCP
----
-apiVersion: v1
-kind: Service
-metadata:
   name: elasticsearch
-  labels:
-    component: elasticsearch
-    role: client
-spec:
-  selector:
-    component: elasticsearch
-    role: client
-  ports:
-  - name: http
-    port: 9200
-    protocol: TCP
----
-apiVersion: apps/v1beta1
-kind: Deployment
-metadata:
-  name: es-master
-  labels:
-    component: elasticsearch
-    role: master
-spec:
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        component: elasticsearch
-        role: master
-    spec:
-      containers:
-      - name: es-master
-        image: xiiot/es:edge_1.12_plus
-        imagePullPolicy: IfNotPresent
-        env:
-        - name: NAMESPACE
-          valueFrom:
-            fieldRef:
-              fieldPath: metadata.namespace
-        - name: NODE_NAME
-          valueFrom:
-            fieldRef:
-              fieldPath: metadata.name
-        - name: "CLUSTER_NAME"
-          value: "myesdb"
-        - name: "NUMBER_OF_MASTERS"
-          value: "1"
-        - name: NODE_MASTER
-          value: "true"
-        - name: NODE_INGEST
-          value: "false"
-        - name: NODE_DATA
-          value: "false"
-        - name: HTTP_ENABLE
-          value: "false"
-        - name: "ES_JAVA_OPTS"
-          value: "-Xms512m -Xmx512m"
-        ports:
-        - containerPort: 9300
-          name: transport
-          protocol: TCP
-        volumeMounts:
-        - name: storage
-          mountPath: /data
-      volumes:
-          - emptyDir:
-              medium: ""
-            name: "storage"
----
-apiVersion: apps/v1beta1
-kind: Deployment
-metadata:
-  name: es-client
-  labels:
-    component: elasticsearch
-    role: client
-spec:
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        component: elasticsearch
-        role: client
-    spec:
-      containers:
-      - name: es-client
-        image: xiiot/es:edge_1.12_plus
-        imagePullPolicy: IfNotPresent
-        env:
-        - name: NAMESPACE
-          valueFrom:
-            fieldRef:
-              fieldPath: metadata.namespace
-        - name: NODE_NAME
-          valueFrom:
-            fieldRef:
-              fieldPath: metadata.name
-        - name: "CLUSTER_NAME"
-          value: "myesdb"
-        - name: NODE_MASTER
-          value: "false"
-        - name: NODE_DATA
-          value: "false"
-        - name: HTTP_ENABLE
-          value: "true"
-        - name: "ES_JAVA_OPTS"
-          value: "-Xms512m -Xmx512m"
-        ports:
-        - containerPort: 9200
-          name: http
-          protocol: TCP
-        - containerPort: 9300
-          name: transport
-          protocol: TCP
-        volumeMounts:
-        - name: storage
-          mountPath: /data
-      volumes:
-          - emptyDir:
-              medium: ""
-            name: "storage"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: elasticsearch-data
-  labels:
-    component: elasticsearch
-    role: data
 spec:
   ports:
-  - port: 9300
-    name: transport
-  clusterIP: None
+  - port: 9200
   selector:
-    component: elasticsearch
-    role: data
+    app: elasticsearch
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1 
 kind: StatefulSet
 metadata:
-  name: es-data
-  labels:
-    component: elasticsearch
-    role: data
+  name: elasticsearch
 spec:
-  serviceName: elasticsearch-data
-  replicas: 1
-  updateStrategy:
-        type: RollingUpdate
+  serviceName: elasticsearch
+  selector:
+    matchLabels:
+      app: elasticsearch
   template:
     metadata:
       labels:
-        component: elasticsearch
-        role: data
+        app: elasticsearch
     spec:
+      initContainers:
+      - name: volume-mount-hack
+        image: busybox:1.29.3
+        imagePullPolicy: IfNotPresent
+        command: ['sh', '-c', 'chmod -R 777  /usr/share/elasticsearch/data']
+        volumeMounts:
+        - name: storage
+          mountPath: /usr/share/elasticsearch/data
+
       containers:
-      - name: es-data
-        image: xiiot/es:edge_1.12_plus
+      - image: docker.elastic.co/elasticsearch/elasticsearch:6.2.1
+        name: elasticsearch
         imagePullPolicy: IfNotPresent
         env:
-        - name: NAMESPACE
-          valueFrom:
-            fieldRef:
-              fieldPath: metadata.namespace
-        - name: NODE_NAME
-          valueFrom:
-            fieldRef:
-              fieldPath: metadata.name
-        - name: "CLUSTER_NAME"
-          value: "myesdb"
-        - name: NODE_MASTER
-          value: "false"
-        - name: NODE_INGEST
-          value: "false"
-        - name: HTTP_ENABLE
-          value: "false"
-        - name: "ES_JAVA_OPTS"
-          value: "-Xms512m -Xmx512m"
+        - name: discovery.type
+          value: single-node
         ports:
-        - containerPort: 9300
+        - containerPort: 9200
           name: transport
           protocol: TCP
         volumeMounts:
         - name: storage
-          mountPath: /data
+          mountPath: /usr/share/elasticsearch/data
   volumeClaimTemplates:
   - metadata:
       name: storage
@@ -271,4 +115,3 @@ spec:
       resources:
         requests:
           storage: 2Gi
----
