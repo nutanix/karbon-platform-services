@@ -266,7 +266,7 @@ spec:
   - metadata:
       name: storage
     spec:
-      storageClassName: silver
+      storageClassName: local
       accessModes: [ "ReadWriteOnce" ]
       resources:
         requests:
