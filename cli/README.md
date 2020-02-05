@@ -16,15 +16,15 @@ Note that autocompletion for zsh is experimental in this release.
 Download the xi-iot CLI for MacOS:
 
 **64-bit**
-[xi-iot-v1.0.0-rc1-darwin_amd64.tar.gz](https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc1-darwin_amd64.tar.gz)
+[xi-iot-v1.0.0-rc2-darwin_amd64.tar.gz](https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc2-darwin_amd64.tar.gz)
 
 **32-bit**
-[xi-iot-v1.0.0-rc1-darwin_386.tar.gz](https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc1-darwin_386.tar.gz)
+[xi-iot-v1.0.0-rc2-darwin_386.tar.gz](https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc2-darwin_386.tar.gz)
 
 Optionally, from your terminal or shell, use `wget`.
 ```
-$ wget https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc1-darwin_amd64.tar.gz
-$ mkdir xi-iot && tar zxvf xi-iot-v1.0.0-rc1-darwin_amd64.tar.gz -C xi-iot
+$ wget https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc2-darwin_amd64.tar.gz
+$ mkdir xi-iot && tar zxvf xi-iot-v1.0.0-rc2-darwin_amd64.tar.gz -C xi-iot
 $ sudo xi-iot/install [*optional_path*]
 ```
 
@@ -39,15 +39,15 @@ $ sudo xi-iot/install /my/custom/dir
 Download the xi-iot CLI for Linux:
 
 **64-bit**
-[xi-iot-v1.0.0-rc1-linux_amd64.tar.gz](https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc1-linux_amd64.tar.gz)
+[xi-iot-v1.0.0-rc2-linux_amd64.tar.gz](https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc2-linux_amd64.tar.gz)
 
 **32-bit**
-[xi-iot-v1.0.0-rc1-linux_386.tar.gz](https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc1-linux_386.tar.gz)
+[xi-iot-v1.0.0-rc2-linux_386.tar.gz](https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc2-linux_386.tar.gz)
 
 Optionally, from your terminal or shell, use `wget`.
 ```
-$ wget https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc1-linux_amd64.tar.gz
-$ mkdir xi-iot && tar zxvf xi-iot-v1.0.0-rc1-linux_amd64.tar.gz -C xi-iot
+$ wget https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc2-linux_amd64.tar.gz
+$ mkdir xi-iot && tar zxvf xi-iot-v1.0.0-rc2-linux_amd64.tar.gz -C xi-iot
 $ sudo xi-iot/install [*optional_path*]
 ```
 
