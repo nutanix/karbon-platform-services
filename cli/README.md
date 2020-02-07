@@ -58,6 +58,21 @@ my/custom/dir is the installation path:
 $ sudo xi-iot/install /my/custom/dir
 ```
 
+## Windows
+
+Download the xi-iot CLI for Microsoft Windows:
+
+**64-bit**
+[xi-iot-v1.0.0-rc3-windows_amd64.zip](https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc3-windows_amd64.zip)
+
+**32-bit**
+[xi-iot-v1.0.0-rc3-windows_386.zip](https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc3-windows_386.zip)
+
+1. Extract the .EXE file from the zip file.
+2. Rename the extracted .EXE file to xi-iot.exe
+2. Open a command windows, navigate to the .EXE file, and run it.
+
+
 # Configuring xi-iot CLI
 Configure the xi-iot CLI to interact with Xi IoT API, including your user role and credentials.
 A xi-iot CLI user operates under a specific context. A user email address, password, and context name defines the context.
