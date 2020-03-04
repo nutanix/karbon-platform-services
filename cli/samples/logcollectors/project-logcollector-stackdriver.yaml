@@ -1,0 +1,7 @@
+kind: logcollector
+name: project-log-name
+type: project
+project: project-name
+destination: stackdriver
+cloudProfile: cloud-profile-name
+filterSourceCode: ""

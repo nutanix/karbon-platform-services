@@ -1,0 +1,8 @@
+kind: logcollector
+name: infra-log-name
+type: infrastructure
+destination: kinesis
+cloudProfile: cloud-profile-name
+awsRegion: us-west-2
+kinesisStream: kinesis-stream-name
+filterSourceCode: ""
