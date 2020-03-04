@@ -1,0 +1,9 @@
+kind: logcollector
+name: infra-log-name
+type: infrastructure
+destination: cloudwatch
+cloudProfile: cloud-profile-name
+awsRegion: monitoring.us-west-2.amazonaws.com
+cloudwatchGroup: cloudwatch-group-name
+cloudwatchStream: cloudwatch-stream-name
+filterSourceCode: ""
