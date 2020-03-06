@@ -1,6 +1,6 @@
 # Creating a Log Collector
 
-Read about log collectors details and requirements in the [Xi IoT Admin Guide](https://portal.nutanix.com/#/page/docs/details?targetId=Xi-IoT-Infra-Admin-Guide:Xi-IoT-Infra-Admin-Guide).
+Read about log collectors details and requirements in the [Xi IoT Admin Guide](https://portal.nutanix.com/#/page/docs/details?targetId=Xi-IoT-Infra-Admin-Guide:edg-iot-logs-c.html).
 
 Each sample YAML file defines a log collector. Log collectors can be:
 - Infrastructure-based: collect infrastructure-related (service domain) information
