@@ -1,6 +1,6 @@
 # Creating a Log Collector
 
-Read about log collectors details and requirements in the [Xi IoT Admin Guide](https://portal.nutanix.com/#/page/docs/details?targetId=Xi-IoT-Infra-Admin-Guide:edg-iot-logs-c.html).
+Read about log collectors details and requirements in the [Xi IoT Admin Guide](https://portal.nutanix.com/#/page/docs/details?targetId=Xi-IoT-Infra-Admin-Guide:Xi-IoT-Infra-Admin-Guide).
 
 Each sample YAML file defines a log collector. Log collectors can be:
 - Infrastructure-based: collect infrastructure-related (service domain) information
@@ -15,7 +15,7 @@ You can connect each log collector to the destination cloud's logging infrastruc
 ## Notes
 
 1. Log conversion with `code` is not currently supported.
-2. *AWS CloudWatch* is supported at the moment.
+2. A *AWS CloudWatch* is supported at the moment.
 
 ## Example Usage
 
@@ -45,13 +45,13 @@ filterSourceCode: ""
 | name                | `infra-log-name`                     | Specify the unique log collector name               |
 | type                | `infrastructure`                     | Log collector for infrastructure                    |
 | destination         | `cloudwatch`                         | Cloud destination type                              |
-| cloudProfile        | `cloud-profile-name`                 | Specify the AWS cloud profile                       |
-| awsRegion           | `monitoring.us-west-2.amazonaws.com` | A valid AWS region name or cloudwatch endpoint FQDN |
-| cloudwatchGroup     | `cloudwatch-group-name`              | Specify the log group name                          |
-| cloudwatchStream    | `cloudwatch-stream-name`             | Specify the log stream name                         |
+| cloudProfile        | `cloud-profile-name`                 | Specify an existing Xi IoT cloud profile for AWS.   |
+| awsRegion           | `monitoring.us-west-2.amazonaws.com` | A valid AWS region name or CloudWatch endpoint FQDN |
+| cloudwatchGroup     | `cloudwatch-group-name`              | Specify the AWS CloudWatch log group name           |
+| cloudwatchStream    | `cloudwatch-stream-name`             | Specify the AWS CloudWatch stream name              |
 | filterSourceCode    | ` `                                  | Specify the log conversion code                     |
 
-Need to specify all `awsRegion`, `cloudwatchStream` and `cloudwatchGroup` to enable `cloudwatch` log streaming.
+To enable AWS CloudWatch log streaming, you must specify awsRegion, cloudwatchStream, and cloudwatchGroup.
 
 Names and limitations:
 - `awsRegion` must be a valid AWS region name (`us-west-2`) or cloudwatch endpoint FQDN (`monitoring.us-west-2.amazonaws.com`)
@@ -72,16 +72,16 @@ kinesisStream: kinesis-stream-name
 filterSourceCode: ""
 ```
 
-| Field Name       | Value or Subfield Name / Description | Value or Subfield Name / Description  |
-|------------------|--------------------------------------|---------------------------------------|
-| kind             | `logcollector`                       | Specify the resource type             |
-| name             | `infra-log-name`                     | Specify the unique log collector name |
-| type             | `infrastructure`                     | Log collector for infrastructure      |
-| destination      | `kinesis`                            | Cloud destination type                |
-| cloudProfile     | `cloud-profile-name`                 | Specify the AWS cloud profile         |
-| awsRegion        | `us-west-2`                          | A valid AWS region name               |
-| kinesisStream    | `kinesis-stream-name`                | Specify the AWS Kinesis stream name   |
-| filterSourceCode | ` `                                  | Specify the log conversion code       |
+| Field Name       | Value or Subfield Name / Description | Value or Subfield Name / Description              |
+|------------------|--------------------------------------|---------------------------------------------------|
+| kind             | `logcollector`                       | Specify the resource type                         | 
+| name             | `infra-log-name`                     | Specify the unique log collector name             |
+| type             | `infrastructure`                     | Log collector for infrastructure                  |
+| destination      | `kinesis`                            | Cloud destination type                            |
+| cloudProfile     | `cloud-profile-name`                 | Specify an existing Xi IoT cloud profile for AWS. |
+| awsRegion        | `us-west-2`                          | A valid AWS region name                           |
+| kinesisStream    | `kinesis-stream-name`                | Specify the AWS Kinesis stream name               |
+| filterSourceCode | ` `                                  | Specify the log conversion code                   |
 
 Both `awsRegion` and `kinesisStream` are required for `kinesis` log collector destination.
 
@@ -105,19 +105,19 @@ kinesisStream: firehose-delivery-stream-name
 filterSourceCode: ""
 ```
 
-| Field Name       | Value or Subfield Name / Description | Value or Subfield Name / Description  |
-|------------------|--------------------------------------|---------------------------------------|
-| kind             | `logcollector`                       | Specify the resource type             |
-| name             | `project-log-name`                   | Specify the unique log collector name |
-| type             | `project`                            | Log collector for specific project    |
-| project          | `project-name`                       | Specify the project name              |
-| destination      | `firehose`                           | Cloud destination type                |
-| cloudProfile     | `cloud-profile-name`                 | Specify the GCP cloud profile         |
-| awsRegion        | `us-west-2`                          | A valid AWS region name               |
-| kinesisStream    | `firehose-delivery-stream-name`      | Specify the delivery stream name      |
-| filterSourceCode | ` `                                  | Specify the log conversion code       |
+| Field Name       | Value or Subfield Name / Description | Value or Subfield Name / Description                     |
+|------------------|--------------------------------------|----------------------------------------------------------|
+| kind             | `logcollector`                       | Specify the resource type                                |
+| name             | `project-log-name`                   | Specify the unique log collector name                    |
+| type             | `project`                            | Log collector for specific project                       |
+| project          | `project-name`                       | Specify the project name                                 |
+| destination      | `firehose`                           | Cloud destination type                                   |
+| cloudProfile     | `cloud-profile-name`                 | Specify an existing Xi IoT cloud profile for AWS.        |
+| awsRegion        | `us-west-2`                          | A valid AWS region name                                  |
+| kinesisStream    | `firehose-delivery-stream-name`      | Specify the delivery stream name                         |
+| filterSourceCode | ` `                                  | Specify the log conversion code                          |
 
-Both `awsRegion` and `kinesisStream` are required for `firehose` log collector destination.
+To enable AWS Firehose log streaming, you must specify awsRegion and kinesisStream.
 
 Names and limitations:
 - `kinesisStream` can be between 1 and 512 characters long. Allowed characters include a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), '/' (forward slash), and '.'
@@ -138,15 +138,15 @@ cloudProfile: cloud-profile-name
 filterSourceCode: ""
 ```
 
-| Field Name       | Value or Subfield Name / Description | Value or Subfield Name / Description  |
-|------------------|--------------------------------------|---------------------------------------|
-| kind             | `logcollector`                       | Specify the resource type             |
-| name             | `project-log-name`                   | Specify the unique log collector name |
-| type             | `project`                            | Log collector for specific project    |
-| project          | `project-name`                       | Specify the project name              |
-| destination      | `stackdriver`                        | Cloud destination type                |
-| cloudProfile     | `cloud-profile-name`                 | Specify the GCP cloud profile         |
-| filterSourceCode | ` `                                  | Specify the log conversion code       |
+| Field Name       | Value or Subfield Name / Description | Value or Subfield Name / Description                     |
+|------------------|--------------------------------------|----------------------------------------------------------|
+| kind             | `logcollector`                       | Specify the resource type                                |
+| name             | `project-log-name`                   | Specify the unique log collector name                    | 
+| type             | `project`                            | Log collector for specific project                       |
+| project          | `project-name`                       | Specify the project name                                 |
+| destination      | `stackdriver`                        | Cloud destination type                                   |
+| cloudProfile     | `cloud-profile-name`                 | Specify an existing Xi IoT cloud profile for GCP.        |
+| filterSourceCode | ` `                                  | Specify the log conversion code                          |
 
 The `stackdriver` integration does not require additional parameters.
 
