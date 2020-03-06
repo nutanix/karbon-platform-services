@@ -15,7 +15,7 @@ You can connect each log collector to the destination cloud's logging infrastruc
 ## Notes
 
 1. Log conversion with `code` is not currently supported.
-2. A *AWS CloudWatch* is supported at the moment.
+2. *AWS CloudWatch* is supported at the moment.
 
 ## Example Usage
 
