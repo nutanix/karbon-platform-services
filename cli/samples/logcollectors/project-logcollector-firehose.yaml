@@ -1,0 +1,8 @@
+kind: logcollector
+name: project-log-name
+type: project
+project: project-name
+destination: firehose
+awsRegion: us-west-2
+kinesisStream: firehose-delivery-stream-name
+filterSourceCode: ""
