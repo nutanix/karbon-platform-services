@@ -80,10 +80,9 @@ Below is a simple example that shows how to connect to an mqtt broker, publish a
 Running the example
 
 1. Download the certificates from Xi IoT and store them locally under certs. directory. Name the files as follows:
-
-* ca.crt - Root CA certificate
-* client.crt - client certificate
-* client.key - client private key
+    * ca.crt - Root CA certificate
+    * client.crt - client certificate
+    * client.key - client private key
 1. Modify broker_address to point to the Xi IoT edge IP address.
 1. Run the example as follows:
 ```console
