@@ -68,3 +68,39 @@ Prerequisites
 ```console
 $ sudo pip2.7 install paho-mqtt
 ```
+
+Sample
+
+Below is a simple example that shows how to connect to an mqtt broker, publish a single message to a specific topic and receive the published message back.
+
+```python
+# TODO
+```
+
+Running the example
+
+1. Download the certificates from Xi IoT and store them locally under certs. directory. Name the files as follows:
+
+* ca.crt - Root CA certificate
+* client.crt - client certificate
+* client.key - client private key
+1. Modify broker_address to point to the Xi IoT edge IP address.
+1. Run the example as follows:
+```console
+$ python2.7 mqtt-example.py
+```
+Expect output:
+```console
+Connecting...
+Connected to broker
+Published!
+New message received!
+Topic: test
+Message: Hello, World!
+```
+
+## Runtime Environments
+
+A runtime environment is a command execution environment to run applications written in a particular language or associated with a specific Docker registry or file. Each Function added to a Data Pipeline is executed via its own specified Runtime Environment.
+
+Xi IoT includes standard runtime environments including but not limited to the following. These runtimes are read-only and cannot be edited, updated, or deleted by users. They are available to all projects, functions, and associated container registries.
