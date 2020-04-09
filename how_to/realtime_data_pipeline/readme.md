@@ -39,3 +39,18 @@ Each defined data source consists of:
 * Authentication type to secure access to the data source and data
 * One or more fields specifying the data extraction method - the data pipeline specification
 * Categories which are attributes that can be metadata you define to associate with the captured data
+
+#### Add a Data Source - MQTT
+
+* Data Extraction - MQTT
+* Categories - MQTT
+
+View these topics in the [Xi IoT Infrastructure Admin Guide](https://portal.nutanix.com/page/documents/details/?targetId=Xi-IoT-Infra-Admin-Guide:Xi-IoT-Infra-Admin-Guide), available from the Nutanix Support Portal.
+
+### MQTT Client Samples for Testing
+
+If you are looking to understand the internals of how MQTT works, please read the 10 part series on [MQTT Essentials](https://www.hivemq.com/tags/mqtt-essentials/) by HiveMQ.
+
+#### Javascript
+
+Please refer to [mqtt package](https://www.npmjs.com/package/mqtt) and examples [here](https://github.com/mqttjs/MQTT.js/blob/master/examples/client/secure-client.js) for creating secure mqtt clients in javascript.
