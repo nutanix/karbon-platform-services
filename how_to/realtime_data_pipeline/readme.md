@@ -1,5 +1,5 @@
 
-# How to Consume Data from Realtime Data Pipeline
+# XI IOT - DATA PIPELINES - GETTING STARTED GUIDE
 
 ## Xi IoT Overview
 
@@ -24,4 +24,18 @@ Data pipelines have the following components used in the examples in this guide:
 
 ### Using MQTT Data Sources in Data Pipelines
 
-#### What is MQTT
+#### What is MQTT?
+
+If you are looking to understand the internals of how MQTT works, please read the 10 part series on [MQTT Essentials](https://www.hivemq.com/tags/mqtt-essentials/) by HiveMQ.
+
+### Adding a Data Source
+
+You can add one or more data sources (a collection of sensors, gateways, or other input devices providing data) to associate with an edge.
+
+Each defined data source consists of:
+
+* Data source type (sensor, input device like a camera, or gateway) - the origin of the data
+* Communication protocol typically associated with the data source
+* Authentication type to secure access to the data source and data
+* One or more fields specifying the data extraction method - the data pipeline specification
+* Categories which are attributes that can be metadata you define to associate with the captured data
