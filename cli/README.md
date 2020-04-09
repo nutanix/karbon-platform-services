@@ -16,15 +16,15 @@ Note that autocompletion for zsh is experimental in this release.
 Download the xi-iot CLI for MacOS:
 
 **64-bit**
-[xi-iot-v1.0.0-rc4-darwin_amd64.tar.gz](https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc4-darwin_amd64.tar.gz)
+[xi-iot-v1.0.0-rc5-darwin_amd64.tar.gz](https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc5-darwin_amd64.tar.gz)
 
 **32-bit**
-[xi-iot-v1.0.0-rc4-darwin_386.tar.gz](https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc4-darwin_386.tar.gz)
+[xi-iot-v1.0.0-rc5-darwin_386.tar.gz](https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc5-darwin_386.tar.gz)
 
 Optionally, from your terminal or shell, use `wget`.
 ```
-$ wget https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc4-darwin_amd64.tar.gz
-$ mkdir xi-iot && tar zxvf xi-iot-v1.0.0-rc4-darwin_amd64.tar.gz -C xi-iot
+$ wget https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc5-darwin_amd64.tar.gz
+$ mkdir xi-iot && tar zxvf xi-iot-v1.0.0-rc5-darwin_amd64.tar.gz -C xi-iot
 $ sudo xi-iot/install [*optional_path*]
 ```
 
@@ -39,15 +39,15 @@ $ sudo xi-iot/install /my/custom/dir
 Download the xi-iot CLI for Linux:
 
 **64-bit**
-[xi-iot-v1.0.0-rc4-linux_amd64.tar.gz](https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc4-linux_amd64.tar.gz)
+[xi-iot-v1.0.0-rc5-linux_amd64.tar.gz](https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc5-linux_amd64.tar.gz)
 
 **32-bit**
-[xi-iot-v1.0.0-rc4-linux_386.tar.gz](https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc4-linux_386.tar.gz)
+[xi-iot-v1.0.0-rc5-linux_386.tar.gz](https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc5-linux_386.tar.gz)
 
 Optionally, from your terminal or shell, use `wget`.
 ```
-$ wget https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc4-linux_amd64.tar.gz
-$ mkdir xi-iot && tar zxvf xi-iot-v1.0.0-rc4-linux_amd64.tar.gz -C xi-iot
+$ wget https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc5-linux_amd64.tar.gz
+$ mkdir xi-iot && tar zxvf xi-iot-v1.0.0-rc5-linux_amd64.tar.gz -C xi-iot
 $ sudo xi-iot/install [*optional_path*]
 ```
 
@@ -63,10 +63,10 @@ $ sudo xi-iot/install /my/custom/dir
 Download the xi-iot CLI for Microsoft Windows:
 
 **64-bit**
-[xi-iot-v1.0.0-rc4-windows_amd64.zip](https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc4-windows_amd64.zip)
+[xi-iot-v1.0.0-rc5-windows_amd64.zip](https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc5-windows_amd64.zip)
 
 **32-bit**
-[xi-iot-v1.0.0-rc4-windows_386.zip](https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc4-windows_386.zip)
+[xi-iot-v1.0.0-rc5-windows_386.zip](https://xi-iot-cli.s3-us-west-2.amazonaws.com/xi-iot-v1.0.0-rc5-windows_386.zip)
 
 1. Extract the .EXE file from the zip file.
 2. Rename the extracted .EXE file to xi-iot.exe
