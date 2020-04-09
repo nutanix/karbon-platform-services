@@ -1,7 +1,7 @@
 
-*How to Consume Data from Realtime Data Pipeline*
+# How to Consume Data from Realtime Data Pipeline
 
-**Xi IoT Overview**
+## Xi IoT Overview**
 
 The Nutanix Xi IoT platform delivers local compute and AI for IoT edge devices, converging the edge and cloud into one seamless data processing platform. The Xi IoT platform eliminates complexity, accelerates deployments, and elevates developers to focus on the business logic powering IoT applications and services. Now developers can use a low-code development platform to create application software via APIs instead of arduous programming methods.
 
