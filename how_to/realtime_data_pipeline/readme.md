@@ -103,3 +103,96 @@ Message: Hello, World!
 A runtime environment is a command execution environment to run applications written in a particular language or associated with a specific Docker registry or file. Each Function added to a Data Pipeline is executed via its own specified Runtime Environment.
 
 Xi IoT includes standard runtime environments including but not limited to the following. These runtimes are read-only and cannot be edited, updated, or deleted by users. They are available to all projects, functions, and associated container registries.
+
+* **Golang**
+* **NodeJS**
+	* Node.js functions can be run in context of a data pipeline. A transformation function must accept context as well as message payload as parameters. Context can be used to query function parameters passed in when function has been instantiated. Moreover context is used to send messages to next stage in data pipeline.
+	* Following is a basic Node.js function template:
+	```javascript
+	function main(ctx, msg) {
+	   return new Promise(function(resolve, reject) {
+	      // log list of transformation parameters
+	      console.log("Config", ctx.config)
+	      // log length of message payload
+	      console.log(msg.length)
+	      // forward message to next stage in pipeline
+	      ctx.send(msg)
+	      // complete promise
+	      resolve()
+	   })
+	}
+	exports.main = main
+	```
+
+	All functions must export main which returns a promise.
+
+	Expected output:
+	```console
+	Config { IntParam: '42', StringParam: 'hello' }
+	2764855
+	```
+
+	**Note**
+	Packages available in NodeJS Runtime
+		* alpine-baselayout
+		* alpine-keys
+		* apk-tools
+		* busybox
+		* libc-utils
+		* libgcc
+		* libressl2.5-libcrypto
+		* libressl2.5-libssl
+		* libressl2.5-libtls
+		* libstdc++
+		* musl
+		* musl-utils
+		* scanelf
+		* ssl_client
+		* zlib
+* **Python**
+	* Functions can be executed in data pipelines to transform and filter data. Transformations are functions used to process single messages and optionally forward them to next stage in data pipeline. The next stage could be another transformation or destination of the data pipeline on edge or in the cloud. Transformation can accept parameters. In Python parameters are passed as dictionary to transformation. The following script demonstrates some basic concepts:
+	```python
+	import logging
+	# Python function are invoked with context and message payload.
+	# The context can be used to retrieve metadata about the message and allows
+	# function to send mesagges to next stage in stream. In this sample we just
+	# log message payload and forward it as is to next stage.
+	def main(ctx, msg):
+	      logging.info("Parameters: %s", ctx.get_config())
+	      logging.info("Process %d bytes from %s at %s", msg, ctx.get_topic(), ctx.get_timestamp())
+	      # Forward to next stage in pipeline.
+	      ctx.send(msg)
+	```
+	Pass two parameters to the function:
+
+		* MyStringParam like the name suggests is a parameter of type string.
+		* MyIntParam is a number.
+		The function would produce the following console output when processing images from a camera:
+		```console
+		[2019-03-12 04:57:26,820 root INFO] Parameters: {u'MyIntParam':u'42', u'MyStringParam': u'hello'}
+		[2019-03-12 04:57:26,820 root INFO] Process 2764855 bytes from rtsp://184.72.239.149:554/vod/mp4:BigBuckBunny_175k.mov at 1552366646754939017
+		```
+	**Methods provided by ctx**
+
+	* **ctx.get_config()** - returns a dict of parameters passed to the function.
+	* **ctx.get_topic()** - returns the topic (string) on which the current message was received. In this case, it is the topic is set to RTSP topic from which image has been received.
+	* **ctx.get_timestamp()** - returns the time in nanoseconds since epoch (Jan 1st, 1970 UTC).
+	* **ctx.send()** - Takes bytes as input and forwards it to the next stage in the pipeline. If the input is not of type bytes, an error is thrown and a corresponding alert is raised in Xi IoT.
+
+	**In memory caching**
+	```python
+	import logging
+	counter=0
+	def main(ctx, msg):
+	      global counter
+	      logging.info("This is message number %d", counter)
+	      counter+=1
+	      # Forward to next stage in pipeline.
+	      ctx.send(msg)
+	```
+
+
+
+
+
+
