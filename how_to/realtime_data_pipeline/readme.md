@@ -54,3 +54,17 @@ If you are looking to understand the internals of how MQTT works, please read th
 #### Javascript
 
 Please refer to [mqtt package](https://www.npmjs.com/package/mqtt) and examples [here](https://github.com/mqttjs/MQTT.js/blob/master/examples/client/secure-client.js) for creating secure mqtt clients in javascript.
+
+#### Python 2
+
+Prerequisites
+
+* A Nutanix edge with an IP address onboarded to Xi IoT
+* X509 certificates generated using Xi IoT
+* Python 2.7.10
+* pip 10.0.1 (python 2.7)
+* paho-mqtt. Install it for python 2.7.10 using the following command:
+
+```console
+$ sudo pip2.7 install paho-mqtt
+```
