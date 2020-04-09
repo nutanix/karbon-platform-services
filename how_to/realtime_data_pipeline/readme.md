@@ -9,6 +9,19 @@ The Nutanix Xi IoT platform delivers local compute and AI for IoT edge devices, 
 
 The main steps in this guide are excerpts from the [Xi IoT Infrastructure Admin Guide](https://portal.nutanix.com/page/documents/details/?targetId=Xi-IoT-Infra-Admin-Guide:Xi-IoT-Infra-Admin-Guide), available from the Nutanix Support Portal.
 
+Data Pipelines are paths for data that include:
+* **Input**. An existing data source or real-time data stream.
+* **Transformation**. Code block such as a script defined in a Function to process or transform input data.
+* **Output**. A destination for your data. Publish data to the cloud or cloud data service (such as AWS Simple Queue Service) at the edge.
+
+They also enable you to process and transform captured data for further consumption or processing.
+
+Data pipelines have the following components used in the examples in this guide:
+
+* Data Sources (defined as MQTT in this guide)
+* Runtime Environments
+* Functions
+
 This Realtime Data Pipeline will output the data to [NATS message broker](https://nats.io/).
 To consume that data from NATS, we need to connect to the broker and subscribe to a topic.
 
