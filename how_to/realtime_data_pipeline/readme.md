@@ -168,12 +168,11 @@ def main(ctx, msg):
       ctx.send(msg)
 ```
 
-	Pass two parameters to the function:
+Pass two parameters to the function:
+* MyStringParam like the name suggests is a parameter of type string.
+* MyIntParam is a number.
 
-		* MyStringParam like the name suggests is a parameter of type string.
-		* MyIntParam is a number.
-		The function would produce the following console output when processing images from a camera:
-
+The function would produce the following console output when processing images from a camera:
 ```console
 [2019-03-12 04:57:26,820 root INFO] Parameters: {u'MyIntParam':u'42', u'MyStringParam': u'hello'}
 [2019-03-12 04:57:26,820 root INFO] Process 2764855 bytes from rtsp://184.72.239.149:554/vod/mp4:BigBuckBunny_175k.mov at 1552366646754939017
@@ -433,6 +432,12 @@ Removing intermediate container 52d45f3db900
 ---> 95a878cde355
 Successfully built 95a878cde355
 Successfully tagged edgecomputing/sample-env:latest
+```
+
+Upload the docker image to a container registry:
+```console
+$ docker tag edgecomputing/sample-env:latest $DOCKER_REPO/sample-env:v1.1
+$ docker push $DOCKER_REPO/sample-env:v1.1
 ```
 
 
