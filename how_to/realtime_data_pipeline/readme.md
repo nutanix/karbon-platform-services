@@ -234,142 +234,142 @@ Logs will reflect how message have been split:
 **Note**
 
 Packages available in Python 2 Runtime
-	* backports-abc 0.5
-	* elasticsearch 6.3.1
-	* elasticsearch-dsl 6.3.1
-	* futures 3.2.0
-	* ipaddress 1.0.22
-	* kafka-python 1.4.4
-	* msgpack 0.5.6
-	* nats-client 0.8.2
-	* paho-mqtt 1.4.0
-	* pip 18.1
-	* prometheus-client 0.5.0
-	* protobuf 3.6.1
-	* python-dateutil 2.7.5
-	* setuptools 40.6.3
-	* singledispatch 3.4.0.3
-	* six 1.12.0
-	* tornado 5.1.1
-	* urllib3 1.24.1
-	* virtualenv 16.2.0
-	* wheel 0.32.3
-	* requests 2.20.1
+* backports-abc 0.5
+* elasticsearch 6.3.1
+* elasticsearch-dsl 6.3.1
+* futures 3.2.0
+* ipaddress 1.0.22
+* kafka-python 1.4.4
+* msgpack 0.5.6
+* nats-client 0.8.2
+* paho-mqtt 1.4.0
+* pip 18.1
+* prometheus-client 0.5.0
+* protobuf 3.6.1
+* python-dateutil 2.7.5
+* setuptools 40.6.3
+* singledispatch 3.4.0.3
+* six 1.12.0
+* tornado 5.1.1
+* urllib3 1.24.1
+* virtualenv 16.2.0
+* wheel 0.32.3
+* requests 2.20.1
 
 Packages available in Python 3 Runtime
-	* asyncio-nats-client 0.8.2
-	* elasticsearch 6.3.1
-	* elasticsearch-dsl 6.3.1
-	* kafka-python 1.4.4
-	* msgpack 0.5.6
-	* paho-mqtt 1.4.0
-	* pip 18.1
-	* prometheus-client 0.5.0
-	* protobuf 3.6.1
-	* python-dateutil 2.7.5
-	* setuptools 40.6.3
-	* six 1.12.0
-	* urllib3 1.24.1
-	* wheel 0.32.3
-	* requests 2.20.1
+* asyncio-nats-client 0.8.2
+* elasticsearch 6.3.1
+* elasticsearch-dsl 6.3.1
+* kafka-python 1.4.4
+* msgpack 0.5.6
+* paho-mqtt 1.4.0
+* pip 18.1
+* prometheus-client 0.5.0
+* protobuf 3.6.1
+* python-dateutil 2.7.5
+* setuptools 40.6.3
+* six 1.12.0
+* urllib3 1.24.1
+* wheel 0.32.3
+* requests 2.20.1
 
 Packages available in Tensorflow Python 2 Runtime
-	* Absl-py 0.1.10
-	* astor 0.6.2
-	* astroid 1.6.1
-	* backports-abc 0.5
-	* backports.functools-lru-cache 1.5
-	* backports.shutil-get-terminal-size 1.0.0
-	* backports.weakref 1.0.post1
-	* bleach 1.5.0
-	* configparser 3.5.0
-	* cycler 0.10.0
-	* decorator 4.2.1
-	* elasticsearch 6.3.1
-	* elasticsearch-dsl 6.3.1
-	* entrypoints 0.2.3
-	* enum34 1.1.6
-	* funcsigs 1.0.2
-	* functools32 3.2.3.post2
-	* futures 3.2.0
-	* gast 0.2.0
-	* grpcio 1.10.0
-	* h5py 2.7.1
-	* html5lib 0.9999999
-	* imutils 0.4.5
-	* ipaddress 1.0.22
-	* ipykernel 4.8.2
-	* ipython 5.5.0
-	* ipython-genutils 0.2.0
-	* ipywidgets 7.1.2
-	* isort 4.3.3
-	* Jinja2 2.10
-	* jsonschema 2.6.0
-	* jupyter 1.0.0
-	* jupyter-client 5.2.3
-	* jupyter-console 5.2.0
-	* jupyter-core 4.4.0
-	* kafka-python 1.4.4
-	* kiwisolver 1.0.1
-	* lazy-object-proxy 1.3.1
-	* Markdown 2.6.11
-	* MarkupSafe 1.0
-	* matplotlib 2.2.2
-	* mccabe 0.6.1
-	* mistune 0.8.3
-	* mock 2.0.0
-	* msgpack 0.5.6
-	* nats-client 0.8.2
-	* nbconvert 5.3.1
-	* nbformat 4.4.0
-	* notebook 5.4.1
-	* numpy 1.14.0
-	* opencv-python 3.4.0.12
-	* paho-mqtt 1.4.0
-	* pandas 0.22.0
-	* pandocfilters 1.4.2
-	* pathlib2 2.3.0
-	* pbr 4.0.0
-	* pexpect 4.4.0
-	* pickleshare 0.7.4
-	* Pillow 5.0.0
-	* pip 18.1
-	* prometheus-client 0.5.0
-	* prompt-toolkit 1.0.15
-	* protobuf 3.5.1
-	* ptyprocess 0.5.2
-	* Pygments 2.2.0
-	* pylint 1.8.2
-	* pyparsing 2.2.0
-	* python-dateutil 2.7.5
-	* pytz 2018.3
-	* pyzmq 17.0.0
-	* qtconsole 4.3.1
-	* scandir 1.7
-	* scikit-learn 0.19.1
-	* scipy 1.0.0
-	* Send2Trash 1.5.0
-	* setuptools 40.6.3
-	* simplegeneric 0.8.1
-	* singledispatch 3.4.0.3
-	* six 1.11.0
-	* sklearn 0.0
-	* subprocess32 3.2.7
-	* tensorboard 1.7.0
-	* tensorflow 1.7.0
-	* termcolor 1.1.0
-	* terminado 0.8.1
-	* testpath 0.3.1
-	* tornado 5.1.1
-	* traitlets 4.3.2
-	* urllib3 1.24.1
-	* virtualenv 16.2.0
-	* wcwidth 0.1.7
-	* webencodings 0.5.1
-	* Werkzeug 0.14.1
-	* wheel 0.32.3
-	* widgetsnbextension 3.1.4
-	* wrapt 1.10.11
+* Absl-py 0.1.10
+* astor 0.6.2
+* astroid 1.6.1
+* backports-abc 0.5
+* backports.functools-lru-cache 1.5
+* backports.shutil-get-terminal-size 1.0.0
+* backports.weakref 1.0.post1
+* bleach 1.5.0
+* configparser 3.5.0
+* cycler 0.10.0
+* decorator 4.2.1
+* elasticsearch 6.3.1
+* elasticsearch-dsl 6.3.1
+* entrypoints 0.2.3
+* enum34 1.1.6
+* funcsigs 1.0.2
+* functools32 3.2.3.post2
+* futures 3.2.0
+* gast 0.2.0
+* grpcio 1.10.0
+* h5py 2.7.1
+* html5lib 0.9999999
+* imutils 0.4.5
+* ipaddress 1.0.22
+* ipykernel 4.8.2
+* ipython 5.5.0
+* ipython-genutils 0.2.0
+* ipywidgets 7.1.2
+* isort 4.3.3
+* Jinja2 2.10
+* jsonschema 2.6.0
+* jupyter 1.0.0
+* jupyter-client 5.2.3
+* jupyter-console 5.2.0
+* jupyter-core 4.4.0
+* kafka-python 1.4.4
+* kiwisolver 1.0.1
+* lazy-object-proxy 1.3.1
+* Markdown 2.6.11
+* MarkupSafe 1.0
+* matplotlib 2.2.2
+* mccabe 0.6.1
+* mistune 0.8.3
+* mock 2.0.0
+* msgpack 0.5.6
+* nats-client 0.8.2
+* nbconvert 5.3.1
+* nbformat 4.4.0
+* notebook 5.4.1
+* numpy 1.14.0
+* opencv-python 3.4.0.12
+* paho-mqtt 1.4.0
+* pandas 0.22.0
+* pandocfilters 1.4.2
+* pathlib2 2.3.0
+* pbr 4.0.0
+* pexpect 4.4.0
+* pickleshare 0.7.4
+* Pillow 5.0.0
+* pip 18.1
+* prometheus-client 0.5.0
+* prompt-toolkit 1.0.15
+* protobuf 3.5.1
+* ptyprocess 0.5.2
+* Pygments 2.2.0
+* pylint 1.8.2
+* pyparsing 2.2.0
+* python-dateutil 2.7.5
+* pytz 2018.3
+* pyzmq 17.0.0
+* qtconsole 4.3.1
+* scandir 1.7
+* scikit-learn 0.19.1
+* scipy 1.0.0
+* Send2Trash 1.5.0
+* setuptools 40.6.3
+* simplegeneric 0.8.1
+* singledispatch 3.4.0.3
+* six 1.11.0
+* sklearn 0.0
+* subprocess32 3.2.7
+* tensorboard 1.7.0
+* tensorflow 1.7.0
+* termcolor 1.1.0
+* terminado 0.8.1
+* testpath 0.3.1
+* tornado 5.1.1
+* traitlets 4.3.2
+* urllib3 1.24.1
+* virtualenv 16.2.0
+* wcwidth 0.1.7
+* webencodings 0.5.1
+* Werkzeug 0.14.1
+* wheel 0.32.3
+* widgetsnbextension 3.1.4
+* wrapt 1.10.11
 
 ### Build a Custom Runtime Environment
 
@@ -440,7 +440,126 @@ $ docker tag edgecomputing/sample-env:latest $DOCKER_REPO/sample-env:v1.1
 $ docker push $DOCKER_REPO/sample-env:v1.1
 ```
 
+**Note**
+Xi IoT edges pull runtime images using an ‘IfNotPresent’ policy. To ensure updates are pulled, tag your container using a specific version and increment it on updates rather than relying on the ‘latest’ tag.
 
+**Note**
+Docker Hub, AWS Elastic Container Registry, and GCP Container Registry registries are supported.
 
+#### Example Custom Runtimes
 
+* NodeJS
+```
+FROM node:9
 
+RUN wget https://s3-us-west-2.amazonaws.com/ntnxsherlock-runtimes/node-env.tgz
+RUN tar xf /node-env.tgz
+
+WORKDIR /node-env
+RUN npm install
+# Containers should NOT run as root as a good practice
+USER 10001
+CMD ["/node-env/run.sh"]
+```
+
+* Python 3
+```
+FROM python:3.6
+
+RUN python -V
+# Check Python version
+RUN python -c 'import sys; sys.exit(sys.version_info.major != 3)'
+# We need Python runtime environment to execute Python functions.
+RUN wget https://s3-us-west-2.amazonaws.com/ntnxsherlock-runtimes/python-env.tgz
+RUN tar xf /python-env.tgz
+# Bundle does not come with all required packages but defines them as PIP dependencies
+RUN pip install -r /python-env/requirements.txt
+# In this example we install Kafka client for Python as additional 3rd party software
+RUN pip install kafka-python
+
+# Containers should NOT run as root as a good practice
+# We mandate all runtime containers to run as user 10001
+USER 10001
+# Finally run Python function worker which pull and executes functions.
+CMD ["/python-env/run.sh"]
+```
+
+### Creating a Runtime Environment¶
+View this topic in the [Xi IoT Infrastructure Admin Guide](https://portal.nutanix.com/page/documents/details/?targetId=Xi-IoT-Infra-Admin-Guide:edg-iot-runtime-create-t.html), available from the Nutanix Support Portal.
+
+### Editing a Runtime Environment¶
+View this topic in the [Xi IoT Infrastructure Admin Guide](https://portal.nutanix.com/page/documents/details/?targetId=Xi-IoT-Infra-Admin-Guide:edg-iot-runtime-create-t.html), available from the Nutanix Support Portal.
+
+### Removing a Runtime Environment¶
+View this topic in the [Xi IoT Infrastructure Admin Guide](https://portal.nutanix.com/page/documents/details/?targetId=Xi-IoT-Infra-Admin-Guide:edg-iot-runtime-create-t.html), available from the Nutanix Support Portal.
+
+## Functions
+
+A function is code used to perform one or more tasks. Supported languages include Python, Golang, and Node.js. A script can be as simple as text processing code or it could be advanced code implementing artificial intelligence, using popular machine learning frameworks like Tensorflow.
+
+An infrastructure administrator or project user can create a function, and later can edit or clone it. You cannot edit a function that is used by an existing data pipeline. In this case, you can clone it to make an editable copy.
+
+* When you create, clone, or edit a function, you can define one or more parameters.
+* When you create a data pipeline, you define the values for the parameters when you specify the function in the pipeline.
+* Data pipelines can share functions, but you can specify unique parameter values for the function in each data pipeline.
+
+### Creating a Function¶
+View this topic in the [Xi IoT Infrastructure Admin Guide](https://portal.nutanix.com/page/documents/details/?targetId=Xi-IoT-Infra-Admin-Guide:edg-iot-runtime-create-t.html), available from the Nutanix Support Portal.
+
+### Editing a Function¶
+View this topic in the [Xi IoT Infrastructure Admin Guide](https://portal.nutanix.com/page/documents/details/?targetId=Xi-IoT-Infra-Admin-Guide:edg-iot-runtime-create-t.html), available from the Nutanix Support Portal.
+
+### Cloning a Function¶
+View this topic in the [Xi IoT Infrastructure Admin Guide](https://portal.nutanix.com/page/documents/details/?targetId=Xi-IoT-Infra-Admin-Guide:edg-iot-runtime-create-t.html), available from the Nutanix Support Portal.
+
+### Removing a Function¶
+View this topic in the [Xi IoT Infrastructure Admin Guide](https://portal.nutanix.com/page/documents/details/?targetId=Xi-IoT-Infra-Admin-Guide:edg-iot-runtime-create-t.html), available from the Nutanix Support Portal.
+
+## Implementing Data Pipelines
+
+### Data Pipeline Visualization
+View this topic in the [Xi IoT Infrastructure Admin Guide](https://portal.nutanix.com/page/documents/details/?targetId=Xi-IoT-Infra-Admin-Guide:edg-iot-runtime-create-t.html), available from the Nutanix Support Portal.
+
+### Creating a Data Pipeline
+* Input - Add a Data Source
+* Transformation - Add a Function
+* Output - Add a Destination
+View this topic in the [Xi IoT Infrastructure Admin Guide](https://portal.nutanix.com/page/documents/details/?targetId=Xi-IoT-Infra-Admin-Guide:edg-iot-runtime-create-t.html), available from the Nutanix Support Portal.
+
+### Editing a Data Pipeline
+* Input - Edit a Data Source
+* Transformation - Edit a Function
+* Output - Edit a Destination
+View this topic in the [Xi IoT Infrastructure Admin Guide](https://portal.nutanix.com/page/documents/details/?targetId=Xi-IoT-Infra-Admin-Guide:edg-iot-runtime-create-t.html), available from the Nutanix Support Portal.
+
+### Removing a Data Pipeline
+View this topic in the [Xi IoT Infrastructure Admin Guide](https://portal.nutanix.com/page/documents/details/?targetId=Xi-IoT-Infra-Admin-Guide:edg-iot-runtime-create-t.html), available from the Nutanix Support Portal.
+
+**Note**
+See [Appendix](https://nutanix.handsonworkshops.com/workshops/64d8da4f-cdeb-49f6-9722-581e446f6a96/p/#required-cloud-connector-permissions) for external permissions required to publish data via public cloud connectors.
+
+## Appendix
+
+### Required Cloud Connector Permissions
+
+Xi IoT requires the following permissions from each service to publish output data.
+
+AWS S3
+* s3:ListBucket: Needed for listing of existing buckets and for HEAD Bucket operation.
+* s3:CreateBucket: Needed for bucket create operation if the bucket is not already present.
+* s3:PutObject: Needed to write objects to S3 buckets.
+Check the [S3 Permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.htm) page for more details on the permissions and related actions.
+
+AWS Kinesis
+* stream:DescribeStream: Needed for checking if the Kinesis Data Stream exists and is active before attempting to write records.
+* stream:CreateStream: Needed for creating a Kinesis Data Stream if it does not already exist.
+* stream:PutRecord: Need for writing records to Kinesis Data Streams.
+* stream:PutRecords: Need for writing a batch of records to Kinesis Data Streams.
+Check the [Kinesis Permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonkinesis.html) page for more details on the permissions and related actions.
+
+AWS SQS
+* sqs:ListQueues: Needed for checking if the Queue already exists.
+* sqs:CreateQueue: Needed for creating a Queue before writing to it.
+* sqs:SendMessage: Needed for sending messages to a Queue.
+* sqs:SendMessageBatch: Needed for sending a batch of messages to a Queue.
+Check the [SQS Permissions](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-api-permissions-reference.html) page for more details on the permissions and related actions.
