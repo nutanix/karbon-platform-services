@@ -548,7 +548,7 @@ USER 10001
 CMD ["/python-env/run.sh"]
 ```
 
-Complete example of creating custom runtimes:
+Complete examples of creating custom runtimes:
 * [**Python 2**](https://github.com/sharvil-kekre/xi-iot/tree/sharvil/how_to/realtime_data_pipeline/python2)
 * [**Python 3**](https://github.com/sharvil-kekre/xi-iot/tree/sharvil/how_to/realtime_data_pipeline/python3)
 * [**NodeJS**](https://github.com/sharvil-kekre/xi-iot/tree/sharvil/how_to/realtime_data_pipeline/nodejs)
