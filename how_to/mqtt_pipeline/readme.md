@@ -87,9 +87,7 @@ base64 -i 1561481707433_certificates.zip
     * **Description** - Optional
     * Select **+ Add Infrastructure**
     * Select your Edge and click **Select**
-1. Copy and paste the [mqtt-sensor-app.yaml](https://raw.githubusercontent.com/nutanix/xi-iot/master/applications/mqtt-sensor-app/mqtt-sensor-app.yaml) into the Yaml Configuration text box.
-
-Change the environment variables and values defined in YAML as below:
+1. Copy and paste the [mqtt-sensor-app.yaml](https://raw.githubusercontent.com/nutanix/xi-iot/master/applications/mqtt-sensor-app/mqtt-sensor-app.yaml) into the Yaml Configuration text box.Change the environment variables and values defined in YAML as below:
 ```
 - name: MOCK_DATA_CSV_URL
     value: "<publicly available http(s) link to data CSV>"
@@ -125,7 +123,7 @@ Xi IoT Functions allow developers to directly build and execute business logic t
 Xi IoT Functions may be written in well known software languages most commonly used for edge computing and machine learning. These currently include Python, Go, and Node.js. This allows developers to re-use existing code, or quickly write new logic utilizing standard libraries, all without the burden of learning a new platform or language.
 1. Click **Next**
 1. Copy and paste [temp_filter.py](https://raw.githubusercontent.com/nutanix/xi-iot/master/projects/mqtt_pipeline/functions/temp_filter.py) into the Function text box.
-1. Clicke **Create**
+1. Click **Create**.
 
 #### Deploying Data Pipeline
 
