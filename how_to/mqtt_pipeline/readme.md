@@ -41,11 +41,10 @@ As part of this tutorial, you’ll create a new Project to deploy your sample Da
     * Select your user name and click **Done**
 1. Click + **Add Infrastructure**, select your Edge, and click **Done**.
 Xi IoT has the ability to natively output Data Pipelines from the edge to several public cloud services such as AWS S3, or GCP Cloud Datastore. For this tutorial, Cloud Profile Selection can be left blank because no cloud resources will be used.
-
 Xi IoT can also natively run Applications (Docker containers) at the edge using Kubernetes formated yaml as the only required input. Each yaml definition refers to a container image stored in a public or private registry. Private registries can be accessed by creating a Xi IoT Container Registry Profile to store required access information. Because this tutorial utilizes containers hosted in a public registry, Container Registry Selection can be left blank.
 1. Click **Create**
 
-#### Stagin Source Data
+#### Staging Source Data
 
 The tutorial depends on the availability of MQTT sample data.
 
@@ -91,20 +90,20 @@ base64 -i 1561481707433_certificates.zip
 1. Copy and paste the [mqtt-sensor-app.yaml](https://raw.githubusercontent.com/nutanix/xi-iot/master/applications/mqtt-sensor-app/mqtt-sensor-app.yaml) into the Yaml Configuration text box.
 
 Change the environment variables and values defined in YAML as below:
-    ```
-    - name: MOCK_DATA_CSV_URL
+```
+- name: MOCK_DATA_CSV_URL
     value: "<publicly available http(s) link to data CSV>"
-    - name: MQTT_INTERVAL_SEC
+- name: MQTT_INTERVAL_SEC
     value: "5"
-    - name: MQTT_BROKER_IP
+- name: MQTT_BROKER_IP
     value: mqttserver-svc.default
-    - name: MQTT_BROKER_PORT
+- name: MQTT_BROKER_PORT
     value: "1883"
-    - name: MQTT_TOPIC
+- name: MQTT_TOPIC
     value: "temp"
-    - name: MQTT_CLIENT_CERTIFICATES
+- name: MQTT_CLIENT_CERTIFICATES
     value: <base64 encoded certificate bundle output from earlier>
-    ```
+```
 1. Click **Next**
 The Input and Output page provides the option to use a YouTube-8M video or Xi IoT Sensor phone app as input and a HTTP Live Stream (HLS) as an output for applications. A user can simply check the appropriate boxes and install a [NATS](https://docs.nats.io/) client within their application. The selected input will be available on the NATS topic name stored in the NATS_SRC_TOPIC environment variable where it can be subscribed to by using the NATS server name stored in the NATS_ENDPOINT environment variable. Application output in jpeg format sent to the topic name stored in NATS_DST_TOPIC will be available via the application’s HTTP Live Stream. For this tutorial, both boxes should remain unchecked because these features will not be used.
 1. Click **Create.**
