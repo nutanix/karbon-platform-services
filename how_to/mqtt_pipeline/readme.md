@@ -178,20 +178,30 @@ Here’s a breakdown of options and typical use cases:
 1. Click the **trans-0** tab.
 
 Logging output like the below should be present.
-    ```
-    [2019-09-10 01:09:01,579 root INFO] ***** Temp >= 65: Forwarding Payload *****
-    [2019-09-10 01:09:06,583 root INFO] ***** Temp >= 65: Forwarding Payload *****
-    [2019-09-10 01:09:11,587 root INFO] ***** Temp >= 65: Forwarding Payload *****
-    [2019-09-10 01:09:16,588 root INFO] ***** Temp >= 65: Forwarding Payload *****
-    [2019-09-10 01:09:21,593 root INFO] ***** Temp >= 65: Forwarding Payload *****
-    [2019-09-10 01:09:26,594 root INFO] ***** Temp >= 65: Forwarding Payload *****
-    [2019-09-10 01:09:31,597 root INFO] ***** Temp >= 65: Forwarding Payload *****
-    [2019-09-10 01:09:36,602 root INFO] ***** Temp < 65: Dropping Payload *****
-    [2019-09-10 01:09:41,605 root INFO] ***** Temp < 65: Dropping Payload *****
-    [2019-09-10 01:09:46,606 root INFO] ***** Temp < 65: Dropping Payload *****
-    [2019-09-10 01:09:51,611 root INFO] ***** Temp < 65: Dropping Payload *****
-    [2019-09-10 01:09:56,616 root INFO] ***** Temp < 65: Dropping Payload *****
-    [2019-09-10 01:10:01,622 root INFO] ***** Temp < 65: Dropping Payload *****
-    ```
+
+```
+[2019-09-10 01:09:01,579 root INFO] ***** Temp >= 65: Forwarding Payload *****
+[2019-09-10 01:09:06,583 root INFO] ***** Temp >= 65: Forwarding Payload *****
+[2019-09-10 01:09:11,587 root INFO] ***** Temp >= 65: Forwarding Payload *****
+[2019-09-10 01:09:16,588 root INFO] ***** Temp >= 65: Forwarding Payload *****
+[2019-09-10 01:09:21,593 root INFO] ***** Temp >= 65: Forwarding Payload *****
+[2019-09-10 01:09:26,594 root INFO] ***** Temp >= 65: Forwarding Payload *****
+[2019-09-10 01:09:31,597 root INFO] ***** Temp >= 65: Forwarding Payload *****
+[2019-09-10 01:09:36,602 root INFO] ***** Temp < 65: Dropping Payload *****
+[2019-09-10 01:09:41,605 root INFO] ***** Temp < 65: Dropping Payload *****
+[2019-09-10 01:09:46,606 root INFO] ***** Temp < 65: Dropping Payload *****
+[2019-09-10 01:09:51,611 root INFO] ***** Temp < 65: Dropping Payload *****
+[2019-09-10 01:09:56,616 root INFO] ***** Temp < 65: Dropping Payload *****
+[2019-09-10 01:10:01,622 root INFO] ***** Temp < 65: Dropping Payload *****
+```
 
 ### Bonus: Sending Data to a Cloud Destination
+
+#### Creating a Cloud Profile
+
+Xi IoT has the ability to natively output Data Pipelines from the edge to several public cloud services such as AWS S3, or GCP Cloud Datastore.
+
+In this tutorial, output will be directed to an AWS S3 bucket that is secured using an IAM policy. The credentials for access will be securely stored using a Xi IoT Cloud Profile and later assigned to a Project for use.
+
+1. From the **Xi IoT** management portal, select **More > Administration > Cloud Profiles> + Create.**
+1. Fill out the following fields and click **Create:**
