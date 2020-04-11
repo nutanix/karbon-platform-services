@@ -87,7 +87,7 @@ base64 -i 1561481707433_certificates.zip
     * **Description** - Optional
     * Select **+ Add Infrastructure**
     * Select your Edge and click **Select**
-1. Copy and paste the [mqtt-sensor-app.yaml](https://raw.githubusercontent.com/nutanix/xi-iot/master/applications/mqtt-sensor-app/mqtt-sensor-app.yaml) into the Yaml Configuration text box.Change the environment variables and values defined in YAML as below:
+1. Copy and paste the [mqtt-sensor-app.yaml](https://raw.githubusercontent.com/nutanix/xi-iot/master/applications/mqtt-sensor-app/mqtt-sensor-app.yaml) into the Yaml Configuration text box. Change the environment variables and values defined in YAML as below:
     ```
     - name: MOCK_DATA_CSV_URL
         value: "<publicly available http(s) link to data CSV>"
