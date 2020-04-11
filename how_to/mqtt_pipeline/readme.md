@@ -90,20 +90,20 @@ base64 -i 1561481707433_certificates.zip
     * Select your Edge and click **Select**
 1. Copy and paste the [mqtt-sensor-app.yaml](https://raw.githubusercontent.com/nutanix/xi-iot/master/applications/mqtt-sensor-app/mqtt-sensor-app.yaml) into the Yaml Configuration text box.
 Change the environment variables and values defined in YAML as below:
-```
-- name: MOCK_DATA_CSV_URL
-   value: "<publicly available http(s) link to data CSV>"
-- name: MQTT_INTERVAL_SEC
-   value: "5"
-- name: MQTT_BROKER_IP
-   value: mqttserver-svc.default
-- name: MQTT_BROKER_PORT
-   value: "1883"
-- name: MQTT_TOPIC
-   value: "temp"
-- name: MQTT_CLIENT_CERTIFICATES
-   value: <base64 encoded certificate bundle output from earlier>
-```
+    ```
+    - name: MOCK_DATA_CSV_URL
+    value: "<publicly available http(s) link to data CSV>"
+    - name: MQTT_INTERVAL_SEC
+    value: "5"
+    - name: MQTT_BROKER_IP
+    value: mqttserver-svc.default
+    - name: MQTT_BROKER_PORT
+    value: "1883"
+    - name: MQTT_TOPIC
+    value: "temp"
+    - name: MQTT_CLIENT_CERTIFICATES
+    value: <base64 encoded certificate bundle output from earlier>
+    ```
 1. Click **Next**
 The Input and Output page provides the option to use a YouTube-8M video or Xi IoT Sensor phone app as input and a HTTP Live Stream (HLS) as an output for applications. A user can simply check the appropriate boxes and install a [NATS](https://docs.nats.io/) client within their application. The selected input will be available on the NATS topic name stored in the NATS_SRC_TOPIC environment variable where it can be subscribed to by using the NATS server name stored in the NATS_ENDPOINT environment variable. Application output in jpeg format sent to the topic name stored in NATS_DST_TOPIC will be available via the application’s HTTP Live Stream. For this tutorial, both boxes should remain unchecked because these features will not be used.
 1. Click **Create.**
@@ -114,3 +114,16 @@ Infrastructure Deployments should list “1 of 1 Running” on your Edge device 
 #### Deploying Function
 
 Xi IoT Functions allow developers to directly build and execute business logic to correlate, filter, or transform data in standard languages such as Python or Go without the burden of maintaining underlying operating systems or runtimes.
+
+1. From the **Xi IoT** management portal, select **More > Projects > MQTT Pipeline > Apps & Data > Functions > + Add Function.**
+1. Fill out the following fields to create the first function:
+    * **Name** - temp-filter
+    * **Description** - Optional
+    * **Project** - MQTT Pipeline
+    * **Language** - Python
+    * **Runtime Environment** - Python2 Env
+Xi IoT Functions may be written in well known software languages most commonly used for edge computing and machine learning. These currently include Python, Go, and Node.js. This allows developers to re-use existing code, or quickly write new logic utilizing standard libraries, all without the burden of learning a new platform or language.
+1. Click **Next**
+1. Copy and paste [temp_filter.py](https://raw.githubusercontent.com/nutanix/xi-iot/master/projects/mqtt_pipeline/functions/temp_filter.py) into the Function text box.
+1. Clicke **Create**
+
