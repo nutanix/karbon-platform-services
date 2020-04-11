@@ -89,7 +89,6 @@ base64 -i 1561481707433_certificates.zip
     * Select **+ Add Infrastructure**
     * Select your Edge and click **Select**
 1. Copy and paste the [mqtt-sensor-app.yaml](https://raw.githubusercontent.com/nutanix/xi-iot/master/applications/mqtt-sensor-app/mqtt-sensor-app.yaml) into the Yaml Configuration text box.
-
 Change the environment variables and values defined in YAML as below:
 ```
 - name: MOCK_DATA_CSV_URL
@@ -105,13 +104,13 @@ Change the environment variables and values defined in YAML as below:
 - name: MQTT_CLIENT_CERTIFICATES
    value: <base64 encoded certificate bundle output from earlier>
 ```
-
 1. Click **Next**
-The Input and Output page provides the option to use a YouTube-8M video or Xi IoT Sensor phone app as input and a HTTP Live Stream (HLS) as an output for applications. A user can simply check the appropriate boxes and install a [NATS](https://docs.nats.io/) client within their application. The selected input will be available on the NATS topic name stored in the NATS_SRC_TOPIC environment variable where it can be subscribed to by using the NATS server name stored in the NATS_ENDPOINT environment variable. Application output in jpeg format sent to the topic name stored in NATS_DST_TOPIC will be available via the application’s HTTP Live Stream.
-
-For this tutorial, both boxes should remain unchecked because these features will not be used.
-
+The Input and Output page provides the option to use a YouTube-8M video or Xi IoT Sensor phone app as input and a HTTP Live Stream (HLS) as an output for applications. A user can simply check the appropriate boxes and install a [NATS](https://docs.nats.io/) client within their application. The selected input will be available on the NATS topic name stored in the NATS_SRC_TOPIC environment variable where it can be subscribed to by using the NATS server name stored in the NATS_ENDPOINT environment variable. Application output in jpeg format sent to the topic name stored in NATS_DST_TOPIC will be available via the application’s HTTP Live Stream. For this tutorial, both boxes should remain unchecked because these features will not be used.
 1. Click **Create.**
 1. Click **mqtt-sensor-app** to see a Summary of the application performance, alerts, deployments, etc.
 
 Infrastructure Deployments should list “1 of 1 Running” on your Edge device once the application has successfully launched.
+
+#### Deploying Function
+
+Xi IoT Functions allow developers to directly build and execute business logic to correlate, filter, or transform data in standard languages such as Python or Go without the burden of maintaining underlying operating systems or runtimes.
