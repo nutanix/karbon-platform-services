@@ -89,6 +89,7 @@ base64 -i 1561481707433_certificates.zip
     * Select **+ Add Infrastructure**
     * Select your Edge and click **Select**
 1. Copy and paste the [mqtt-sensor-app.yaml](https://raw.githubusercontent.com/nutanix/xi-iot/master/applications/mqtt-sensor-app/mqtt-sensor-app.yaml) into the Yaml Configuration text box.
+
 Change the environment variables and values defined in YAML as below:
     ```
     - name: MOCK_DATA_CSV_URL
@@ -127,3 +128,70 @@ Xi IoT Functions may be written in well known software languages most commonly u
 1. Copy and paste [temp_filter.py](https://raw.githubusercontent.com/nutanix/xi-iot/master/projects/mqtt_pipeline/functions/temp_filter.py) into the Function text box.
 1. Clicke **Create**
 
+#### Deploying Data Pipeline
+
+Data Pipelines in Xi IoT allow you to transform data by injecting your own code. In this exercise, we will use Data Pipelines to filter message payloads with temperature values less than 65, and deliver message payloads with temperature values higher than 65.
+
+1. From the **Xi IoT** management portal, select **More > Projects > MQTT Pipeline > Apps & Data > Data Pipelines > + Create Data Pipeline.**
+
+1. Fill out the following fields to build the pipeline:
+    * **Data Pipeline Name** - temp-filter
+    * Select **+ Add Data Source > Data Source**
+    * **Category** - Data Type
+    * **Value** - Temperature
+    * Select **+ Add Function > temp_filter**
+    * Select **+ Add Destination > Publish to Infrastructure**
+    * **Endpoint Type** - Realtime Data Stream
+    * **Endpoint Name** - temp-filter
+1. Click **Create.**
+
+At this point, your Data Sources, Functions, and Data Pipelines are all configured and automatically deployed by Xi IoT onto your edge based on your earlier assignment within the MQTT Pipeline Project.
+
+In this tutorial you’re outputting Data Pipeline results to a Realtime Data Stream, but Xi IoT has native capability to output in many ways. From the Destination dropdown you’ll notice the ability to output to your edge, or to a cloud.
+
+Here’s a breakdown of options and typical use cases:
+
+* **Infrastructure**
+    * **Kafka** - real-time streaming between edge local applications
+    * **MQTT** - real-time streaming devices (actuators or other edge devices)
+    * **Realtime Data Stream** - real-time streaming between Xi IoT Data Pipelines
+    * **Data Interface** - real-time stream between Xi IoT and custom applications and protocols
+* **Cloud**
+    * **AWS**
+        * **Kinesis** - real-time streaming for large volumes of data
+        * **SQS** - sending messages via web service applications
+        * **S3** - simple file storage
+    * **Azure**
+        * **Blob Storage** - simple file storage
+    * **GCP**
+        * **PubSub** - real-time streaming
+        * **Cloud Datastore** - simple file storage
+
+#### Verifying Expected Output
+
+1. Click **More > Apps and Data > Data Pipelines.**
+
+1. On the temp-filter data pipeline tile, click **temp-filter**, then click **Deployments.**
+
+1. Select your edge, then click **View Real-Time Logs.**
+
+1. Click the **trans-0** tab.
+
+Logging output like the below should be present.
+    ```
+    [2019-09-10 01:09:01,579 root INFO] ***** Temp >= 65: Forwarding Payload *****
+    [2019-09-10 01:09:06,583 root INFO] ***** Temp >= 65: Forwarding Payload *****
+    [2019-09-10 01:09:11,587 root INFO] ***** Temp >= 65: Forwarding Payload *****
+    [2019-09-10 01:09:16,588 root INFO] ***** Temp >= 65: Forwarding Payload *****
+    [2019-09-10 01:09:21,593 root INFO] ***** Temp >= 65: Forwarding Payload *****
+    [2019-09-10 01:09:26,594 root INFO] ***** Temp >= 65: Forwarding Payload *****
+    [2019-09-10 01:09:31,597 root INFO] ***** Temp >= 65: Forwarding Payload *****
+    [2019-09-10 01:09:36,602 root INFO] ***** Temp < 65: Dropping Payload *****
+    [2019-09-10 01:09:41,605 root INFO] ***** Temp < 65: Dropping Payload *****
+    [2019-09-10 01:09:46,606 root INFO] ***** Temp < 65: Dropping Payload *****
+    [2019-09-10 01:09:51,611 root INFO] ***** Temp < 65: Dropping Payload *****
+    [2019-09-10 01:09:56,616 root INFO] ***** Temp < 65: Dropping Payload *****
+    [2019-09-10 01:10:01,622 root INFO] ***** Temp < 65: Dropping Payload *****
+    ```
+
+### Bonus: Sending Data to a Cloud Destination
