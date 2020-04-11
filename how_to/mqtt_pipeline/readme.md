@@ -205,3 +205,49 @@ In this tutorial, output will be directed to an AWS S3 bucket that is secured us
 
 1. From the **Xi IoT** management portal, select **More > Administration > Cloud Profiles> + Create.**
 1. Fill out the following fields and click **Create:**
+    * **Cloud Type** - Amazon Web Services
+    * **Cloud Profile Name** - AWS Demo
+    * **Cloud Profile Description** - Optional
+    * **Access Key** - <Provided by instructor (or use your own)>
+    * **Secret** - <Provided by instructor (or use your own)>
+
+#### Edit Project
+
+1. From the **Xi IoT** management portal, select **More > Projects.**
+1. Click the **Check** box beside the MQTT Pipeline Project, then click **Edit.**
+1. Click **Next:**
+1. From the **Cloud Profile Selection** dropdown, choose **AWS Demo.**
+1. Click **Update.**
+
+#### Edit Data Pipeline
+
+1. From the **Xi IoT** management portal, select **More > Projects > MQTT Pipeline > Apps & Data > Data Pipelines.**
+1. On the temp-filter data pipeline tile, click **Actions**, then click **Edit.**
+1. Fill out the following fields to build the pipeline:
+    * **Data Pipeline Name** - temp-filter
+    * Select **+ Add Data Source > Data Source**
+    * **Category** - Data Type
+    * **Value** - Temperature
+    * Select **+ Add Function > temp_filter**
+    * Select **+ Add Destination > Publish to External Cloud**
+    * **Cloud Type** - AWS
+    * **Cloud Profile** - AWS Demo
+    * **Endpoint Type** - S3
+    * **Endpoint Name** - <bucket name provided by instructor (or use your own)>
+    * **Region** - <bucket region provided by instructor (or use your own)>
+1. Click **Update**
+
+### Bonus: Add Additional Functions
+
+Using methods from above, add [additional functions](https://github.com/nutanix/xi-iot/tree/master/projects/mqtt_pipeline/functions) to your Project, then edit your data pipeline (or create a new one) to use them.
+
+## Takeaway
+
+What are the key takeaways and other things you should know about **Nutanix Xi IoT?**
+* A single platform that can run AI-based apps, containers, and functions.
+* Easy to deploy applications at scale with a SaaS control plane.
+* Reduced time to setup and configure edge intelligence (i.e. kubernetes and analytics platform).
+* Operate edge locations offline with limited internet connectivity.
+* Can choose cloud connectivity without heavy lifting via native public cloud APIs.
+* Supports development languages like Python, Node.js and Go and integrates into existing CI/CD pipelines.
+* Developer APIs and pluggable architecture enables “bring your own framework and functions” for simplified integrations without having to rewrite your code.
