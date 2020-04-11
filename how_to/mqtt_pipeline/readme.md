@@ -88,20 +88,20 @@ base64 -i 1561481707433_certificates.zip
     * Select **+ Add Infrastructure**
     * Select your Edge and click **Select**
 1. Copy and paste the [mqtt-sensor-app.yaml](https://raw.githubusercontent.com/nutanix/xi-iot/master/applications/mqtt-sensor-app/mqtt-sensor-app.yaml) into the Yaml Configuration text box.Change the environment variables and values defined in YAML as below:
-```
-- name: MOCK_DATA_CSV_URL
-    value: "<publicly available http(s) link to data CSV>"
-- name: MQTT_INTERVAL_SEC
-    value: "5"
-- name: MQTT_BROKER_IP
-    value: mqttserver-svc.default
-- name: MQTT_BROKER_PORT
-    value: "1883"
-- name: MQTT_TOPIC
-    value: "temp"
-- name: MQTT_CLIENT_CERTIFICATES
-    value: <base64 encoded certificate bundle output from earlier>
-```
+    ```
+    - name: MOCK_DATA_CSV_URL
+        value: "<publicly available http(s) link to data CSV>"
+    - name: MQTT_INTERVAL_SEC
+        value: "5"
+    - name: MQTT_BROKER_IP
+        value: mqttserver-svc.default
+    - name: MQTT_BROKER_PORT
+        value: "1883"
+    - name: MQTT_TOPIC
+        value: "temp"
+    - name: MQTT_CLIENT_CERTIFICATES
+        value: <base64 encoded certificate bundle output from earlier>
+    ```
 1. Click **Next**
 The Input and Output page provides the option to use a YouTube-8M video or Xi IoT Sensor phone app as input and a HTTP Live Stream (HLS) as an output for applications. A user can simply check the appropriate boxes and install a [NATS](https://docs.nats.io/) client within their application. The selected input will be available on the NATS topic name stored in the NATS_SRC_TOPIC environment variable where it can be subscribed to by using the NATS server name stored in the NATS_ENDPOINT environment variable. Application output in jpeg format sent to the topic name stored in NATS_DST_TOPIC will be available via the application’s HTTP Live Stream. For this tutorial, both boxes should remain unchecked because these features will not be used.
 1. Click **Create.**
