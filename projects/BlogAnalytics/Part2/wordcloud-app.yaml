@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bloganalytics-wordcloud
+  labels:
+    app.kubernetes.io/name: wordcloud
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: wordcloud
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: wordcloud
+    spec:
+      volumes:
+      - name: shared-data
+        emptyDir: {}
+      containers:
+      - name: nginx
+        image: nginx
+        volumeMounts:
+        - name: shared-data
+          mountPath: /usr/share/nginx/html
+        ports:
+        - name: http
+          containerPort: 80
+      - name: wordcloud
+        image: xiiot/wordcloud
+        env:
+        - name: KAFKA_BROKER
+          value: "{{.Services.Kafka.Endpoint}}"
+        - name: MOUNT_PATH
+          value: "/www"
+        volumeMounts:
+        - name: shared-data
+          mountPath: /www
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bloganalytics-wordcloud
+  labels:
+    app.kubernetes.io/name: wordcloud
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    name: http
+  selector:
+    app.kubernetes.io/name: wordcloud
+
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: bloganalytics-wordcloud
+  labels:
+    app.kubernetes.io/name: wordcloud
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:
+  - host: bloganalytics.foo.org
+    http:
+      paths:
+      - path: /wordcloud/(.*)
+        backend:
+          serviceName: bloganalytics-wordcloud
+          servicePort: http
