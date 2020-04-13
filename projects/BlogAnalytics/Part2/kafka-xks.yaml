@@ -1,0 +1,5 @@
+kind: service
+name: Kafka
+project: Blog Analytics
+serviceYaml: |
+  null
