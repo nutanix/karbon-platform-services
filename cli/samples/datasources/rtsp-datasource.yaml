@@ -8,7 +8,7 @@ kind: dataSource
 name: rtsp-sfo-datasource
 protocol: RTSP
 authType: PASSWORD
-edge: sfo-edge2 
+svcDomain: sfo-edge2 
 fields:
 - name: dogs
   topic: rtsp://user1:password1/dog-images
