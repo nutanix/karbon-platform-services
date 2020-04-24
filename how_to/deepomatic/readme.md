@@ -71,10 +71,10 @@ The Xi IoT management console includes a Quick Start menu next to your user name
 Connect your Android based phone (iPhone coming soon) as a data source to stream video and perform gesture detection in near realtime using Xi IoT. Output can be viewed on your phone and from an HTTP Live Stream (HLS) in your browser.
 1. If you are not logged on, open [https://iot.nutanix.com/](https://iot.nutanix.com/) in a web browser and log in.
 1. Connect your phone through the Quick Start menu.
-2. Click Quick Start, then click **Scan QR code** to connect a phone.
-2. Open the Google Play Store on your Android based phone, search for Xi IoT Sensor, and install the app on your phone.
-2. After downloading and installing the Xi IoT Sensor app, scan the QR code to authenticate.
-2. Enter a name for your phone, then click Next.
+    * Click Quick Start, then click **Scan QR code** to connect a phone.
+    * Open the Google Play Store on your Android based phone, search for Xi IoT Sensor, and install the app on your phone.
+    * After downloading and installing the Xi IoT Sensor app, scan the QR code to authenticate.
+    * Enter a name for your phone, then click Next.
 1. From the Xi IoT management portal, Click **More > Apps and Data > Data Pipelines**.
 1. On the **phone-object-detection** data pipeline tile, click **Actions**, then **Stop**, then **Stop** again.
 1. Click **More > Apps and Data > Applications**.
