@@ -47,3 +47,26 @@ You can also visit the following pages for more information about Xi IoT.
 ### Getting Started With the Xi IoT Trial
 1. Log on to the Xi IoT management console.
 1. On your smartphone, download the Xi IoT Sensor app (available from the Google Play Store).
+
+Logging On to the Xi IoT Console¶
+Before you begin:
+
+Supported web browsers include the current and two previous versions of Google Chrome. You’ll need your My Nutanix credentials for this step.
+1. Open [https://iot.nutanix.com/](https://iot.nutanix.com/) in a web browser, click **Log in with My Nutanix** and log on with your My Nutanix credentials.
+1. If you are logging on for the first time, click to read the Terms and Conditions, then click to Accept and Continue.
+1. Take a few moments to read about Xi IoT, then click Get Started.
+
+Your web browser displays the Xi IoT dashboard and the Xi IoT Quick Start Menu.
+
+#### Xi IoT Quick Start Menu
+The Xi IoT management console includes a Quick Start menu next to your user name. You can click Quick Start, then click the links to:
+1. See object detection in action by using a YouTube-8M video.
+1. Try object detection on your phone.
+1. Invite your colleagues to try out Xi IoT.
+1. Edit a data pipeline.
+1. Create an application.
+
+## Using the Deepomatic Demo and Xi IoT Sensor Apps to Detect Gestures in Your Smartphone Video
+
+About this task:
+Connect your Android based phone (iPhone coming soon) as a data source to stream video and perform gesture detection in near realtime using Xi IoT. Output can be viewed on your phone and from an HTTP Live Stream (HLS) in your browser.
