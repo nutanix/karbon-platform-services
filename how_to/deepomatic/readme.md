@@ -68,5 +68,30 @@ The Xi IoT management console includes a Quick Start menu next to your user name
 
 ## Using the Deepomatic Demo and Xi IoT Sensor Apps to Detect Gestures in Your Smartphone Video
 
-About this task:
 Connect your Android based phone (iPhone coming soon) as a data source to stream video and perform gesture detection in near realtime using Xi IoT. Output can be viewed on your phone and from an HTTP Live Stream (HLS) in your browser.
+1. If you are not logged on, open [https://iot.nutanix.com/](https://iot.nutanix.com/) in a web browser and log in.
+1. Connect your phone through the Quick Start menu.
+    2. Click Quick Start, then click **Scan QR code** to connect a phone.
+    2. Open the Google Play Store on your Android based phone, search for Xi IoT Sensor, and install the app on your phone.
+    2. After downloading and installing the Xi IoT Sensor app, scan the QR code to authenticate.
+    2. Enter a name for your phone, then click Next.
+1. From the Xi IoT management portal, Click **More > Apps and Data > Data Pipelines**.
+1. On the **phone-object-detection** data pipeline tile, click **Actions**, then **Stop**, then **Stop** again.
+1. Click **More > Apps and Data > Applications**.
+1. On the **deepomatic-demo** application tile, click **Actions**, then **Start**, then **Start** again.
+1. Open the Xi IoT Sensor app on your phone, and tap the button to switch to the front facing camera.
+1. Tap **Capture Video**, and wait up to 30 seconds for the deepomatic-demo application to initialize.
+1. Switch to the **deepomatic-demo** tab to view the results. Try making the gestures seen on stage at .NEXT 2019, or try your own to see if they’re recognized!
+1. From the Xi IoT management portal, click View **Http Live Stream** on the **deepomatic-demo** application tile. This opens HLS output for viewing the results in your browser.
+1. Click **x** to close the HLS page.
+1. From the Xi IoT Sensor app, stop capturing video.
+
+The containerized deepomatic-demo application utilizes built-in Xi IoT input and output connectors. Learn more about using your phone or a YouTube-8M video as a data source, and a HTTP Live Stream as output when writing your own applications for Xi IoT by further exploring the deepomatic-demo application.
+1. On the **deepomatic-demo** application tile, click **Actions**, then **Edit**.
+    * The General Information page displays information about the application such as its Name, Description, the Project its assigned to, and the edges on which its assigned to run.
+1. Click **Next**.
+    * The Yaml Configuration page lists the application pod’s specification YAML in Kubernetes format.
+1. Click **Next**.
+    * The Input and Output page provides the option to use a YouTube-8M video or Xi IoT Sensor phone app as input and a HTTP Live Stream (HLS) as an output for applications. Simply check the appropriate boxes, and install a [NATS](https://nats.io/) client within your application. The selected input will be available on the NATS topic name stored in the NATS_SRC_TOPIC environment variable. Subscribe to it using the NATS server name stored in the NATS_ENDPOINT environment variable. Application output in jpeg format sent to the topic name stored in NATS_DST_TOPIC will be available via the application’s HTTP Live Stream.
+1. Click **x** to close the application without making any changes.
+1. From the Xi IoT management portal, click **Actions**, then **Stop**, then **Stop** again on the **deepomatic-demo** application tile.
