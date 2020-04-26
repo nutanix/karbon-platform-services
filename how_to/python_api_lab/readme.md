@@ -1,7 +1,7 @@
-# WELCOME
+## WELCOME
 Welcome to Nutanix API Getting Started Lab (Python) - v1.1.
 
-# WHAT WE ARE DOING
+## WHAT WE ARE DOING
 The Nutanix Python API Lab will cover a couple of key points.
 
 Creation of a simple Python Flask web application.
@@ -9,12 +9,12 @@ Creation of a simple Python Flask web application.
 * A backend model to talk to the Nutanix APIs.
 * JavaScript to create the interface between the front- and back-end parts of the application.
 
-# WHAT WE AREN’T DOING
+## WHAT WE AREN’T DOING
 This lab is not intended as a guide that can be used to learn Python development. While the copy & paste steps will allow you to create a working application, previous experience with Python will aid you in understanding what each section does.
 
 However, the lab will include links to valuable explanation and learning resources that can be used at any time for more information on each section. For example, the general structure of this application is almost identical to the one provided by the official Python Flask tutorial and will often link to resources there.
 
-# REQUIREMENTS
+## REQUIREMENTS
 To successfully complete this lab, you will need an environment that meets the following specifications.
 * Previous experience with Python is recommended but not strictly mandatory
 * An installation of Python 3.6 or later. For OS-specific information, please see the next section.
@@ -24,13 +24,13 @@ To successfully complete this lab, you will need an environment that meets the f
 * cURL
 * cURL (for Windows - see below).
 
-# Python 3.6 on OS X
+## Python 3.6 on OS X
 Install Python 3.6 on OS X
 ```
 brew install python
 ```
 
-# Python 3.6 on Ubuntu 18.04
+## Python 3.6 on Ubuntu 18.04
 From the terminal, the following commands can be used to install Python 3.6:
 ```
 sudo apt-get -y update
@@ -40,7 +40,7 @@ sudo apt-get -y install python3-venv
 sudo apt-get -y install python3-setuptools
 ```
 
-# Python 3.6 on CentOS 7
+## Python 3.6 on CentOS 7
 From the terminal, the following commands can be used to install Python 3.6:
 ```
 sudo yum -y update
@@ -51,7 +51,7 @@ python3.6 -m ensurepip
 sudo yum -y install python36-setuptools
 ```
 
-# Python 3.6 and cURL on Windows
+## Python 3.6 and cURL on Windows
 * Install Python 3.6 by downloading the Python 3.6 [installer](https://www.python.org/downloads/release/python-360/).
 * Install [cURL](https://curl.haxx.se/windows/).
 
