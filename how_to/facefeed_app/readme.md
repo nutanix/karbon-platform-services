@@ -117,12 +117,12 @@ Xi IoT Functions may be written in well known software languages most commonly u
 6. Repeat Steps 1-5 to add the remaining four .py python functions. The **Name** should follow the script name (without .py).
 7. Repeat Steps 1-4 once more to add the es_datamover.go function. Note that the Language and Runtime Environment should be golang, and Golang Env.
     * Before clicking Create, click + **Add parameter** in the left pane. Enter esIndex in the **Name** field. Select string form the Type dropdown. Click the check to save the parameter.
-8. Click Create.
+8. Click **Create**.
 
 ## Deploying Data Pipelines
 Data Pipelines in Xi IoT allow you to transform data by injecting your own code. In this exercise, we will use Data Pipelines to transform frames (from the video feed) into Face IDs (by using machine learning).
 
-### Data Pipeline 1 - faceregister¶
+### Data Pipeline 1 - faceregister
 This Data Pipeline will source the frames from a local webcam or uploaded image (using a containerized UI application you’ll deploy), apply a TensorFlow machine learning model to detect faces, calculate a unique Face ID, and persist the data in the local Elasticsearch instance running on your edge.
 
 1. From the Xi IoT management portal, select **More > Projects > Facefeed > Apps & Data > Data Pipelines > + Create Data Pipeline**.
