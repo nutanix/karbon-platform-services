@@ -205,10 +205,10 @@ As mentioned in the earlier exercise, the ssd inception v2 model is embedded in 
 
 Now compare this python code to that used in the ml_objectdetect_func-python function used in the ai-inference-service-demo data pipeline.
 
-1. Click **x** to close the function without making any changes.
-1. Uncheck the check box beside the **objdetect_func-python** function, click the check box beside the **ml_objdetect_func-python** function, then click **Edit**.
+8. Click **x** to close the function without making any changes.
+9. Uncheck the check box beside the **objdetect_func-python** function, click the check box beside the **ml_objdetect_func-python** function, then click **Edit**.
     * Notice that this function is also written in python and uses the Xi IoT Tensorflow Python runtime.
-1. Click **Next**.
+10. Click **Next**.
     * The function’s python code is now displayed. This time, first take notice of line 23:
 ```python
 ai_inference_endpoint = os.environ['AI_INFERENCE_ENDPOINT']
