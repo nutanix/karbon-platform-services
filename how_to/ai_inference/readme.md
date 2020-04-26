@@ -130,3 +130,118 @@ In the next steps, you’ll add a new category for assignment to a new YouTube-8
 1. Click **More > Apps and Data > Data Pipelines**.
 1. On the youtube-8m-object-detection data pipeline tile, click **Actions**, then **Edit**.
 1. In the Input section, click inside the second (right) **Select by Categories dropdown** and change **channel1** to **channel2**.
+1. Click Update to update the data pipeline with the new input data source category.
+    * The data pipeline will automatically update to use the YouTube-8M stream created and assigned the channel2 category as the new data source.
+1. To verify the new stream is being used, click **View Http Live Stream** on the youtube-8m-object-detection data pipeline tile to view object detection via HLS output.
+1. Click **x** to close the HLS page.
+1. On the youtube-8m-object-detection data pipeline tile, click **Actions**, then **Stop**, then **Stop** again to stop the data pipeline.
+
+## Using Xi IoT Input and Output Connectors for Applications
+About this task
+
+Learn more about using your phone or a YouTube-8M video as a data source, and a HTTP Live Stream as output when writing your own applications for Xi IoT by exploring the echoapp sample application provided in the Application Library.
+
+1. If you are not logged on, open [https://iot.nutanix.com/](https://iot.nutanix.com/) in a web browser and log in.
+1. Click **More > Apps and Data > Applications**.
+1. On the echoapp application tile, click **Actions**, then **Edit**.
+    * The General Information page displays information about the application such as its Name, Description, the Project its assigned to, and the edges on which its assigned to run.
+1. Click **Next**
+    * The Yaml Configuration page lists the application pod’s specification YAML in Kubernetes format.
+```
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: sample-python-nats-app
+  labels:
+    app: sample-python-nats-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample-python-nats-app
+  template:
+    metadata:
+      labels:
+        app: sample-python-nats-app
+    spec:
+      containers:
+      - name: app-container
+        image: 770301640873.dkr.ecr.us-west-2.amazonaws.com/edgecomputing/dataifc/python-nats-app:pankit.thapar
+        imagePullPolicy: Always
+        command: ["/usr/local/bin/python", "demo-app.py"]
+```
+1. Click **Next**
+    * The Input and Output page provides the option to use a YouTube-8M video or Xi IoT Sensor phone app as input and a HTTP Live Stream (HLS) as an output for applications. Simply check the appropriate boxes, and install a NATS client within your application. The selected input will be available on the NATS topic name stored in the NATS_SRC_TOPIC environment variable. Subscribe to it using the NATS server name stored in the NATS_ENDPOINT environment variable. Application output in jpeg format sent to the topic name stored in NATS_DST_TOPIC will be available via the application’s HTTP Live Stream.
+1. Use one of the YouTube-8M sample (or your own) videos, or the Xi IoT Sensor phone app to demonstrate. Choose **phone** or **youtube-8m** in the **Type of Input** dropdown, and the channel as appropriate in the **Field** dropdown.
+1. Click **Update**.
+1. Click **Actions**, then **Start**, then **Start** again on the echoapp application tile to start the application.
+1. Click **View Http Live Stream** on the echoapp application tile to view the application’s HLS output.
+1. Click **x** to close the HLS page.
+1. Click **Actions**, then **Stop**, then **Stop** again on the echoapp application tile to stop the application.
+
+## Using the Xi IoT AI Inferencing Service to Detect Objects
+About this task
+
+Use data pipelines and a YouTube-8M video to demonstrate object detection using the Xi IoT AI Inferencing Service.
+
+1. If you are not logged on, open [https://iot.nutanix.com/](https://iot.nutanix.com/) in a web browser and log in.
+1. Click **More > Apps and Data > Data Pipelines**.
+1. On the ai-inference-service-demo data pipeline tile, click **Actions**, then **Edit**.
+    * This data pipeline will look very similar to the youtube-8m-object-detection pipeline used in the earlier exercise. However, there’s one major difference. Take notice of the transformation function used in this pipeline. It’s named **ml_objectdetect_func-python**.
+    * To better understand how the AI Inferencing Service works, first take a look at the **objdetect_func-python** used in the youtube-8m-object-detection data pipeline in the earlier exercise, then compare it to the **ml_objectdetect_func-python** function.
+1. Click **x** to close the data pipeline without making any changes.
+1. Click **More > Apps and Data > Functions**.
+1. Click the check box beside the **objdetect_func-python** function, then click **Edit**.
+    * Notice that the function is written in python and uses the Xi IoT Tensorflow Python runtime.
+1. Click **Next**
+    * The function’s python code is now displayed. Take notice of lines 16-19 excerpted below:
+```python
+BASE_PATH = "/mllib/objectdetection"
+
+# ssd_inception_v2_coco   latency - 42ms
+PATH_TO_CKPT = BASE_PATH + '/ssd_inception_v2_coco_2017_11_17/frozen_inference_graph.pb'
+```
+As mentioned in the earlier exercise, the ssd inception v2 model is embedded in the Xi IoT Tensorflow Python runtime. This is fine for an example, but not suitable for production deployments. For example, the model cannot be updated.
+
+Now compare this python code to that used in the ml_objectdetect_func-python function used in the ai-inference-service-demo data pipeline.
+
+1. Click **x** to close the function without making any changes.
+1. Uncheck the check box beside the **objdetect_func-python** function, click the check box beside the **ml_objdetect_func-python** function, then click **Edit**.
+    * Notice that this function is also written in python and uses the Xi IoT Tensorflow Python runtime.
+1. Click **Next**.
+    * The function’s python code is now displayed. This time, first take notice of line 23:
+```python
+ai_inference_endpoint = os.environ['AI_INFERENCE_ENDPOINT']
+```
+Object detection, or inference, will now be performed by the Inferencing Service, so the function must know the service endpoint for submission at the edge. As you can see, its automatically passed to the runtime as an environment variable.
+
+Now take notice of lines excerpted below:
+```python
+def detect(image):
+   image_np = np.asarray(image, dtype="int32")
+   image_np_expanded = np.expand_dims(image_np, axis=0)
+   data = json.dumps({"signature_name": "serving_default",
+                     "instances": image_np_expanded.tolist()})
+   headers = {"content-type": "application/json"}
+   model_name = "objectdetect"
+   model_version = 1
+   url = "http://%s/v1/models/%s/versions/%d:infer" % (
+      ai_inference_endpoint, model_name, model_version)
+   response = requests.post(url, data=data, headers=headers)
+   if response.status_code != 200:
+      logging.error(response.json())
+      return None
+   text = response.text
+   inference_payload = json.loads(text)
+   predictions = inference_payload['predictions']
+   return predictions[0]
+```
+This excerpt is of the detect function utilizing the Inferencing Service. Of particular note are lines 159-161 where the model_name is set to objectdetect, model_version is set to 1, and the connection url is built with the ai_inference_endpoint (remember this was passed automatically).For this example, the Inferencing Service has already been pre-loaded with the same ssd inception v2 model, but this time trained using the [Open Images dataset](https://github.com/openimages/dataset).
+
+11. Click **x** to close the function without making any changes.
+12. View how this model and others can be managed by clicking **More > Apps and Data > ML Models**.
+13. Click the check box beside the objectdetect model, then click **Edit**.
+    * Example model version 1 is listed along with the Tensorflow Framework Type. A new version of the model could be uploaded by clicking **Add new**. This version could then be referenced in functions similarly to line 160 in the example code above.
+14. Click **x** to close the ML model without making any changes.
+
+If you’d like to view the data pipeline and Inferencing Service in action, simply navigate back to the **ai-inference-service-demo** data pipeline tile, start the pipeline, then click to view the Http Live Stream.
