@@ -96,9 +96,37 @@ Use a YouTube-8M video to demonstrate object recognition in Xi IoT. We recommend
 1. Close the App UI tab.
 1. Back on the **youtube-8m-object-detection-app** application tile, click **Actions**, then click **Stop**, then click **Stop** again.
 
-## Using Xi IoT Data Pipelines to Detect Objects in a YouTube-8M Video¶
+## Using Xi IoT Data Pipelines to Detect Objects in a YouTube-8M Video
 About this task
 
 Use data pipelines and two YouTube-8M videos to demonstrate object detection using only python code in Xi IoT.
 1. If you are not logged on, open [https://iot.nutanix.com/](https://iot.nutanix.com/) in a web browser and log in.
 1. From the Xi IoT management portal, Click **More > Apps and Data > Data Pipelines**.
+1. On the youtube-8m-object-detection data pipeline tile, click **Actions**, then **Start**, then **Start** again.
+1. Now click **View Http Live Stream** to view object detection via HLS output.
+1. After viewing the output, click **x** to close the HLS page.
+1. On the same youtube-8m-object-detection data pipeline tile, click **Actions**, then **Edit**.
+1. Click **x** to close the data pipeline without making any changes.
+
+In Xi IoT, categories help you assign various attributes to edges and data sources which can be further used to query and select them when creating Data Pipelines or deploying Applications.
+
+An example of a category could be “City” with values in [San Francisco, San Jose, San Diego] or “State” with values in [California, Washington, Oregon] and so on. It can be anything meaningful to your environment.
+
+In the next steps, you’ll add a new category for assignment to a new YouTube-8M channel, add the channel to the YouTube-8M data source, and modify the data pipeline to use this new channel.
+1. Click **More > Administration > Categories**.
+1. Click the check box beside the youtube-8m Category, then click **Edit**.
+1. Click **Add Value**, enter **channel2**, click the round, blue check, then click **Update**.
+1. Click **More > Infrastructure > Data Sources**.
+1. Click the check box beside the youtube-8m data source, then click **Edit**.
+1. Click **Add New URL**, enter **youtube-8m-2** in the Name field, copy and paste **https://www.youtube.com/watch?v=PYbrTRE1bZg** into the URL field, click the round, blue **check**, then click **Next**.
+1. On the Category Assignment page, click inside the **Select Fields dropdown** and choose **Select Fields…**.
+1. From the Select Fields dialog, select click the check box beside the youtube-8m-1 field to select it and click **OK**.
+1. Click **Add** to add a category assignment for the **youtube-8m-2** field just created.
+1. Click inside the **Select Fields dropdown** of the newly added category assignment and choose **Select Fields**.
+1. From the Select Fields dialog, click the check box beside the youtube-8m-2 field to select it and click **OK**.
+1. Click inside the first (left) **Attribute dropdown** of the newly added category assignment and choose **youtube-8m**.
+1. Click inside the second (right) **Attribute dropdown** of the newly added category assignment and choose **channel2**.
+1. Click **Update** to update the data source with the new channel.
+1. Click **More > Apps and Data > Data Pipelines**.
+1. On the youtube-8m-object-detection data pipeline tile, click **Actions**, then **Edit**.
+1. In the Input section, click inside the second (right) **Select by Categories dropdown** and change **channel1** to **channel2**.
