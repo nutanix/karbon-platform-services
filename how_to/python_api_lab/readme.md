@@ -65,13 +65,13 @@ sudo yum -y install python36-setuptools
 C:\Users\<username>\AppData\Local\Programs\Python\Python36
 ```
 
-# Optional Components
+## Optional Components
 In addition to the requirement components above, the following things are “nice to have”. They are not mandatory for these labs.
 * A Github account. This can be created by signing up directly through [GitHub](https://github.com/).
 * The GitHub [Desktop](https://desktop.github.com/) application (available for Windows and Mac only)
 * [Postman](https://www.getpostman.com/), one of the most popular API testing tools available.
 
-# Cluster Details
+## Cluster Details
 In a presenter-led environment you will be using a shared Nutanix cluster. Please use this cluster when carrying out your cURL and application testing.
 
 In a self-paced environment you will need access to a Nutanix cluster along with the credentials required to access it.
