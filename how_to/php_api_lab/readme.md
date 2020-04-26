@@ -21,11 +21,11 @@ To successfully complete this app lab, you will need an environment that meets t
 
 # OPTIONAL COMPONENTS
 In addition to the requirement components above, the following things are “nice to have”. They are not mandatory for these labs.
-* A Github account. This can be created by signing up directly through GitHub.
-* The GitHub Desktop application (available for Windows and Mac only)
+* A Github account. This can be created by signing up directly through [GitHub](https://github.com/).
+* The GitHub [Desktop](https://desktop.github.com/) application (available for Windows and Mac only)
 * Previous experience with PHP or related scripting/web technologies
 * Experience with the Laravel PHP framework
-* Postman, one of the most popular API testing tools available.
+* [Postman](https://www.getpostman.com/), one of the most popular API testing tools available.
 
 # CLUSTER DETAILS
 This lab can be run in a couple of different ways. Primarily:
