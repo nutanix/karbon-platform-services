@@ -245,3 +245,17 @@ This excerpt is of the detect function utilizing the Inferencing Service. Of par
 14. Click **x** to close the ML model without making any changes.
 
 If you’d like to view the data pipeline and Inferencing Service in action, simply navigate back to the **ai-inference-service-demo** data pipeline tile, start the pipeline, then click to view the Http Live Stream.
+
+## Takeaways
+
+What are the key takeaways and other things you should know about **Nutanix Xi IoT**?
+* Get started with AI Inference in minutes with Xi Cloud based edges
+* Use Xi IoT Sensor app as instant video data source
+* Use HTTP Live Stream output to instantly view application and data pipeline results
+* A single platform that can run AI-based apps, containers, and functions.
+* Easy to deploy applications at scale with a SaaS control plane.
+* Reduced time to setup and configure edge intelligence (i.e. kubernetes and analytics platform).
+* Operate edge locations offline with limited internet connectivity.
+* Can choose cloud connectivity without heavy lifting via native public cloud APIs.
+* Supports development languages like Python, Node.js and Go and integrates into existing CI/CD pipelines.
+* Developer APIs and pluggable architecture enables “bring your own framework and functions” for simplified integrations without having to rewrite your code.
