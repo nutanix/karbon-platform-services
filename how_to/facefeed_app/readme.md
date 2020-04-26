@@ -1,4 +1,4 @@
-# XI IOT - FACEFEED APPLICATION DEPLOYMENT GUIDE¶
+# XI IOT - FACEFEED APPLICATION DEPLOYMENT GUIDE
 
 ## Xi IoT Overview
 The Nutanix Xi IoT platform delivers local compute and AI for IoT edge devices, converging the edge and cloud into one seamless data processing platform. The Xi IoT platform eliminates complexity, accelerates deployments, and elevates developers to focus on the business logic powering IoT applications and services. Now developers can use a low-code development platform to create application software via APIs instead of arduous programming methods.
@@ -66,14 +66,14 @@ As mentioned above, Xi IoT Applications are simply Docker containers that can be
 ### Deploying RTSP Sample Feed Application
 1. From the **Xi IoT** management portal, select **More > Projects > Facefeed > Apps & Data > Applications > + Create Application**.
 1. Fill out the following fields and click **Next**:
-* **Name** - facefeed-rtsp-samples
-* **Description** - Optional
-* Select + **Add Edges**
-* Select your **Edge**
-1. Click **Choose File** and select xi-iot-master\projects\facefeed\applications\facefeed-rtsp-sample.yaml.
+    * **Name** - facefeed-rtsp-samples
+    * **Description** - Optional
+    * Select + **Add Edges**
+    * Select your **Edge**
+3. Click **Choose File** and select xi-iot-master\projects\facefeed\applications\facefeed-rtsp-sample.yaml.
     * Note the environment variables and values defined in the YAML file, namely RTSP_USERNAME and RTSP_PASSWORD.
-1. Click **Create**
-1. Click **facefeed-rtsp-sample** to see a Summary of the application performance, alerts, deployments, etc.
+4. Click **Create**
+5. Click **facefeed-rtsp-sample** to see a Summary of the application performance, alerts, deployments, etc.
     * Edge Deployments should list “1 of 1 Running” on your Edge device once the application has successfully launched.
 
 **Note**
