@@ -76,8 +76,7 @@ As mentioned above, Xi IoT Applications are simply Docker containers that can be
 5. Click **facefeed-rtsp-sample** to see a Summary of the application performance, alerts, deployments, etc.
     * Edge Deployments should list “1 of 1 Running” on your Edge device once the application has successfully launched.
 
-**Note**
-    * Deployment of the application may take a few minutes as the ~200MB container needs to be downloaded from the Internet to the Edge VM.
+**Note:** Deployment of the application may take a few minutes as the ~200MB container needs to be downloaded from the Internet to the Edge VM.
 
 ### Adding RTSP Sample Feed as a Data Source
 1. From the Xi IoT management portal, select **More > Infrastructure > Edges**.
