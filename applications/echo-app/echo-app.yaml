@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: app-container
-        image: 770301640873.dkr.ecr.us-west-2.amazonaws.com/edgecomputing/dataifc/python-nats-app:pankit.thapar
+        image: registry.hub.docker.com/xiiot/echo-app:v1
         imagePullPolicy: Always
         command: ["/usr/local/bin/python", "demo-app.py"]
