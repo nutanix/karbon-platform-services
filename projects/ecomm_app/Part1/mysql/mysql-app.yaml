@@ -40,7 +40,7 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: xiiot/ecomm-mysql:v3
+        image: xiiot/ecomm-mysql:v4
         env:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:

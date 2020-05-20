@@ -41,7 +41,7 @@ spec:
     spec:
       containers:
       - name: wordpress
-        image: xiiot/ecomm-wordpress:v3
+        image: xiiot/ecomm-wordpress:v4
         env:
         - name: WORDPRESS_DB_HOST
           value: mysql
@@ -50,7 +50,7 @@ spec:
         - name: WORDPRESS_DB_NAME
           value: wordpress_db
         - name: WP_HOST
-          value: "http://woodkraft-test.ntnxsherlock.com"
+          value: "https://woodkraft.ntnxdomain.com"
         - name: WORDPRESS_DB_PASSWORD
           valueFrom:
             secretKeyRef:
@@ -94,8 +94,11 @@ metadata:
     app.kubernetes.io/name: wordpress
     app: wordpress
 spec:
+  tls:
+  - hosts:
+      - woodkraft.ntnxdomain.com
   rules:
-    - host: woodkraft-test.ntnxsherlock.com
+    - host: woodkraft.ntnxdomain.com
       http:
         paths:
           - path: /
