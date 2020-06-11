@@ -65,3 +65,27 @@ The [built-in runtime](built-in_runtimes) folder contains information on how to 
 
 The [cli](cli) folder contains information on how to leverage the xi-iot cli to create different entities such as applications, data pipelines, datasources, and more. There are also example YAML files you can use to get 
 familiar with the xi-iot cli. 
+
+## Cloud Connectors
+
+The [cloud connectors](cloud_connectors) folder contains informations about how to set up cloud profiles such as AWS.
+
+## Functions
+
+The [functions](functions) folder will provide information about how to create and leverage functions. There are example functions present which you can use directly in Xi IoT. 
+
+## How To
+
+The [how to](how_to) folder will take you through a few labs and help you better understand how to use Xi IoT. You will gain experience creating sample apps and using the AI Inference service.
+
+## Projects
+
+The [projects](projects) folder will show you how to create projects in Xi IoT and manage your Apps and Data.
+
+## Services
+
+The [services](services) folder contains information about how to leverage services packaged in Xi IoT such as Kafka and Ingress.
+
+## Workshops
+
+The [workshops](workshops) folder contains Nutanix workshops that will help you better understand how to use Xi IoT.
