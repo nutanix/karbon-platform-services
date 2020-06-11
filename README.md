@@ -21,7 +21,7 @@ Nutanix has already created the basic infrastructure you need to get started.
 * Automatically run containerized apps at the edge to perform object recognition on your video.
 * Stream the results back to the Xi IoT console or your smartphone, with recognized objects highlighted in your video.
 
-### Signing Up For the Xi IoT Trial¶
+### Signing Up For the Xi IoT Trial
 Do any of these steps to sign up for the Xi IoT Trial.
 1. Click Start Trial at [https://www.nutanix.com/products/iot/](https://www.nutanix.com/products/iot/) or [https://iot.nutanix.com](https://iot.nutanix.com).
 1. Sign up now for a My Nutanix account at [https://my.nutanix.com](https://my.nutanix.com).
