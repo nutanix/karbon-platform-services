@@ -52,40 +52,40 @@ Supported web browsers include the current and two previous versions of Google C
 * If you are logging on for the first time, click to read the Terms and Conditions, then click to Accept and Continue.
 * Take a few moments to read about Xi IoT, then click Get Started.
 
-## Applications
+### Applications
 
 In the [applications](applications) folder, you will find YAML files that you can deploy directly in Xi IoT via Kubernetes Apps. These applications are in a Kubernetes YAML format and leverage a Docker container for 
 deployment. You can find more information about each sample app in its specific folder. 
 
-## Built-in Runtimes
+### Built-in Runtimes
 
 The [built-in runtime](built-in_runtimes) folder contains information on how to leverage provided environments in entities like datapipelines. 
 
-## CLI
+### CLI
 
 The [cli](cli) folder contains information on how to leverage the xi-iot cli to create different entities such as applications, data pipelines, datasources, and more. There are also example YAML files you can use to get 
 familiar with the xi-iot cli. 
 
-## Cloud Connectors
+### Cloud Connectors
 
 The [cloud connectors](cloud_connectors) folder contains informations about how to set up cloud profiles such as AWS.
 
-## Functions
+### Functions
 
 The [functions](functions) folder will provide information about how to create and leverage functions. There are example functions present which you can use directly in Xi IoT. 
 
-## How To
+### How To
 
 The [how to](how_to) folder will take you through a few labs and help you better understand how to use Xi IoT. You will gain experience creating sample apps and using the AI Inference service.
 
-## Projects
+### Projects
 
 The [projects](projects) folder will show you how to create projects in Xi IoT and manage your Apps and Data.
 
-## Services
+### Services
 
 The [services](services) folder contains information about how to leverage services packaged in Xi IoT such as Kafka and Ingress.
 
-## Workshops
+### Workshops
 
 The [workshops](workshops) folder contains Nutanix workshops that will help you better understand how to use Xi IoT.
