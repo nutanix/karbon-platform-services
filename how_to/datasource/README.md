@@ -9,10 +9,10 @@ You will be able to find Data Sources under the Infrastructure tab.
 
 Open [https://github.com/nutanix/xi-iot/tree/master/cli](https://github.com/nutanix/xi-iot/tree/master/cli) in your browser and follow the steps to install the Xi IoT CLI. 
 
-## Registering a Data Source
+## Data Sources
 
 In Xi IoT, data sources can be set up in order to connect cloud entities such as Applications and Data Pipelines to edge devices. Xi IoT ia equipped with a few ready to use protocols
 such as MQTT, RTSP, and GigE Vision.  
 
-We also support many other data sources as well which can be deployed using the Xi IoT CLI. The command will take YAML in order to specify criteria such as service domain and topics. 
-You can look inside the different data source subfolders to see how to implement them with Xi IoT. All of the documentation assumes you have correctly set up the Xi IoT CLI.
+We also support many other data sources as well which can be deployed using the Xi IoT CLI amd a yaml file to specifying criteria such as service domain and topics. You can find examples of these 
+yaml files inside each of the data source subfolders as well as how to implement and use them in the platform. 
