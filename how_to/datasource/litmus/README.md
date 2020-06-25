@@ -54,3 +54,11 @@ You can now proceed to add whichever device topic you choose, and can handle thi
 Select **Edit** and you should be brought to a menu where you can define your data source topics. You should see your some topics such as port and secret already present. Now you 
 can add the device topic of your choice and select **Update**.
 * Once you have updated your data source, you will start ingesting data from your selected device and use this entity in Apps and Data Pipelines.
+
+## FAQs
+
+What happens if I remove the device topic and add a new one?
+* The stream will get cancelled and your data source will start ingesting data from your new device topic.
+
+Can I add multiple device topics to the same datasource?
+* No, we recommend you create multiple data sources for each unique device topic. You can also configure multiple correlated sensors into one device topic in LoopEdge or create a Gateway in Xi IoT to aggregate data from multiple sources. 
