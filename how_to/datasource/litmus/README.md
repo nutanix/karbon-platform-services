@@ -33,4 +33,24 @@ Run the following command to create an instance of the datasource:
 ```console
 xi-iot create -f litmus.yaml
 ```
-* If the datasource was configured correctly, you should now see a datasource in your UI called litmus.
+* If the yaml was configured correctly, you should now see a datasource in your UI called litmus.
+
+If your LoopEdge connection was successful, your device names and topics should now be in the cloud as artifacts.
+To see your newly created artifacts run the following command:
+```console
+xi-iot get datasource --show-artifacts
+```
+
+You should be met with a row entry labelled litmus. Inside this row entry you should see a list of your device tags and corresponding device topics:
+```console
+NAME         	ENDPOINTS                                             CLIENT SECRET  
+litmus        	<names>:                                                   
+              		devicehub.raw.<topic>.*                 
+                <names>:                                                          
+               		devicehub.raw.<topic>.*
+```
+
+You can now proceed to add whichever device topic you choose, and can handle this directly in the UI. Proceed to **Infrastructure** → **Data Sources** and click on litmus. 
+Select **Edit** and you should be brought to a menu where you can define your data source topics. You should see your some topics such as port and secret already present. Now you 
+can add the device topic of your choice and select **Update**.
+* Once you have updated your data source, you will start ingesting data from your selected device and use this entity in Apps and Data Pipelines.
