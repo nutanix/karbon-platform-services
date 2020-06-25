@@ -102,4 +102,3 @@ Each data source consists of:
 |  | categoryValue | Category key value as defined in this YAML file or in a separate YAML file, here: `input`. |
 |  | scope | Specific data type for the captured data.  |
 |  |  |  |
-
