@@ -78,7 +78,7 @@ The [functions](functions) folder will provide information about how to create a
 
 ### How To
 
-The [how to](how_to) folder will take you through a few labs and help you better understand how to use Xi IoT. You will gain experience creating sample apps and using the AI Inference service.
+The [how to](how_to) folder will teach you how to create different entities in Xi IoT such as Data Sources, Data Pipelines, and Custom Runtimes. You will also gain experience creating sample apps and using the AI Inference service.
 
 ### Projects
 
