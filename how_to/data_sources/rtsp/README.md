@@ -15,7 +15,7 @@ The following steps will show you how to set up an RTSP camera as a data source 
     * Click Add New Field
     * In the new Field row, enter a Name for the feed (i.e VideoFeed)
     * In the new Field row, enter the RTSP URL of your camera and click the round check box.
-1. Complete the information on the Attributes tab and click Create.
+1. Complete the information on the **Attributes** tab and click **Create**.
     * From the Select Fields dropdown, choose **All Fields**
     * From the Attribute dropdown, choose **Data Type** and then **Image**
 1. You can now use your RTSP camera as a data source in an application or data pipeline. 
