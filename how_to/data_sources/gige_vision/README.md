@@ -19,4 +19,4 @@ The following steps will show you how to set up a GigE Vision camera as a data s
 1. You can now use your GigE camera as a data source in an application or data pipeline. 
 
 ## What is GigE Vision?
-If you are looking to understand the internals of how GigE works, please read this [documentation](https://docs.adaptive-vision.com/avl/technical_issues/gigevision/index.html) by Adaptive Vision.
+If you are looking to understand the internals of how GigE Vision works, please read this [documentation](https://docs.adaptive-vision.com/avl/technical_issues/gigevision/index.html) by Adaptive Vision.
