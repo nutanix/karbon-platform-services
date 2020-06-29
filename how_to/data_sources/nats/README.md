@@ -1,7 +1,45 @@
-## Litmus
+## NATS
 
-The litmus data interface can be used to connect the programmable logic controllers you have set up in Litmus LoopEdge to Xi IoT. To start setting up this datasource, 
-use the following example YAML and configure it to your LoopEdge.
+This data interface can be used to connect the NATS devices you have set up on the edge to Xi IoT. To start setting up this datasource, use the following example YAML 
+and create your data source via the Xi IoT CLI.
+
+**nats.yaml**
+```yaml
+kind: dataSource
+name: ex_nats
+svcDomain: <Service Domain>
+protocol: DATAINTERFACE
+type: Sensor
+authType: CERTIFICATE
+ifcInfo:
+  class: DATAINTERFACE
+  img: dataifc/nats:v1.0
+  kind: IN
+  protocol: nats
+  ports:
+    - name: rtmp
+      port: 1935
+edge: myprovideredge
+fields:
+- name: topic
+  topic: "<Device Topic>"
+- name: port
+  topic: "natsport-4222"
+```
+
+**Note:** Your *Device Topic* is the NATS address your device communicates with. 
+
+Run the following command to create an instance of the datasource:
+```console
+xi-iot create -f nats.yaml
+```
+* If the yaml was configured correctly, you should now see a datasource in your UI called *ex_nats*.
+* This device can now be leveraged as a data source in entities such as Kubernetes Applications and Data Pipelines.
+
+### Litmus
+
+Our nats data interface also has the ability to integrate with Litmus LoopEdge and you can use the same interface to communicate with your PLC devices with 
+minor adjustments. The following YAML file is configured to connect with your LoopEdge.
 
 **litmus.yaml**
 ```yaml
@@ -13,7 +51,7 @@ type: Sensor
 authType: CERTIFICATE
 ifcInfo:
   class: DATAINTERFACE
-  img: dataifc/litmus2nats:lit3
+  img: dataifc/nats:v1.0
   kind: IN
   protocol: nats
   ports:
@@ -22,18 +60,12 @@ ifcInfo:
 edge: myprovideredge
 fields:
 - name: secret
-  topic: "secret-<LoopEdge Secret>"
+  topic: "<LoopEdge Secret>"
 - name: host
-  topic: "natshost-<LoopEdge IP>"
+  topic: "<LoopEdge Address>"
 - name: port
   topic: "natsport-4222"
 ```
-
-Run the following command to create an instance of the datasource:
-```console
-xi-iot create -f litmus.yaml
-```
-* If the yaml was configured correctly, you should now see a datasource in your UI called *litmus*.
 
 If your LoopEdge connection was successful, your device names and topics should now be in the cloud as artifacts.
 To see your newly created artifacts run the following command:
@@ -53,7 +85,7 @@ litmus        	<names>:
 You can now proceed to add whichever device topic you choose, and can handle this directly in the UI. Proceed to **Infrastructure** → **Data Sources** and click on *litmus*. 
 Select **Edit** and you should be brought to a menu where you can define your data source topics. You should see your some topics such as port and secret already present. Now you 
 can add the device topic of your choice and select **Update**.
-* Once you have updated your data source, you will start ingesting data from your selected device and use this entity in Apps and Data Pipelines.
+* Once you have updated your data source, you will start ingesting data from your selected device and use this entity in Kubernetes Applications and Data Pipelines.
 
 ## FAQs
 

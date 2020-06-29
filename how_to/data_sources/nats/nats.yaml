@@ -1,12 +1,12 @@
 kind: dataSource
-name: litmus
+name: ex_nats
 svcDomain: <Service Domain>
 protocol: DATAINTERFACE
 type: Sensor
 authType: CERTIFICATE
 ifcInfo:
   class: DATAINTERFACE
-  img: dataifc/litmus2nats:lit3
+  img: dataifc/nats:v1.0
   kind: IN
   protocol: nats
   ports:
@@ -14,9 +14,7 @@ ifcInfo:
       port: 1935
 edge: myprovideredge
 fields:
-- name: secret
-  topic: "secret-<LoopEdge Secret>"
-- name: host
-  topic: "natshost-<LoopEdge IP>"
+- name: topic
+  topic: "<Device Topic>"
 - name: port
   topic: "natsport-4222"
