@@ -38,7 +38,7 @@ xi-iot create -f nats.yaml
 
 ### Litmus
 
-Our nats data interface also has the ability to integrate with Litmus LoopEdge and you can use the same interface to communicate with your PLC devices with 
+This data interface also has the ability to integrate with Litmus LoopEdge and you can use the same interface to communicate with your PLC devices with 
 minor adjustments. The following YAML file is configured to connect with your LoopEdge.
 
 **litmus.yaml**
@@ -94,3 +94,6 @@ What happens if I remove the device topic and add a new one?
 
 Can I add multiple device topics to the same datasource?
 * No, we recommend you create multiple data sources for each unique device topic. You can also configure multiple correlated sensors into one device topic in LoopEdge or create a Gateway in Xi IoT to aggregate data from multiple sources. 
+
+Is there a way I can ingest multiple PLC sources under one data source?
+* Yes, you can configure multiple devices under one device topic in LoopEdge.
