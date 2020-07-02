@@ -23,8 +23,10 @@ edge: myprovideredge
 fields:
 - name: topic
   topic: "<Device Topic>"
+- name: host
+  topic: "natshost-<IP Address>"
 - name: port
-  topic: "natsport-4222"
+  topic: "natsport-<Port>"
 ```
 
 **Note:** Your *Device Topic* is the NATS address your device communicates with. 
@@ -60,11 +62,11 @@ ifcInfo:
 edge: myprovideredge
 fields:
 - name: secret
-  topic: "<LoopEdge Secret>"
+  topic: "secret-<LoopEdge Secret>"
 - name: host
-  topic: "<LoopEdge Address>"
+  topic: "natshost-<LoopEdge Address>"
 - name: port
-  topic: "natsport-4222"
+  topic: "natsport-<LoopEdge Port>"
 ```
 
 If your LoopEdge connection was successful, your device names and topics should now be in the cloud as artifacts.
