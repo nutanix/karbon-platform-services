@@ -6,7 +6,7 @@ and create your data source via the Xi IoT CLI.
 **nats.yaml**
 ```yaml
 kind: dataSource
-name: ex_nats
+name: ex-nats
 svcDomain: <Service Domain>
 protocol: DATAINTERFACE
 type: Sensor
@@ -35,7 +35,7 @@ Run the following command to create an instance of the datasource:
 ```console
 xi-iot create -f nats.yaml
 ```
-* If the yaml was configured correctly, you should now see a datasource in your UI called *ex_nats*.
+* If the yaml was configured correctly, you should now see a datasource in your UI called *ex-nats*.
 * This device can now be leveraged as a data source in entities such as Kubernetes Applications and Data Pipelines.
 
 ### Litmus
