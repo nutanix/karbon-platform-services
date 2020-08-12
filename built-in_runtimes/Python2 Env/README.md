@@ -36,7 +36,7 @@ The script would produce the following console output when processing images fro
 * **ctx.get_config()** - returns a dict of parameters passed to the function.
 * **ctx.get_topic()** - returns the topic (string) on which the current message was received. In this case, it is the topic is set to RTSP topic from which image has been received.
 * **ctx.get_timestamp()** - returns the time in nanoseconds since epoch (Jan 1st, 1970 UTC).
-* **ctx.send()** - Takes `bytes` as input and forwards it to the next stage in the pipeline. If the input is not of type `bytes`, an error is thrown and a corresponding alert is raised in Xi IoT.
+* **ctx.send()** - Takes `bytes` as input and forwards it to the next stage in the pipeline. If the input is not of type `bytes`, an error is thrown and a corresponding alert is raised in Karbon Services for IoT.
 
 ### In memory caching
 Unlike other serverless frameworks, state can be cached in running transformation to allow for aggregation across multiple messages.

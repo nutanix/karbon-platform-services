@@ -40,14 +40,14 @@ These are the prerequites required to follow the instructions in this document. 
 * Install curl
 
 ## Setup xi-iot CLI
-From your terminal window, create a Xi IoT context to associate with an existing Xi IoT user.
+From your terminal window, create a Karbon Services for IoT context to associate with an existing Karbon Services for IoT user.
 ```
 $ xi-iot config create-context context_name --email user_email_address --password password
 ```
 
-* context_name. A context name to associate with the specified user_email_address and related Xi IoT resources.
-* user_email_address. Email address of an existing Xi IoT user. This email address can be a My Nutanix account address or local user address.
-* password. Password for the Xi IoT user.
+* context_name. A context name to associate with the specified user_email_address and related Karbon Services for IoT resources.
+* user_email_address. Email address of an existing Karbon Services for IoT user. This email address can be a My Nutanix account address or local user address.
+* password. Password for the Karbon Services for IoT user.
 
 Verify that the context is created and the current context is the one that was created above
 ```

@@ -1,6 +1,6 @@
 # AWS cloud connectors
 
-Xi IoT expects certain permissions from each AWS services to be able to write data to it. This README documents the permissions required for each service.
+Karbon Services for IoT expects certain permissions from each AWS services to be able to write data to it. This README documents the permissions required for each service.
 
 ### S3
 **s3:ListBucket**: Needed for listing of existing buckets and for HEAD Bucket operation.   
