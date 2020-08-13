@@ -1,12 +1,11 @@
 ## NATS
 
-This data interface can be used to connect the NATS devices you have set up on the edge to Xi IoT. To start setting up this datasource, use the following example YAML 
-and create your data source via the Xi IoT CLI.
+The *nats* data interface can be used to connect the NATS resources you have set up on the edge to Xi IoT. To start setting up this datasource, use the following example YAML and create your data source via the Xi IoT CLI.
 
 **nats.yaml**
 ```yaml
 kind: dataSource
-name: ex-nats
+name: ex_nats
 svcDomain: <Service Domain>
 protocol: DATAINTERFACE
 type: Sensor
@@ -17,16 +16,14 @@ ifcInfo:
   kind: IN
   protocol: nats
   ports:
-    - name: rtmp
-      port: 1935
+    - name: nats
+      port: 4222
 edge: myprovideredge
 fields:
 - name: topic
   topic: "<Device Topic>"
-- name: host
-  topic: "natshost-<IP Address>"
 - name: port
-  topic: "natsport-<Port>"
+  topic: "natsport-4222"
 ```
 
 **Note:** Your *Device Topic* is the NATS address your device communicates with. 
@@ -38,10 +35,10 @@ xi-iot create -f nats.yaml
 * If the yaml was configured correctly, you should now see a datasource in your UI called *ex-nats*.
 * This device can now be leveraged as a data source in entities such as Kubernetes Applications and Data Pipelines.
 
-### Litmus
+### Litmus Edge
 
-This data interface also has the ability to integrate with Litmus LoopEdge and you can use the same interface to communicate with your PLC devices with 
-minor adjustments. The following YAML file is configured to connect with your LoopEdge.
+The *nats* data interface also has the ability to integrate with Litmus LoopEdge and you can use the same interface to communicate with your PLC devices with minor adjustments. 
+The following YAML file is configured to connect with your LoopEdge.
 
 **litmus.yaml**
 ```yaml
@@ -57,19 +54,19 @@ ifcInfo:
   kind: IN
   protocol: nats
   ports:
-    - name: rtmp
-      port: 1935
+    - name: nats
+      port: 4222
 edge: myprovideredge
 fields:
 - name: secret
-  topic: "secret-<LoopEdge Secret>"
+  topic: "<LoopEdge Secret>"
 - name: host
-  topic: "natshost-<LoopEdge Address>"
+  topic: "<LoopEdge Address>"
 - name: port
-  topic: "natsport-<LoopEdge Port>"
+  topic: "natsport-4222"
 ```
 
-If your LoopEdge connection was successful, your device names and topics should now be in the cloud as artifacts.
+If your LoopEdge information was configured correctly, your device names and topics should now be in the cloud as artifacts.
 To see your newly created artifacts run the following command:
 ```console
 xi-iot get datasource --show-artifacts
