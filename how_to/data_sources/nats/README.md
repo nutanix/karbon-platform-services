@@ -1,4 +1,4 @@
-## NATS
+## NATS Data Interface
 
 The *nats* data interface can be used to connect the NATS resources you have set up on the edge to Xi IoT. To start setting up this datasource, use the following example YAML and create your data source via the Xi IoT CLI.
 
@@ -37,8 +37,8 @@ xi-iot create -f nats.yaml
 
 ### Litmus Edge
 
-The *nats* data interface also has the ability to integrate with Litmus LoopEdge and you can use the same interface to communicate with your PLC devices with minor adjustments. 
-The following YAML file is configured to connect with your LoopEdge.
+The NATS data interface can also be used to integrate with [Litmus Edge](https://litmus.io/litmus-edge/) to enable a wide range of [device and protocol data sources](https://litmus.io/litmus-edge/supported-devices/) with minor adjustments. 
+The following YAML file is configured to connect with Litmus Edge.
 
 **litmus.yaml**
 ```yaml
@@ -81,18 +81,18 @@ litmus        	<names>:
                		devicehub.raw.<topic>.*
 ```
 
-You can now proceed to add whichever device topic you choose, and can handle this directly in the UI. Proceed to **Infrastructure** → **Data Sources** and click on *litmus*. 
+Proceed to add required device topics directly in the Xi Iot UI. Proceed to **Infrastructure** → **Data Sources** and click on *litmus*. 
 Select **Edit** and you should be brought to a menu where you can define your data source topics. You should see your some topics such as port and secret already present. Now you 
 can add the device topic of your choice and select **Update**.
 * Once you have updated your data source, you will start ingesting data from your selected device and use this entity in Kubernetes Applications and Data Pipelines.
 
-## FAQs
+## NATS FAQs
 
-What happens if I remove the device topic and add a new one?
-* The stream will get cancelled and your data source will start ingesting data from your new device topic.
+What happens if a device topic is removed and a new one added?
+* The stream will be immediately cancelled and the data source will start ingesting data from the new device topic.
 
-Can I add multiple device topics to the same datasource?
-* No, we recommend you create multiple data sources for each unique device topic. You can also configure multiple correlated sensors into one device topic in LoopEdge or create a Gateway in Xi IoT to aggregate data from multiple sources. 
+Can topics from multiple devices be added to the same Karbon Services data source?
+* No, it is recommended to create multiple data sources for each unique device topic. External gateway devices or software (like Litmus Edge) may also be used to aggregate data from multiple sources. 
 
-Is there a way I can ingest multiple PLC sources under one data source?
-* Yes, you can configure multiple devices under one device topic in LoopEdge.
+Is there a way to ingest multiple device and protocol (i.e. PLC) sources as one Xi Iot data source?
+* Yes, multiple devices can be configured under one device topic in Litmus Edge.
