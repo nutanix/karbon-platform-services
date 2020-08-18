@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="/img/ks_icon.png" width="600" height="200">
+    <img src="/img/ks_icon.png">
 </p> 
 
 ## Karbon Services for IoT Overview
