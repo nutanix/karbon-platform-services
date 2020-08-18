@@ -1,4 +1,6 @@
-# Nutanix Xi IoT Platform
+<p align="center">
+    <img src="/img/icon.png" width="600" height="200">
+</p> 
 
 ## Xi IoT Overview
 The Nutanix Xi IoT platform delivers local compute and AI for IoT edge devices, converging the edge and cloud into one seamless data processing platform. The Xi IoT platform eliminates complexity, accelerates deployments, and elevates developers to focus on the business logic powering IoT applications and services. Now developers can use a low-code development platform to create application software via APIs instead of arduous programming methods.
@@ -76,7 +78,7 @@ The [functions](functions) folder will provide information about how to create a
 
 ### How To
 
-The [how to](how_to) folder will take you through a few labs and help you better understand how to use Xi IoT. You will gain experience creating sample apps and using the AI Inference service.
+The [how to](how_to) folder will teach you how to create different entities in Xi IoT such as Data Sources, Data Pipelines, and Custom Runtimes. You will also gain experience creating sample apps and using the AI Inference service.
 
 ### Projects
 
