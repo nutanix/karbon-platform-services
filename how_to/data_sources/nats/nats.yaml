@@ -1,0 +1,20 @@
+kind: dataSource
+name: ex_nats
+svcDomain: <Service Domain>
+protocol: DATAINTERFACE
+type: Sensor
+authType: CERTIFICATE
+ifcInfo:
+  class: DATAINTERFACE
+  img: dataifc/nats:v1.0
+  kind: IN
+  protocol: nats
+  ports:
+    - name: nats
+      port: 4222
+edge: myprovideredge
+fields:
+- name: topic
+  topic: "<Device Topic>"
+- name: port
+  topic: "natsport-4222"

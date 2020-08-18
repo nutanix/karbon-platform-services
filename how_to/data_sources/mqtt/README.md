@@ -1,6 +1,6 @@
 # Using MQTT in Xi IoT
 
-MQTT Howto has been split into the following tasks
+MQTT How to has been split into the following tasks
 ### 1. datasource
 This task covers how to create an MQTT datasource in Xi IoT, which enables data pipelines to receive MQTT data from MQTT clients.
 Once this task is completed, you will be able to:

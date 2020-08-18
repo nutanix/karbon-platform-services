@@ -1,0 +1,22 @@
+kind: dataSource
+name: litmus
+svcDomain: <Service Domain>
+protocol: DATAINTERFACE
+type: Sensor
+authType: CERTIFICATE
+ifcInfo:
+  class: DATAINTERFACE
+  img: dataifc/nats:v1.0
+  kind: IN
+  protocol: nats
+  ports:
+    - name: nats
+      port: 4222
+edge: myprovideredge
+fields:
+- name: secret
+  topic: "<LoopEdge Secret>"
+- name: host
+  topic: "<LoopEdge Address>"
+- name: port
+  topic: "natsport-4222"
