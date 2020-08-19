@@ -1,4 +1,4 @@
-.. title:: Nutanix Xi IoT Quick Start for AI Inference
+.. title:: Nutanix Karbon Services for IoT Quick Start for AI Inference
 
 .. toctree::
   :maxdepth: 2
@@ -11,32 +11,32 @@
 
    
 -------------------------------------
-Xi IoT - Quick Start for AI Inference
+Karbon Services for IoT - Quick Start for AI Inference
 -------------------------------------
 
-Xi IoT Overview
+Karbon Services for IoT Overview
 ###############
 
 
-The Nutanix Xi IoT platform delivers local compute and AI for IoT edge devices, converging the edge and cloud into one seamless data processing platform.
-The Xi IoT platform eliminates complexity, accelerates deployments, and elevates developers to focus on the business logic powering IoT applications and services.
+The Nutanix Karbon Services for IoT platform delivers local compute and AI for IoT edge devices, converging the edge and cloud into one seamless data processing platform.
+The Karbon Services for IoT platform eliminates complexity, accelerates deployments, and elevates developers to focus on the business logic powering IoT applications and services.
 Now developers can use a low-code development platform to create application software via APIs instead of arduous programming methods.
 
-Xi IoT Trial
+Karbon Services for IoT Trial
 ############
 
-This Xi IoT Quick Start leverages the Xi IoT Trial. The trial is a limited-time, ready-to-deploy
-implementation of the Xi IoT edge computing
-platform. The Xi IoT Trial provides pre-built applications and data
+This Karbon Services for IoT Quick Start leverages the Karbon Services for IoT Trial. The trial is a limited-time, ready-to-deploy
+implementation of the Karbon Services for IoT edge computing
+platform. The Karbon Services for IoT Trial provides pre-built applications and data
 connectors hosted on its own infrastructure. This instant architecture demonstrates how 
 to quickly develop and test IoT applications in the cloud for seamless deployment to the edge.
 
 Nutanix has already created the basic infrastructure you need to get
 started.
 
-**What's In the Xi IoT Trial?**
+**What's In the Karbon Services for IoT Trial?**
 
-1. Xi IoT management console, which provides the base for your Xi IoT
+1. Karbon Services for IoT management console, which provides the base for your Karbon Services for IoT
    trial.
 
 2. A Starter project that includes:
@@ -53,7 +53,7 @@ started.
 
 ..
 
-**What Can I Do with the Xi IoT Trial?**
+**What Can I Do with the Karbon Services for IoT Trial?**
 
 -  Stream video from YouTube-8M video or your smartphone to the Xi Cloud
    edge.
@@ -61,15 +61,15 @@ started.
 -  Automatically run containerized apps at the edge to perform object
    recognition on your video.
 
--  Stream the results back to the Xi IoT console or your smartphone,
+-  Stream the results back to the Karbon Services for IoT console or your smartphone,
    with recognized objects highlighted in your video.
 
 ..
 
-Signing Up For the Xi IoT Trial
+Signing Up For the Karbon Services for IoT Trial
 +++++++++++++++++++++++++++++++
 
-Do any of these steps to sign up for the Xi IoT Trial.
+Do any of these steps to sign up for the Karbon Services for IoT Trial.
 
 a. Click Start Trial at https://www.nutanix.com/products/iot/ or
    `https://iot.nutanix.com <https://iot.nutanix.com/>`__.
@@ -79,40 +79,40 @@ b. Sign up now for a My Nutanix account at
 
 c. If you already have an account, log on to
    `https://my.nutanix.com <https://my.nutanix.com/>`__ with your
-   existing account credentials and click Learn More in the Xi IoT
+   existing account credentials and click Learn More in the Karbon Services for IoT
    panel.
 
 ..
 
-SUPPORT FOR AND LEARNING MORE ABOUT XI IOT
+SUPPORT FOR AND LEARNING MORE ABOUT Karbon Services for IoT
 
-The most support for the Xi IoT trial is available through the
-Nutanix Next Xi IoT trial forum. Nutanix asks that you share your
+The most support for the Karbon Services for IoT trial is available through the
+Nutanix Next Karbon Services for IoT trial forum. Nutanix asks that you share your
 experiences and lessons learned with your fellow users.
 
 You can also visit the following pages for more information about Xi
 IoT.
 
--  Connect with other users at `Xi IoT User
+-  Connect with other users at `Karbon Services for IoT User
    Forum. <https://next.nutanix.com/xi-iot-72>`__
 
 -  Connect on `Twitter <https://twitter.com/NutanixIoT>`__ with the
-   Nutanix Xi IoT team.
+   Nutanix Karbon Services for IoT team.
 
--  Check out articles about Xi IoT at the
+-  Check out articles about Karbon Services for IoT at the
    `Nutanix Developer site <https://developer.nutanix.com/iot>`__.
 
--  View videos about Xi IoT at `Nutanix University YouTube
+-  View videos about Karbon Services for IoT at `Nutanix University YouTube
    channel <https://www.youtube.com/watch?v#wmUkz-XZLJo>`__.
 
--  Get more details about Xi IoT features in the `Nutanix
+-  Get more details about Karbon Services for IoT features in the `Nutanix
    documentation <https://portal.nutanix.com/?filterKey#type&filterVal#Xi#/page/docs/list>`__.
 
 
-Getting Started With the Xi IoT Trial
+Getting Started With the Karbon Services for IoT Trial
 +++++++++++++++++++++++++++++++++++++
 
-1. Log on to the Xi IoT management console.
+1. Log on to the Karbon Services for IoT management console.
 
 2. Have a YouTube-8M URL handy or create and upload a video from your
    smartphone.
@@ -120,7 +120,7 @@ Getting Started With the Xi IoT Trial
 3. On your smartphone, download the Xi IoT Sensor app (available from the
    Google Play Store or Apple App Store).
 
-Logging On to the Xi IoT Console
+Logging On to the Karbon Services for IoT Console
 --------------------------------
 
 Before you begin:
@@ -133,21 +133,21 @@ Google Chrome. You'll need your My Nutanix credentials for this step.
 
 2. If you are logging on for the first time, click to read the Terms and Conditions, then click to Accept and Continue.
 
-3. Take a few moments to read about Xi IoT, then click Get Started.
+3. Take a few moments to read about Karbon Services for IoT, then click Get Started.
 
-Your web browser displays the Xi IoT dashboard and the Xi IoT Quick Start Menu.
+Your web browser displays the Karbon Services for IoT dashboard and the Karbon Services for IoT Quick Start Menu.
 
-Xi IoT Quick Start Menu
+Karbon Services for IoT Quick Start Menu
 -----------------------
 
-The Xi IoT management console includes a Quick Start menu next to
+The Karbon Services for IoT management console includes a Quick Start menu next to
 your user name. You can click Quick Start, then click the links to:
 
 1. See object detection in action by using a YouTube-8M video.
 
 2. Try object detection on your phone.
 
-3. Invite your colleagues to try out Xi IoT
+3. Invite your colleagues to try out Karbon Services for IoT
 
 4. Edit a data pipeline
 
@@ -161,7 +161,7 @@ Using the Xi IoT Sensor App to Detect Objects in Your Smartphone Video
 About this task
 
 Connect your Android or iOS based phone as a data source to stream video and perform
-object detection in near realtime using Xi IoT. Output can be viewed on your phone
+object detection in near realtime using Karbon Services for IoT. Output can be viewed on your phone
 and from an HTTP Live Stream (HLS) in your browser.
    
 #. If you are not logged on, open https://iot.nutanix.com/ in a web
@@ -183,7 +183,7 @@ and from an HTTP Live Stream (HLS) in your browser.
 
    d. Enter a name for your phone, then click Next.
    
-#. From the Xi IoT management portal, Click :fa:`bars` **> Apps and Data > Data Pipelines**.
+#. From the Karbon Services for IoT management portal, Click :fa:`bars` **> Apps and Data > Data Pipelines**.
 
    The phone-object-detection data pipeline tile should show **Status: Healthy**.
 
@@ -193,21 +193,21 @@ and from an HTTP Live Stream (HLS) in your browser.
 
 #. Switch to the **phone-object-detection** tab to view the results. Point your phone's camera around the room to identify objects in near realtime!
 
-#. From the Xi IoT management portal, click **View Http Live Stream** on the phone-object-detection data pipeline tile. This opens HLS output for viewing the results in your browser.
+#. From the Karbon Services for IoT management portal, click **View Http Live Stream** on the phone-object-detection data pipeline tile. This opens HLS output for viewing the results in your browser.
 
 #. Click :fa:`remove` to close the HLS page.
 
 #. From the Xi IoT Sensor app, press :fa:`stop` to stop capturing video.
 
-#. From the Xi IoT management portal, click **Actions**, then **Stop**, then **Stop** again on the phone-object-detection data pipeline tile.
+#. From the Karbon Services for IoT management portal, click **Actions**, then **Stop**, then **Stop** again on the phone-object-detection data pipeline tile.
 
 
-Using the Xi IoT App Library to Detect Objects in a YouTube-8M Video
+Using the Karbon Services for IoT App Library to Detect Objects in a YouTube-8M Video
 ####################################################################
 
 About this task
 
-Use a YouTube-8M video to demonstrate object recognition in Xi IoT. We
+Use a YouTube-8M video to demonstrate object recognition in Karbon Services for IoT. We
 recommend a short video showing city scenes, drone footage, or a
 sporting event.
 
@@ -247,12 +247,12 @@ sporting event.
 
 #. Back on the **youtube-8m-object-detection-app** application tile, click **Actions**, then click **Stop**, then click **Stop** again.
 
-Using Xi IoT Data Pipelines to Detect Objects in a YouTube-8M Video
+Using Karbon Services for IoT Data Pipelines to Detect Objects in a YouTube-8M Video
 ###################################################################
 
 About this task
 
-Use data pipelines and two YouTube-8M videos to demonstrate object detection using only python code in Xi IoT.
+Use data pipelines and two YouTube-8M videos to demonstrate object detection using only python code in Karbon Services for IoT.
 
 #. If you are not logged on, open https://iot.nutanix.com/ in a web
    browser and log in.
@@ -269,7 +269,7 @@ Use data pipelines and two YouTube-8M videos to demonstrate object detection usi
 
    .. note::
    
-      The pipeline's input data source is selected using a category named *youtube-8m* with a value of *channel1*. Like all Xi IoT data pipeline inputs, 
+      The pipeline's input data source is selected using a category named *youtube-8m* with a value of *channel1*. Like all Karbon Services for IoT data pipeline inputs, 
       YouTube-8M data sources are selected dynamically using categories. This dynamic nature makes adding and changing data sources at scale much easier than 
       if they were static. It also means that data sources can be easily changed without changes to transformation code.
 
@@ -281,11 +281,11 @@ Use data pipelines and two YouTube-8M videos to demonstrate object detection usi
       
          The pipeline executes a transformation function named **objdetect_func-python**. This is a sample python function that uses a `Tensorflow based 
          ssd mobilenet v2 model trained on the COCO dataset <https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md>`__
-         embedded in the Xi IoT Tensorflow Python runtime.
+         embedded in the Karbon Services for IoT Tensorflow Python runtime.
 
 #. Click :fa:`remove` to close the data pipeline without making any changes.
 
-In Xi IoT, categories help you assign various attributes to edges and data sources which can be further used to query and select them when creating Data Pipelines or deploying Applications.
+In Karbon Services for IoT, categories help you assign various attributes to edges and data sources which can be further used to query and select them when creating Data Pipelines or deploying Applications.
 
 An example of a category could be “City” with values in [San Francisco, San Jose, San Diego] or “State” with values in [California, Washington, Oregon] and so on. It can be anything meaningful to your environment. 
 
@@ -354,12 +354,12 @@ the data pipeline to use this new channel.
 
 #. On the youtube-8m-object-detection data pipeline tile, click **Actions**, then **Stop**, then **Stop** again to stop the data pipeline.
 
-Using Xi IoT Input and Output Connectors for Applications
+Using Karbon Services for IoT Input and Output Connectors for Applications
 #########################################################
 
 About this task
 
-Learn more about using your phone or a YouTube-8M video as a data source, and a HTTP Live Stream as output when writing your own applications for Xi IoT by
+Learn more about using your phone or a YouTube-8M video as a data source, and a HTTP Live Stream as output when writing your own applications for Karbon Services for IoT by
 exploring the echoapp sample application provided in the Application Library.
 
 #. If you are not logged on, open https://iot.nutanix.com/ in a web
@@ -401,12 +401,12 @@ exploring the echoapp sample application provided in the Application Library.
 #. Click **Actions**, then **Stop**, then **Stop** again on the echoapp application tile to stop the application.
 
 
-Using the Xi IoT AI Inferencing Service to Detect Objects
+Using the Karbon Services for IoT AI Inferencing Service to Detect Objects
 #########################################################
 
 About this task
 
-Use data pipelines and a YouTube-8M video to demonstrate object detection using the Xi IoT AI Inferencing Service.
+Use data pipelines and a YouTube-8M video to demonstrate object detection using the Karbon Services for IoT AI Inferencing Service.
 
 #. If you are not logged on, open https://iot.nutanix.com/ in a web
    browser and log in.
@@ -427,7 +427,7 @@ Use data pipelines and a YouTube-8M video to demonstrate object detection using 
 
 #. Click the :fa:`check` box beside the **objdetect_func-python** function, then click **Edit**.
 
-   Notice that the function is written in python and uses the Xi IoT Tensorflow Python runtime.
+   Notice that the function is written in python and uses the Karbon Services for IoT Tensorflow Python runtime.
 
 #. Click **Next**.
 
@@ -442,7 +442,7 @@ Use data pipelines and a YouTube-8M video to demonstrate object detection using 
       # ssd_inception_v2_coco	latency - 42ms
       PATH_TO_CKPT = BASE_PATH + '/ssd_inception_v2_coco_2017_11_17/frozen_inference_graph.pb'
 
-   As mentioned in the earlier exercise, the ssd inception v2 model is embedded in the Xi IoT Tensorflow Python runtime. This is
+   As mentioned in the earlier exercise, the ssd inception v2 model is embedded in the Karbon Services for IoT Tensorflow Python runtime. This is
    fine for an example, but not suitable for production deployments. For example, the model cannot be updated.
 
    Now compare this python code to that used in the ml_objectdetect_func-python function used in the ai-inference-service-demo data pipeline.
@@ -451,7 +451,7 @@ Use data pipelines and a YouTube-8M video to demonstrate object detection using 
 
 #. Uncheck the :fa:`check` box beside the **objdetect_func-python** function, click the :fa:`check` box beside the **ml_objdetect_func-python** function, then click **Edit**.
 
-   Notice that this function is also written in python and uses the Xi IoT Tensorflow Python runtime.
+   Notice that this function is also written in python and uses the Karbon Services for IoT Tensorflow Python runtime.
 
 #. Click **Next**.
 
@@ -510,7 +510,7 @@ Use data pipelines and a YouTube-8M video to demonstrate object detection using 
 
    .. note::
    
-      One additional benefit of using the Xi IoT Inferencing Service is that multiple functions and pipelines
+      One additional benefit of using the Karbon Services for IoT Inferencing Service is that multiple functions and pipelines
       can share edge hardware resources, such as GPUs, when running machine inference. 
 
 #. Click :fa:`remove` to close the ML model without making any changes.
@@ -521,7 +521,7 @@ If you'd like to view the data pipeline and Inferencing Service in action, simpl
 Takeaways
 #########
 
-What are the key takeaways and other things you should know about **Nutanix Xi IoT**?
+What are the key takeaways and other things you should know about **Nutanix Karbon Services for IoT**?
 
 - Get started with AI Inference in minutes with Xi Cloud based edges
 
