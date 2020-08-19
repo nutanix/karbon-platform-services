@@ -17,26 +17,26 @@ By default Traefik ingress controller is enabled on demand whenever an applicati
 
 Admins are free to choose ingress-nginx over Traefik if applications require that particular ingress controller.
 
-Ingress controllers are configured per Service Domain. You can use the xi-iot CLI to update an active ingress controller on a service domain:
+Ingress controllers are configured per Service Domain. You can use the ksctl CLI to update an active ingress controller on a service domain:
 
 Switch from default ingress controller Traefik to ingress-nginx
 
 ```
-$ xi-iot update svcdomain my-service-domain --ingress-type=NGINX
+$ ksctl update svcdomain my-service-domain --ingress-type=NGINX
 Successfully updated service domain: my-service-domain
 ```
 
 Switch back to Traefik
 
 ```
-$ xi-iot update svcdomain my-service-domain --ingress-type=Traefik
+$ ksctl update svcdomain my-service-domain --ingress-type=Traefik
 Successfully updated service domain: my-service-domain
 ```
 
 Check which ingress controller is currently used:
 
 ```
-$ xi-iot get svcdomain my-service-domain -o yaml
+$ ksctl get svcdomain my-service-domain -o yaml
 kind: edge
 name: my-service-domain
 connected: true
