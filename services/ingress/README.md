@@ -17,26 +17,26 @@ By default Traefik ingress controller is enabled on demand whenever an applicati
 
 Admins are free to choose ingress-nginx over Traefik if applications require that particular ingress controller.
 
-Ingress controllers are configured per Service Domain. You can use the ksctl CLI to update an active ingress controller on a service domain:
+Ingress controllers are configured per Service Domain. You can use the kpsctl CLI to update an active ingress controller on a service domain:
 
 Switch from default ingress controller Traefik to ingress-nginx
 
 ```
-$ ksctl update svcdomain my-service-domain --ingress-type=NGINX
+$ kpsctl update svcdomain my-service-domain --ingress-type=NGINX
 Successfully updated service domain: my-service-domain
 ```
 
 Switch back to Traefik
 
 ```
-$ ksctl update svcdomain my-service-domain --ingress-type=Traefik
+$ kpsctl update svcdomain my-service-domain --ingress-type=Traefik
 Successfully updated service domain: my-service-domain
 ```
 
 Check which ingress controller is currently used:
 
 ```
-$ ksctl get svcdomain my-service-domain -o yaml
+$ kpsctl get svcdomain my-service-domain -o yaml
 kind: edge
 name: my-service-domain
 connected: true

@@ -6,7 +6,7 @@ Read about data source and category details and requirements in the [Karbon Plat
 
 Create a data source with attributes you've defined in a YAML file.
 
-`user@host$ ksctl create -f my-mqtt-datasource.yaml`
+`user@host$ kpsctl create -f my-mqtt-datasource.yaml`
 
 # Creating The Data Source YAML File
 

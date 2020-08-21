@@ -12,7 +12,7 @@ Each sample YAML file defines a data pipeline. A data pipeline consists of:
 
 Create a data pipeline with attributes defined in a YAML file.
 
-`user@host$ ksctl create -f mqtt-input-s3-output.yaml`
+`user@host$ kpsctl create -f mqtt-input-s3-output.yaml`
 
 ## mqtt-input-s3-output.yaml
 

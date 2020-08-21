@@ -8,7 +8,7 @@ You can create intelligent applications to run on the Karbon Platform Services f
 
 Create an application with attributes defined in a YAML file. An application requires Karbon Platform Services for IoT edge or Karbon Platform Services for IoT cloud instance.
 
-`user@host$ ksctl create -f echo-ifc-app.yaml`
+`user@host$ kpsctl create -f echo-ifc-app.yaml`
 
 ## echo-sample-app.yaml
 

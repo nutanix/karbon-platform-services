@@ -63,8 +63,8 @@ The [built-in runtime](built-in_runtimes) folder contains information on how to 
 
 ### CLI
 
-The [cli](cli) folder contains information on how to leverage the ksctl cli to create different entities such as applications, data pipelines, datasources, and more. There are also example YAML files you can use to get 
-familiar with the ksctl cli. 
+The [cli](cli) folder contains information on how to leverage the kpsctl cli to create different entities such as applications, data pipelines, datasources, and more. There are also example YAML files you can use to get 
+familiar with the kpsctl cli. 
 
 ### Cloud Connectors
 

@@ -8,7 +8,7 @@ A function lets you run code on data flowing through a [Data Pipeline](../datapi
 
 Create a function with parameters and other attributes defined in a YAML file.
 
-`user@host$ ksctl create -f echo-with-param.yaml`
+`user@host$ kpsctl create -f echo-with-param.yaml`
 
 ## echo-with-param.yaml
 

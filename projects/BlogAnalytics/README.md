@@ -36,13 +36,13 @@ Here are components we will use to build the application:
 # Install prerequisites
 These are the prerequites required to follow the instructions in this document. Please follow the links provided to install them:
 * [Install Helm](https://helm.sh/docs/intro/install/)
-* [Install ksctl CLI](https://github.com/nutanix/xi-iot/tree/master/cli)
+* [Install kpsctl CLI](https://github.com/nutanix/xi-iot/tree/master/cli)
 * Install curl
 
-## Setup ksctl CLI
+## Setup kpsctl CLI
 From your terminal window, create a Karbon Platform Services for IoT context to associate with an existing Karbon Platform Services for IoT user.
 ```
-$ ksctl config create-context context_name --email user_email_address --password password
+$ kpsctl config create-context context_name --email user_email_address --password password
 ```
 
 * context_name. A context name to associate with the specified user_email_address and related Karbon Platform Services for IoT resources.
@@ -51,7 +51,7 @@ $ ksctl config create-context context_name --email user_email_address --password
 
 Verify that the context is created and the current context is the one that was created above
 ```
-$ ksctl config get-contexts
+$ kpsctl config get-contexts
 ```
 
 ## Setup Project

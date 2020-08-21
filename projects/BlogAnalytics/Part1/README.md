@@ -50,9 +50,9 @@ project: Blog Analytics
 appYamlPath: mysql-app.yaml 
  ```
 ---
-Use the ksctl CLI to deploy the app
+Use the kpsctl CLI to deploy the app
 ```
-ksctl create -f mysql-xks.yaml
+kpsctl create -f mysql-xks.yaml
 ```
 </details>
 
@@ -98,9 +98,9 @@ project: Blog Analytics
 appYamlPath: wordpress-app.yaml 
 ```
 ---
-Use the ksctl CLI to deploy the app
+Use the kpsctl CLI to deploy the app
 ```
-$ ksctl create -f wordpress-xks.yaml
+$ kpsctl create -f wordpress-xks.yaml
 Successfully created application: wordpress
 ```
 </details>
@@ -115,12 +115,12 @@ XKS support 2 types of ingress controllers, Nginx and Traefik. We will be using 
 ## Enabling Nginx Ingress Controller
 We can enable it using the CLI. Here **svcdomain** is the name of the Service Domain where the application is running
 ```
-ksctl update svcdomain <svcdomain> --ingress-type=NGINX
+kpsctl update svcdomain <svcdomain> --ingress-type=NGINX
 ```
 ---
 Confirm the setting
 ```
-$ ksctl get svcdomain svcdomain1 -o yaml
+$ kpsctl get svcdomain svcdomain1 -o yaml
 kind: edge
 name: svcdomain1
 connected: true

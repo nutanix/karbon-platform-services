@@ -30,7 +30,7 @@ fields:
 
 Run the following command to create an instance of the datasource:
 ```console
-ksctl create -f nats.yaml
+kpsctl create -f nats.yaml
 ```
 * If the yaml was configured correctly, you should now see a datasource in your UI called *ex-nats*.
 * This device can now be leveraged as a data source in entities such as Kubernetes Applications and Data Pipelines.
@@ -69,7 +69,7 @@ fields:
 If your LoopEdge information was configured correctly, your device names and topics should now be in the cloud as artifacts.
 To see your newly created artifacts run the following command:
 ```console
-ksctl get datasource --show-artifacts
+kpsctl get datasource --show-artifacts
 ```
 
 You should be met with a row entry labelled *litmus*. Inside this row entry you should see a list of your device tags and corresponding device topics:
