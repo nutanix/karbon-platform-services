@@ -3,8 +3,8 @@
 **Note**: Nutanix is actively developing the ksctl CLI. As a result, the software published here is release candidate (RC) quality until further notice. 
 Use this software at your own risk and do not use it in a production environment or deployment. The latest release candidate is shown below.
 
-The ksctl CLI is a command line tool that helps you manage your Karbon Services for IoT resources from your terminal or shell. With minimal 
-configuration, you can start using Karbon Services for IoT functionality equal to that provided by the browser-based Karbon Services for IoT Management 
+The ksctl CLI is a command line tool that helps you manage your Karbon Platform Services for IoT resources from your terminal or shell. With minimal 
+configuration, you can start using Karbon Platform Services for IoT functionality equal to that provided by the browser-based Karbon Platform Services for IoT Management 
 Console from the command prompt in your favorite terminal program.
 
 ## Shell Support
@@ -74,9 +74,9 @@ Download the ksctl CLI for Microsoft Windows:
 
 
 # Configuring ksctl CLI
-Configure the ksctl CLI to interact with Karbon Services for IoT API, including your user role and credentials.
+Configure the ksctl CLI to interact with Karbon Platform Services for IoT API, including your user role and credentials.
 A ksctl CLI user operates under a specific context. A user email address, password, and context name defines the context.
-The user operates according to the role assigned to their user name and email for Karbon Services for IoT users. 
+The user operates according to the role assigned to their user name and email for Karbon Platform Services for IoT users. 
 
 For example, create a context named local_user_ctx_1 for an existing local user user1@contoso.com with a password of nutanix/4u.
 (A local user is a user that does not have My Nutanix portal credentials.) 
@@ -97,4 +97,4 @@ ksctl completion --help
 ```
 
 # Using samples
-Under `samples/` directory, there are samples for various Karbon Services for IoT entities including Data Sources, Data Pipelines, Applications, etc. These samples can be used as a reference when creating your own Karbon Services for IoT entities. Each entity has a README which explains the details of each individual attribute of that entity.
+Under `samples/` directory, there are samples for various Karbon Platform Services for IoT entities including Data Sources, Data Pipelines, Applications, etc. These samples can be used as a reference when creating your own Karbon Platform Services for IoT entities. Each entity has a README which explains the details of each individual attribute of that entity.

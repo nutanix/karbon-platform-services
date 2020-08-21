@@ -1,8 +1,8 @@
-# Using RTSP in Karbon Services for IoT
+# Using RTSP in Karbon Platform Services for IoT
 
 ## Data Source
-The following steps will show you how to set up an RTSP camera as a data source in Karbon Services for IoT:
-1. Log into the Karbon Services for IoT Cloud Management Console and click **Infrastructure** → **Data Sources**, and then **+Add Data Source**.
+The following steps will show you how to set up an RTSP camera as a data source in Karbon Platform Services for IoT:
+1. Log into the Karbon Platform Services for IoT Cloud Management Console and click **Infrastructure** → **Data Sources**, and then **+Add Data Source**.
 1. Complete information on the General tab and then click Next.
     * Name: enter a name for your camera
     * Associated edge: choose the edge that will connect to the camera feed

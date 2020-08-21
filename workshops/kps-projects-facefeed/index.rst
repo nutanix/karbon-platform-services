@@ -1,4 +1,4 @@
-.. title:: Karbon Services for IoT - Facefeed Application Deployment Guide
+.. title:: Karbon Platform Services for IoT - Facefeed Application Deployment Guide
 
 .. toctree::
   :maxdepth: 2
@@ -10,26 +10,26 @@
 .. _xi_iot:
 
 ------
-Karbon Services for IoT - Facefeed Application Deployment Guide
+Karbon Platform Services for IoT - Facefeed Application Deployment Guide
 ------
 
-Karbon Services for IoT Overview
+Karbon Platform Services for IoT Overview
 ++++++++
 
-The Nutanix Karbon Services for IoT platform delivers local compute and AI for IoT edge devices, converging the edge and cloud into one seamless data processing platform.
-The Karbon Services for IoT platform eliminates complexity, accelerates deployments, and elevates developers to focus on the business logic powering IoT applications and services.
+The Nutanix Karbon Platform Services for IoT platform delivers local compute and AI for IoT edge devices, converging the edge and cloud into one seamless data processing platform.
+The Karbon Platform Services for IoT platform eliminates complexity, accelerates deployments, and elevates developers to focus on the business logic powering IoT applications and services.
 Now developers can use a low-code development platform to create application software via APIs instead of arduous programming methods.
 
-In this tutorial you’ll deploy an application called “Facefeed” using the Karbon Services for IoT SaaS control plane. This application ingests a video stream using the real time streaming protocol (RTSP), and uses machine learning to detect known faces.
+In this tutorial you’ll deploy an application called “Facefeed” using the Karbon Platform Services for IoT SaaS control plane. This application ingests a video stream using the real time streaming protocol (RTSP), and uses machine learning to detect known faces.
 The application and its data pipelines are deployed to a Xi Edge device for local execution. This tutorial assumes your edge has already been deployed using steps
-from the `Karbon Services for IoT Infrastructure Admin Guide <https://portal.nutanix.com/#/page/docs/details?targetId=Xi-IoT-Infra-Admin-Guide:Xi-IoT-Infra-Admin-Guide>`_. Access to the Admin Guide is provided via the My Nutanix Portal and requires an account to login.
+from the `Karbon Platform Services for IoT Infrastructure Admin Guide <https://portal.nutanix.com/#/page/docs/details?targetId=Xi-IoT-Infra-Admin-Guide:Xi-IoT-Infra-Admin-Guide>`_. Access to the Admin Guide is provided via the My Nutanix Portal and requires an account to login.
 
-Accessing Karbon Services for IoT
+Accessing Karbon Platform Services for IoT
 ++++++++++++++++
 
 #. Open https://my.nutanix.com/ in your browser. If you don't already have a My Nutanix account, follow steps to create one.
 
-#. Scroll to the Xi Cloud Services section and click Launch to access the Karbon Services for IoT SaaS control plane.
+#. Scroll to the Xi Cloud Services section and click Launch to access the Karbon Platform Services for IoT SaaS control plane.
 
    .. figure:: images/my_nutanix_xi_iot_login.png
 
@@ -56,11 +56,11 @@ The Facefeed application utilizes five Functions within two Data Pipelines to tr
 Defining Categories
 +++++++++++++++++++
 
-In Karbon Services for IoT, categories help you assign various attributes to edges and data sources which can be further used to query and select them when creating Data Pipelines or deploying Applications.
+In Karbon Platform Services for IoT, categories help you assign various attributes to edges and data sources which can be further used to query and select them when creating Data Pipelines or deploying Applications.
 
 An example of a category could be “City” with values in [San Francisco, San Jose, San Diego] or “State” with values in [California, Washington, Oregon] and so on. It can be anything meaningful to your environment. For this tutorial, we’ll categorize types of cameras by their function.
 
-#. From the **Karbon Services for IoT** management portal, select :fa:`bars` **> Infrastructure > Categories**.
+#. From the **Karbon Platform Services for IoT** management portal, select :fa:`bars` **> Infrastructure > Categories**.
 
 #. Click on the default **Data Type** to explore the default values.
 
@@ -82,11 +82,11 @@ An example of a category could be “City” with values in [San Francisco, San 
 Creating a Project
 ++++++++++++++++++
 
-In Karbon Services for IoT, Projects are used to segment resources such as applications and edges so that only assigned users can view and modify them. This allows different departments or teams to utilize shared data sources, edges, or cloud resources without interfering with each other.
+In Karbon Platform Services for IoT, Projects are used to segment resources such as applications and edges so that only assigned users can view and modify them. This allows different departments or teams to utilize shared data sources, edges, or cloud resources without interfering with each other.
 
 As part of this tutorial, you’ll create a new Project to deploy your sample Data Pipelines and Applications.
 
-#. From the **Karbon Services for IoT** management portal, select :fa:`bars` **> Projects > + Create**.
+#. From the **Karbon Platform Services for IoT** management portal, select :fa:`bars` **> Projects > + Create**.
 
 #. Fill out the following fields and click **Next**:
 
@@ -99,9 +99,9 @@ As part of this tutorial, you’ll create a new Project to deploy your sample Da
 
 #. Click **+ Add Edges** and select your Edge.
 
-   Karbon Services for IoT has the ability to natively output Data Pipelines from the edge to several public cloud services such as AWS S3, or GCP Cloud Datastore. For this tutorial, Cloud Profile Selection can be left blank because no cloud resources will be used.
+   Karbon Platform Services for IoT has the ability to natively output Data Pipelines from the edge to several public cloud services such as AWS S3, or GCP Cloud Datastore. For this tutorial, Cloud Profile Selection can be left blank because no cloud resources will be used.
 
-   Karbon Services for IoT can also natively run Applications (Docker containers) at the edge using Kubernetes formated yaml as the only required input. Each yaml definition refers to a container image stored in a public or private registry. Private registries can be accessed by creating a Karbon Services for IoT Container Registry Profile to store required access information. Because this tutorial utilizes containers hosted in a public registry, Container Registry Selection can be left blank.
+   Karbon Platform Services for IoT can also natively run Applications (Docker containers) at the edge using Kubernetes formated yaml as the only required input. Each yaml definition refers to a container image stored in a public or private registry. Private registries can be accessed by creating a Karbon Platform Services for IoT Container Registry Profile to store required access information. Because this tutorial utilizes containers hosted in a public registry, Container Registry Selection can be left blank.
 
    .. figure:: images/7.png
 
@@ -112,18 +112,18 @@ Staging Source Data
 
 The tutorial depends on the availability of a video stream from which to identify faces.
 
-Karbon Services for IoT supports direct ingest of RTSP (commonly used in retail/security) and GigE Vision (commonly used in manufacturing/industrial) video streaming protocols, as well as `MQTT <http://mqtt.org/>`_ messaging protocol (commonly used by IoT sensor devices). For other industry specific protocols, numerous hardware & software “gateways” exist to translate those data formats & protocols into MQTT.
+Karbon Platform Services for IoT supports direct ingest of RTSP (commonly used in retail/security) and GigE Vision (commonly used in manufacturing/industrial) video streaming protocols, as well as `MQTT <http://mqtt.org/>`_ messaging protocol (commonly used by IoT sensor devices). For other industry specific protocols, numerous hardware & software “gateways” exist to translate those data formats & protocols into MQTT.
 
 Outside of a tutorial environment, these video streams would likely originate on a camera or network video recorder external to the Edge device.
-However, for the purposes of the tutorial, we can leverage Karbon Services for IoT's **Application** construct to deploy a pre-configured containerized application hosting an `RTSP video stream <https://hub.docker.com/r/xiiot/facefeed-rtsp-sample>`_ running directly on your Edge VM.
+However, for the purposes of the tutorial, we can leverage Karbon Platform Services for IoT's **Application** construct to deploy a pre-configured containerized application hosting an `RTSP video stream <https://hub.docker.com/r/xiiot/facefeed-rtsp-sample>`_ running directly on your Edge VM.
 
-As mentioned above, Karbon Services for IoT Applications are simply Docker containers that can be deployed to the edge using Kubernetes formated yaml as the only required input.
-This is considered Containers-as-a-Service (CaaS) functionality and is sold as a specific Karbon Services for IoT service SKU.
+As mentioned above, Karbon Platform Services for IoT Applications are simply Docker containers that can be deployed to the edge using Kubernetes formated yaml as the only required input.
+This is considered Containers-as-a-Service (CaaS) functionality and is sold as a specific Karbon Platform Services for IoT service SKU.
 
 Deploying RTSP Sample Feed Application
 ......................................
 
-#. From the **Karbon Services for IoT** management portal, select :fa:`bars` **> Projects > Facefeed > Apps & Data > Applications > + Create Application**.
+#. From the **Karbon Platform Services for IoT** management portal, select :fa:`bars` **> Projects > Facefeed > Apps & Data > Applications > + Create Application**.
 
 #. Fill out the following fields and click **Next**:
 
@@ -155,11 +155,11 @@ Deploying RTSP Sample Feed Application
 Adding RTSP Sample Feed as a Data Source
 ........................................
 
-#. From the **Karbon Services for IoT** management portal, select :fa:`bars` **> Infrastructure > Edges**.
+#. From the **Karbon Platform Services for IoT** management portal, select :fa:`bars` **> Infrastructure > Edges**.
 
 #. Record your Edge IP address. You'll need this in the next step.
 
-#. From the **Karbon Services for IoT** management portal, select :fa:`bars` **> Infrastructure > Data Sources > + Add Data Source**.
+#. From the **Karbon Platform Services for IoT** management portal, select :fa:`bars` **> Infrastructure > Data Sources > + Add Data Source**.
 
 #. Fill out the following fields and click **Next**:
 
@@ -199,9 +199,9 @@ Adding RTSP Sample Feed as a Data Source
 Deploying Functions
 +++++++++++++++++++
 
-Karbon Services for IoT Functions allow developers to directly build and execute business logic to correlate, filter, or transform data in standard languages such as Python or Go without the burden of maintaining underlying operating systems or runtimes.
+Karbon Platform Services for IoT Functions allow developers to directly build and execute business logic to correlate, filter, or transform data in standard languages such as Python or Go without the burden of maintaining underlying operating systems or runtimes.
 
-#. From the **Karbon Services for IoT** management portal, select :fa:`bars` **> Projects > Facefeed > Apps & Data > Functions > + Add Function**.
+#. From the **Karbon Platform Services for IoT** management portal, select :fa:`bars` **> Projects > Facefeed > Apps & Data > Functions > + Add Function**.
 
 #. Fill out the following fields to create the first function:
 
@@ -213,7 +213,7 @@ Karbon Services for IoT Functions allow developers to directly build and execute
 
    .. figure:: images/8.png
 
-Karbon Services for IoT Functions may be written in well known software languages most commonly used for edge computing and machine learning. These currently include Python, Go, and Node.js.
+Karbon Platform Services for IoT Functions may be written in well known software languages most commonly used for edge computing and machine learning. These currently include Python, Go, and Node.js.
 This allows developers to re-use existing code, or quickly write new logic utilizing standard libraries, and without the burden of learning a new platform or language.
 
 #. Click **Next**.
@@ -242,14 +242,14 @@ This allows developers to re-use existing code, or quickly write new logic utili
 Deploying Data Pipelines
 ++++++++++++++++++++++++
 
-Data Pipelines in Karbon Services for IoT allow you to transform data by injecting your own code. In this exercise, we will use Data Pipelines to transform frames (from the video feed) into Face IDs (by using machine learning).
+Data Pipelines in Karbon Platform Services for IoT allow you to transform data by injecting your own code. In this exercise, we will use Data Pipelines to transform frames (from the video feed) into Face IDs (by using machine learning).
 
 Data Pipeline 1 - faceregister
 ..............................
 
 This Data Pipeline will source the frames from a local webcam or uploaded image (using a containerized UI application you’ll deploy), apply a TensorFlow machine learning model to detect faces, calculate a unique Face ID, and persist the data  in the local Elasticsearch instance running on your edge.
 
-#. From the **Karbon Services for IoT** management portal, select :fa:`bars` **> Projects > Facefeed > Apps & Data > Data Pipelines > + Create Data Pipeline**.
+#. From the **Karbon Platform Services for IoT** management portal, select :fa:`bars` **> Projects > Facefeed > Apps & Data > Data Pipelines > + Create Data Pipeline**.
 
 #. Select the **Facefeed** project and click **Next**.
 
@@ -316,9 +316,9 @@ The containerized UI application you’ll deploy will show the known vs unknown 
 
 #. Click **Create**.
 
-   At this point, your Data Sources, Functions, and Data Pipelines are all configured and automatically deployed by Karbon Services for IoT onto your edge based on your earlier Edge assignment within the Facefeed Project.
+   At this point, your Data Sources, Functions, and Data Pipelines are all configured and automatically deployed by Karbon Platform Services for IoT onto your edge based on your earlier Edge assignment within the Facefeed Project.
 
-   In this tutorial you’re outputting Data Pipeline results to an Elasticsearch instance hosted on your edge, but Karbon Services for IoT has native capability to output in many ways.
+   In this tutorial you’re outputting Data Pipeline results to an Elasticsearch instance hosted on your edge, but Karbon Platform Services for IoT has native capability to output in many ways.
    From the Destination dropdown you’ll notice the ability to output to your edge, or to a cloud.
 
    Here’s a breakdown of options and typical use cases:
@@ -326,7 +326,7 @@ The containerized UI application you’ll deploy will show the known vs unknown 
    - **Infrastructure**
        - **Kafka** - real-time streaming between edge local applications
        - **MQTT** - real-time streaming devices (actuators or other edge devices)
-       - **Realtime Data Stream** - real-time streaming between Karbon Services for IoT Data Pipelines
+       - **Realtime Data Stream** - real-time streaming between Karbon Platform Services for IoT Data Pipelines
    - **Cloud**
        - **AWS**
            - **Kinesis** - real-time streaming for large volumes of data
@@ -344,7 +344,7 @@ So far you have deployed a data source, functions for processing that data, and 
 Like the sample RTSP stream, Facefeed is a containerized application described by a YAML file provided in the Git repository.
 It provides the GUI used to upload images to be analyzed by the **faceregister** pipeline, as well as a log of all recognized and unrecognized faces outputted by the **facerecognitionlivefeed** pipeline.
 
-#. From the **Karbon Services for IoT** management portal, select :fa:`bars` **> Projects > Facefeed > Apps & Data > Applications > + Create**.
+#. From the **Karbon Platform Services for IoT** management portal, select :fa:`bars` **> Projects > Facefeed > Apps & Data > Applications > + Create**.
 
 #. Fill out the following fields and click **Next**:
 
@@ -390,10 +390,10 @@ It provides the GUI used to upload images to be analyzed by the **faceregister**
 
 #. Return to the **Dashboard** for the summary view of both projects and infrastructure.
 
-   Congratulations! You've successfully deployed a facial recognition application to your edge from Karbon Services for IoT.
-   This base application could be modified for use in retail, banking, municipalities and more. Karbon Services for IoT would then make it simple to manage the deployment and monitoring of both the edge servers as well as the applications and data residing on them.
+   Congratulations! You've successfully deployed a facial recognition application to your edge from Karbon Platform Services for IoT.
+   This base application could be modified for use in retail, banking, municipalities and more. Karbon Platform Services for IoT would then make it simple to manage the deployment and monitoring of both the edge servers as well as the applications and data residing on them.
 
-   This tutorial is but one edge application example. Karbon Services for IoT has already been deployed by customers to:
+   This tutorial is but one edge application example. Karbon Platform Services for IoT has already been deployed by customers to:
 
    - Identify objects on a manufacturing assembly line and control a robot to remove unsanctioned objects automatically.
    - Collect multiple parameters from various sensors on a manufacturing assembly line, correlate them, and send aggregated data to the cloud.
@@ -402,7 +402,7 @@ It provides the GUI used to upload images to be analyzed by the **faceregister**
 Takeaways
 +++++++++
 
-What are the key things you should know about **Nutanix Karbon Services for IoT**?
+What are the key things you should know about **Nutanix Karbon Platform Services for IoT**?
 
 - A single platform that can run AI-based apps, containers, and functions as a service.
 

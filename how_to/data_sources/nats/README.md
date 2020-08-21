@@ -1,6 +1,6 @@
 ## NATS Data Interface
 
-The *nats* data interface can be used to connect the NATS resources you have set up on the edge to Karbon Services for IoT. To start setting up this datasource, use the following example YAML and create your data source via the Karbon Services for IoT CLI.
+The *nats* data interface can be used to connect the NATS resources you have set up on the edge to Karbon Platform Services for IoT. To start setting up this datasource, use the following example YAML and create your data source via the Karbon Platform Services for IoT CLI.
 
 **nats.yaml**
 ```yaml
@@ -81,7 +81,7 @@ litmus        	<names>:
                		devicehub.raw.<topic>.*
 ```
 
-Proceed to add required device topics directly in the Karbon Services for IoT UI. Proceed to **Infrastructure** → **Data Sources** and click on *litmus*. 
+Proceed to add required device topics directly in the Karbon Platform Services for IoT UI. Proceed to **Infrastructure** → **Data Sources** and click on *litmus*. 
 Select **Edit** and you should be brought to a menu where you can define your data source topics. You should see your some topics such as port and secret already present. Now you 
 can add the device topic of your choice and select **Update**.
 * Once you have updated your data source, you will start ingesting data from your selected device and use this entity in Kubernetes Applications and Data Pipelines.
@@ -91,8 +91,8 @@ can add the device topic of your choice and select **Update**.
 What happens if a device topic is removed and a new one added?
 * The stream will be immediately cancelled and the data source will start ingesting data from the new device topic.
 
-Can topics from multiple devices be added to the same Karbon Services data source?
+Can topics from multiple devices be added to the same Karbon Platform Services data source?
 * No, it is recommended to create multiple data sources for each unique device topic. External gateway devices or software (like Litmus Edge) may also be used to aggregate data from multiple sources. 
 
-Is there a way to ingest multiple device and protocol (i.e. PLC) sources as one Karbon Services for IoT data source?
+Is there a way to ingest multiple device and protocol (i.e. PLC) sources as one Karbon Platform Services for IoT data source?
 * Yes, multiple devices can be configured under one device topic in Litmus Edge.

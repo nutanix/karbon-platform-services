@@ -164,7 +164,7 @@ This app YAML starts Kafdrop, a Kafka UI on any Service Domain.
 
 External clients must specify a list of Kafka brokers (IP:port) as usual for Kafka clients. We publish list of Kafka endpoints in UI.
 
-To see externally exposed Kafka brokers for your project: From the Projects page in the Karbon Services for IoT cloud management console, click your project name. Open Data Services > Kafka and click the Deployments tab.
+To see externally exposed Kafka brokers for your project: From the Projects page in the Karbon Platform Services for IoT cloud management console, click your project name. Open Data Services > Kafka and click the Deployments tab.
 
 ## Kafka settings
 
