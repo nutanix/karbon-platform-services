@@ -1,9 +1,9 @@
-# Karbon Platform Services
+# Karbon Platform Services for IoT
 
-## Karbon Platform Services for IoT Overview
+## Overview
 The Nutanix Karbon Platform Services for IoT platform delivers local compute and AI for IoT edge devices, converging the edge and cloud into one seamless data processing platform. The Karbon Platform Services for IoT platform eliminates complexity, accelerates deployments, and elevates developers to focus on the business logic powering IoT applications and services. Now developers can use a low-code development platform to create application software via APIs instead of arduous programming methods.
 
-## Karbon Platform Services for IoT Trial
+## Trial
 This Karbon Platform Services for IoT Quick Start leverages the Karbon Platform Services for IoT Trial. The trial is a limited-time, ready-to-deploy implementation of the Karbon Platform Services for IoT edge computing platform. The Karbon Platform Services for IoT Trial provides pre-built applications and data connectors hosted on its own infrastructure. This instant architecture demonstrates how to quickly develop and test IoT applications in the cloud for seamless deployment to the edge.
 
 Nutanix has already created the basic infrastructure you need to get started.
