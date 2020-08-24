@@ -1,6 +1,6 @@
 # Creating a Log Collector
 
-Read about log collectors details and requirements in the [Karbon Platform Services for IoT Admin Guide](https://portal.nutanix.com/#/page/docs/details?targetId=kpsctl-Infra-Admin-Guide:edg-iot-logs-c.html).
+Read about log collectors details and requirements in the [Karbon Platform Services for IoT Admin Guide](https://portal.nutanix.com/#/page/docs/details?targetId=kps-Infra-Admin-Guide:edg-iot-logs-c.html).
 
 Each sample YAML file defines a log collector. Log collectors can be:
 - Infrastructure-based: collect infrastructure-related (service domain) information
@@ -21,7 +21,7 @@ You can connect each log collector to the destination cloud's logging infrastruc
 
 Create a log collector defined in a YAML file:
 
-`user@host$ kpsctl create -f log-collector.yaml`
+`user@host$ kps create -f log-collector.yaml`
 
 ### infra-logcollector-cloudwatch.yaml
 

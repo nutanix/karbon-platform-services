@@ -22,7 +22,7 @@ Now developers can use a low-code development platform to create application sof
 
 In this tutorial you’ll deploy an application called “Facefeed” using the Karbon Platform Services for IoT SaaS control plane. This application ingests a video stream using the real time streaming protocol (RTSP), and uses machine learning to detect known faces.
 The application and its data pipelines are deployed to a Xi Edge device for local execution. This tutorial assumes your edge has already been deployed using steps
-from the `Karbon Platform Services for IoT Infrastructure Admin Guide <https://portal.nutanix.com/#/page/docs/details?targetId=Xi-IoT-Infra-Admin-Guide:Xi-IoT-Infra-Admin-Guide>`_. Access to the Admin Guide is provided via the My Nutanix Portal and requires an account to login.
+from the `Karbon Platform Services for IoT Infrastructure Admin Guide <https://portal.nutanix.com/page/documents/details?targetId=Karbon-Platform-Services-Admin-Guide:Karbon-Platform-Services-Admin-Guide>`_. Access to the Admin Guide is provided via the My Nutanix Portal and requires an account to login.
 
 Accessing Karbon Platform Services for IoT
 ++++++++++++++++

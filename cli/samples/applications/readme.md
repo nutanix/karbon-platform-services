@@ -1,6 +1,6 @@
 # Creating an Application
 
-Read more about application details and requirements in the [Karbon Platform Services for IoT Admin Guide](https://portal.nutanix.com/#/page/docs/details?targetId=Xi-IoT-Infra-Admin-Guide:Xi-IoT-Infra-Admin-Guide).
+Read more about application details and requirements in the [Karbon Platform Services for IoT Admin Guide](https://portal.nutanix.com/page/documents/details?targetId=Karbon-Platform-Services-Admin-Guide:Karbon-Platform-Services-Admin-Guide).
 
 You can create intelligent applications to run on the Karbon Platform Services for IoT edge or cloud instance cloud where you have pushed collected data.
 
@@ -8,7 +8,7 @@ You can create intelligent applications to run on the Karbon Platform Services f
 
 Create an application with attributes defined in a YAML file. An application requires Karbon Platform Services for IoT edge or Karbon Platform Services for IoT cloud instance.
 
-`user@host$ kpsctl create -f echo-ifc-app.yaml`
+`user@host$ kps create -f echo-ifc-app.yaml`
 
 ## echo-sample-app.yaml
 

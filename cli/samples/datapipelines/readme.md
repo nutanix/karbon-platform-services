@@ -1,6 +1,6 @@
 # Creating a Data Pipeline
 
-Read about data pipeline details and requirements in the [Karbon Platform Services for IoT Admin Guide](https://portal.nutanix.com/#/page/docs/details?targetId=Xi-IoT-Infra-Admin-Guide:Xi-IoT-Infra-Admin-Guide).
+Read about data pipeline details and requirements in the [Karbon Platform Services for IoT Admin Guide](https://portal.nutanix.com/page/documents/details?targetId=Karbon-Platform-Services-Admin-Guide:Karbon-Platform-Services-Admin-Guide).
 
 Each sample YAML file defines a data pipeline. A data pipeline consists of:
 
@@ -12,7 +12,7 @@ Each sample YAML file defines a data pipeline. A data pipeline consists of:
 
 Create a data pipeline with attributes defined in a YAML file.
 
-`user@host$ kpsctl create -f mqtt-input-s3-output.yaml`
+`user@host$ kps create -f mqtt-input-s3-output.yaml`
 
 ## mqtt-input-s3-output.yaml
 
@@ -98,7 +98,7 @@ output:
 |  | type | Here, `Azure`. |
 |  | service | Here, `Blob` indicates Azure blob storage |
 |  | endpointName | Here, name of the Azure blob |
-|  | profile | Specify the name of your cloud profile. The [Karbon Platform Services for IoT Admin Guide](https://portal.nutanix.com/#/page/docs/details?targetId=Xi-IoT-Infra-Admin-Guide:Xi-IoT-Infra-Admin-Guide) describes how to create your cloud profile. |
+|  | profile | Specify the name of your cloud profile. The [Karbon Platform Services for IoT Admin Guide](https://portal.nutanix.com/page/documents/details?targetId=Karbon-Platform-Services-Admin-Guide:Karbon-Platform-Services-Admin-Guide) describes how to create your cloud profile. |
 
 ## mqtt-input-local-kafka-output.yaml
 
@@ -204,4 +204,4 @@ output:
 2. It samples that streaming data every millisecond. The sampled data is again transformed by the `echo-param-fn` function.
 3. The destination for the transformed data is an a cloud instance: AWS Kinesis endpoint named `pipeline2-to-kinesis`.
 
-Note: The [Karbon Platform Services for IoT Admin Guide](https://portal.nutanix.com/#/page/docs/details?targetId=Xi-IoT-Infra-Admin-Guide:Xi-IoT-Infra-Admin-Guide) describes how to create your cloud profile and add your [cloud profile to a project] (https://portal.nutanix.com/#/page/docs/details?targetId=Xi-IoT-Infra-Admin-Guide:edg-iot-projects-c.html).
+Note: The [Karbon Platform Services for IoT Admin Guide](https://portal.nutanix.com/page/documents/details?targetId=Karbon-Platform-Services-Admin-Guide:Karbon-Platform-Services-Admin-Guide) describes how to create your cloud profile and add your [cloud profile to a project] (https://portal.nutanix.com/#/page/docs/details?targetId=Xi-IoT-Infra-Admin-Guide:edg-iot-projects-c.html).

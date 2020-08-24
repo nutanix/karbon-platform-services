@@ -1,6 +1,6 @@
 # Creating a Function
 
-Read more about function details and requirements in the [Karbon Platform Services for IoT Admin Guide](https://portal.nutanix.com/#/page/docs/details?targetId=Xi-IoT-Infra-Admin-Guide:Xi-IoT-Infra-Admin-Guide).
+Read more about function details and requirements in the [Karbon Platform Services for IoT Admin Guide](https://portal.nutanix.com/page/documents/details?targetId=Karbon-Platform-Services-Admin-Guide:Karbon-Platform-Services-Admin-Guide).
 
 A function lets you run code on data flowing through a [Data Pipeline](../datapipelines). This code could be as simple as basic text processing function or it could be advanced code implementing artificial intelligence algorithms, leveraging popular machine learning frameworks like Tensorflow. Supported languages include Python, Golang, and Node.js.
 
@@ -8,7 +8,7 @@ A function lets you run code on data flowing through a [Data Pipeline](../datapi
 
 Create a function with parameters and other attributes defined in a YAML file.
 
-`user@host$ kpsctl create -f echo-with-param.yaml`
+`user@host$ kps create -f echo-with-param.yaml`
 
 ## echo-with-param.yaml
 

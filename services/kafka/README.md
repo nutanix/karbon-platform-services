@@ -28,13 +28,13 @@ We automatically size the number of Kafka brokers to be equal to number of nodes
 The service can be instantiated using CLI as follows:
 
 ```
-$ kpsctl create -f kafka-with-defaults.yaml
+$ kps create -f kafka-with-defaults.yaml
 ```
 
 We can query back service instance in project Kafka:
 
 ```
-kpsctl get service -p KafkaTest Kafka -o yaml
+kps get service -p KafkaTest Kafka -o yaml
 kind: service
 name: Kafka
 project: KafkaTest
@@ -47,13 +47,13 @@ You can see serviceYaml property which is null in config. That means default con
 You can update the configuration after creating it. Depending on the updates, Kafka cluster availability might be affected.
 
 ```
-$ kpsctl update -f changed-kafka-config.yaml
+$ kps update -f changed-kafka-config.yaml
 ```
 
 If you no longer require the Kafka data service, you can delete it from the project.
 
 ```
-$ kpsctl delete service -p KafkaTest Kafka
+$ kps delete service -p KafkaTest Kafka
 ```
 
 Of course, deleting the service might affect running applications and data pipelines.

@@ -1,12 +1,12 @@
 # Creating a Data Source
 
-Read about data source and category details and requirements in the [Karbon Platform Services for IoT Admin Guide](https://portal.nutanix.com/#/page/docs/details?targetId=Xi-IoT-Infra-Admin-Guide:Xi-IoT-Infra-Admin-Guide).
+Read about data source and category details and requirements in the [Karbon Platform Services for IoT Admin Guide](https://portal.nutanix.com/page/documents/details?targetId=Karbon-Platform-Services-Admin-Guide:Karbon-Platform-Services-Admin-Guide).
 
 ## Example Usage
 
 Create a data source with attributes you've defined in a YAML file.
 
-`user@host$ kpsctl create -f my-mqtt-datasource.yaml`
+`user@host$ kps create -f my-mqtt-datasource.yaml`
 
 # Creating The Data Source YAML File
 
