@@ -1,4 +1,4 @@
-.. title:: Nutanix Karbon Platform Services for IoT Quick Start for MQTT Data Pipelines
+.. title:: Nutanix Xi IoT Quick Start for MQTT Data Pipelines
 
 .. toctree::
   :maxdepth: 2
@@ -11,43 +11,43 @@
 
    
 --------------------------------------------
-Karbon Platform Services for IoT - Quick Start for MQTT Data Pipelines
+Xi IoT - Quick Start for MQTT Data Pipelines
 --------------------------------------------
 
-Karbon Platform Services for IoT Overview
+Xi IoT Overview
 ###############
 
 
-The Nutanix Karbon Platform Services for IoT platform delivers local compute and AI for IoT edge devices, converging the edge and cloud into one seamless data processing platform.
-The Karbon Platform Services for IoT platform eliminates complexity, accelerates deployments, and elevates developers to focus on the business logic powering IoT applications and services.
+The Nutanix Xi IoT platform delivers local compute and AI for IoT edge devices, converging the edge and cloud into one seamless data processing platform.
+The Xi IoT platform eliminates complexity, accelerates deployments, and elevates developers to focus on the business logic powering IoT applications and services.
 Now developers can use a low-code development platform to create application software via APIs instead of arduous programming methods.
 
-SUPPORT FOR AND LEARNING MORE ABOUT Karbon Platform Services for IoT
+SUPPORT FOR AND LEARNING MORE ABOUT XI IOT
 
-The most support for the Karbon Platform Services for IoT trial is available through the
-Nutanix Next Karbon Platform Services for IoT trial forum. Nutanix asks that you share your
+The most support for the Xi IoT trial is available through the
+Nutanix Next Xi IoT trial forum. Nutanix asks that you share your
 experiences and lessons learned with your fellow users.
 
 You can also visit the following pages for more information about Xi
 IoT.
 
--  Connect with other users at `Karbon Platform Services for IoT User
+-  Connect with other users at `Xi IoT User
    Forum. <https://next.nutanix.com/xi-iot-72>`__
 
 -  Connect on `Twitter <https://twitter.com/NutanixIoT>`__ with the
-   Nutanix Karbon Platform Services for IoT team.
+   Nutanix Xi IoT team.
 
--  Check out articles about Karbon Platform Services for IoT at the
+-  Check out articles about Xi IoT at the
    `Nutanix Developer site <https://developer.nutanix.com/iot>`__.
 
--  View videos about Karbon Platform Services for IoT at `Nutanix University YouTube
+-  View videos about Xi IoT at `Nutanix University YouTube
    channel <https://www.youtube.com/watch?v#wmUkz-XZLJo>`__.
 
--  Get more details about Karbon Platform Services for IoT features in the `Nutanix
+-  Get more details about Xi IoT features in the `Nutanix
    documentation <https://portal.nutanix.com/?filterKey#type&filterVal#Xi#/page/docs/list>`__.
 
 
-Logging On to the Karbon Platform Services for IoT Console
+Logging On to the Xi IoT Console
 --------------------------------
 
 Before you begin:
@@ -60,18 +60,18 @@ Google Chrome. You'll need your My Nutanix credentials for this step.
 
 2. If you are logging on for the first time, click to read the Terms and Conditions, then click to Accept and Continue.
 
-3. Take a few moments to read about Karbon Platform Services for IoT, then click Get Started.
+3. Take a few moments to read about Xi IoT, then click Get Started.
 
-Your web browser displays the Karbon Platform Services for IoT dashboard and the Karbon Platform Services for IoT Quick Start Menu.
+Your web browser displays the Xi IoT dashboard and the Xi IoT Quick Start Menu.
 
 Creating a Project
 ++++++++++++++++++
 
-In Karbon Platform Services for IoT, Projects are used to segment resources such as applications and edges so that only assigned users can view and modify them. This allows different departments or teams to utilize shared data sources, edges, or cloud resources without interfering with each other.
+In Xi IoT, Projects are used to segment resources such as applications and edges so that only assigned users can view and modify them. This allows different departments or teams to utilize shared data sources, edges, or cloud resources without interfering with each other.
 
 As part of this tutorial, you’ll create a new Project to deploy your sample Data Pipelines and Applications.
 
-#. From the **Karbon Platform Services for IoT** management portal, select :fa:`bars` **> Projects > + Create**.
+#. From the **Xi IoT** management portal, select :fa:`bars` **> Projects > + Create**.
 
 #. Fill out the following fields and click **Next**:
 
@@ -82,9 +82,9 @@ As part of this tutorial, you’ll create a new Project to deploy your sample Da
 
 #. Click **+ Add Infrastructure**, select your Edge, and click **Done**.
 
-   Karbon Platform Services for IoT has the ability to natively output Data Pipelines from the edge to several public cloud services such as AWS S3, or GCP Cloud Datastore. For this tutorial, Cloud Profile Selection can be left blank because no cloud resources will be used.
+   Xi IoT has the ability to natively output Data Pipelines from the edge to several public cloud services such as AWS S3, or GCP Cloud Datastore. For this tutorial, Cloud Profile Selection can be left blank because no cloud resources will be used.
 
-   Karbon Platform Services for IoT can also natively run Applications (Docker containers) at the edge using Kubernetes formated yaml as the only required input. Each yaml definition refers to a container image stored in a public or private registry. Private registries can be accessed by creating a Karbon Platform Services for IoT Container Registry Profile to store required access information. Because this tutorial utilizes containers hosted in a public registry, Container Registry Selection can be left blank.
+   Xi IoT can also natively run Applications (Docker containers) at the edge using Kubernetes formated yaml as the only required input. Each yaml definition refers to a container image stored in a public or private registry. Private registries can be accessed by creating a Xi IoT Container Registry Profile to store required access information. Because this tutorial utilizes containers hosted in a public registry, Container Registry Selection can be left blank.
 
 #. Click **Create**.
 
@@ -93,15 +93,15 @@ Staging Source Data
 
 The tutorial depends on the availability of MQTT sample data.
 
-Karbon Platform Services for IoT supports direct ingest of `MQTT <http://mqtt.org/>`_ messaging protocol (commonly used by IoT sensor devices). For other industry specific protocols, numerous hardware & software “gateways” exist to translate those data formats & protocols into MQTT.
+Xi IoT supports direct ingest of `MQTT <http://mqtt.org/>`_ messaging protocol (commonly used by IoT sensor devices). For other industry specific protocols, numerous hardware & software “gateways” exist to translate those data formats & protocols into MQTT.
 
 Outside of a tutorial environment, this data would likely originate on a device external to the Edge device.
-However, for the purposes of the tutorial, we can leverage Karbon Platform Services for IoT's **Application** construct to deploy a `pre-configured containerized application <https://cloud.docker.com/u/xiiot/repository/docker/xiiot/mqtt-sensor>`_ running directly on your Edge to generate MQTT data.
+However, for the purposes of the tutorial, we can leverage Xi IoT's **Application** construct to deploy a `pre-configured containerized application <https://cloud.docker.com/u/xiiot/repository/docker/xiiot/mqtt-sensor>`_ running directly on your Edge to generate MQTT data.
 
-As mentioned above, Karbon Platform Services for IoT Applications are simply Docker containers that can be deployed to the edge using Kubernetes formated yaml as the only required input.
-This is considered Containers-as-a-Service (CaaS) functionality and is sold as a specific Karbon Platform Services for IoT service SKU.
+As mentioned above, Xi IoT Applications are simply Docker containers that can be deployed to the edge using Kubernetes formated yaml as the only required input.
+This is considered Containers-as-a-Service (CaaS) functionality and is sold as a specific Xi IoT service SKU.
 
-Using a Karbon Platform Services for IoT App to Generate Sample MQTT Data
+Using a Xi IoT App to Generate Sample MQTT Data
 -----------------------------------------------
 
 "MQTT Sensor” is a single container application that executes a python script to download a CSV file input and 
@@ -146,7 +146,7 @@ Creating the MQTT Sensor Data Source
 Deploying the MQTT Sensor Application
 +++++++++++++++++++++++++++++++++++++
 
-#. From the **Karbon Platform Services for IoT** management portal, select :fa:`bars` **> Projects > MQTT Pipeline > Apps & Data > Applications > + Create Application**.
+#. From the **Xi IoT** management portal, select :fa:`bars` **> Projects > MQTT Pipeline > Apps & Data > Applications > + Create Application**.
 
 #. Fill out the following fields and click **Next**:
 
@@ -176,7 +176,7 @@ Deploying the MQTT Sensor Application
 
 #. Click **Next**.
 
-   The Input and Output page provides the option to use a YouTube-8M video or Karbon Platform Services for IoT Sensor phone app as input and a 
+   The Input and Output page provides the option to use a YouTube-8M video or Xi IoT Sensor phone app as input and a 
    HTTP Live Stream (HLS) as an output for applications. A user can simply check the appropriate boxes and install a `NATS <https://nats.io>`__
    client within their application. The selected input will be available on the NATS topic name stored in the NATS_SRC_TOPIC environment 
    variable where it can be subscribed to by using the NATS server name stored in the NATS_ENDPOINT environment variable. Application output 
@@ -193,9 +193,9 @@ Deploying the MQTT Sensor Application
 Deploying Functions
 +++++++++++++++++++
 
-Karbon Platform Services for IoT Functions allow developers to directly build and execute business logic to correlate, filter, or transform data in standard languages such as Python or Go without the burden of maintaining underlying operating systems or runtimes.
+Xi IoT Functions allow developers to directly build and execute business logic to correlate, filter, or transform data in standard languages such as Python or Go without the burden of maintaining underlying operating systems or runtimes.
 
-#. From the **Karbon Platform Services for IoT** management portal, select :fa:`bars` **> Projects > MQTT Pipeline > Apps & Data > Functions > + Add Function**.
+#. From the **Xi IoT** management portal, select :fa:`bars` **> Projects > MQTT Pipeline > Apps & Data > Functions > + Add Function**.
 
 #. Fill out the following fields to create the first function:
 
@@ -205,7 +205,7 @@ Karbon Platform Services for IoT Functions allow developers to directly build an
    - **Language** - Python
    - **Runtime Environment** - Python2 Env
 
-   Karbon Platform Services for IoT Functions may be written in well known software languages most commonly used for edge computing and machine learning. These currently include Python, Go, and Node.js.
+   Xi IoT Functions may be written in well known software languages most commonly used for edge computing and machine learning. These currently include Python, Go, and Node.js.
    This allows developers to re-use existing code, or quickly write new logic utilizing standard libraries, all without the burden of learning a new platform or language.
 
 #. Click **Next**.
@@ -217,9 +217,9 @@ Karbon Platform Services for IoT Functions allow developers to directly build an
 Deploying Data Pipeline
 +++++++++++++++++++++++
 
-Data Pipelines in Karbon Platform Services for IoT allow you to transform data by injecting your own code. In this exercise, we will use Data Pipelines to filter message payloads with temperature values less than 65, and deliver message payloads with temperature values higher than 65.
+Data Pipelines in Xi IoT allow you to transform data by injecting your own code. In this exercise, we will use Data Pipelines to filter message payloads with temperature values less than 65, and deliver message payloads with temperature values higher than 65.
 
-#. From the **Karbon Platform Services for IoT** management portal, select :fa:`bars` **> Projects > MQTT Pipeline > Apps & Data > Data Pipelines > + Create Data Pipeline**.
+#. From the **Xi IoT** management portal, select :fa:`bars` **> Projects > MQTT Pipeline > Apps & Data > Data Pipelines > + Create Data Pipeline**.
 
 #. Fill out the following fields to build the pipeline:
 
@@ -234,9 +234,9 @@ Data Pipelines in Karbon Platform Services for IoT allow you to transform data b
 
 #. Click **Create**.
 
-   At this point, your Data Sources, Functions, and Data Pipelines are all configured and automatically deployed by Karbon Platform Services for IoT onto your edge based on your earlier assignment within the MQTT Pipeline Project.
+   At this point, your Data Sources, Functions, and Data Pipelines are all configured and automatically deployed by Xi IoT onto your edge based on your earlier assignment within the MQTT Pipeline Project.
 
-   In this tutorial you’re outputting Data Pipeline results to a Realtime Data Stream, but Karbon Platform Services for IoT has native capability to output in many ways.
+   In this tutorial you’re outputting Data Pipeline results to a Realtime Data Stream, but Xi IoT has native capability to output in many ways.
    From the Destination dropdown you’ll notice the ability to output to your edge, or to a cloud.
 
    Here’s a breakdown of options and typical use cases:
@@ -244,8 +244,8 @@ Data Pipelines in Karbon Platform Services for IoT allow you to transform data b
    - **Infrastructure**
        - **Kafka** - real-time streaming between edge local applications
        - **MQTT** - real-time streaming devices (actuators or other edge devices)
-       - **Realtime Data Stream** - real-time streaming between Karbon Platform Services for IoT Data Pipelines
-       - **Data Interface** - real-time stream between Karbon Platform Services for IoT and custom applications and protocols
+       - **Realtime Data Stream** - real-time streaming between Xi IoT Data Pipelines
+       - **Data Interface** - real-time stream between Xi IoT and custom applications and protocols
    - **Cloud**
       - **AWS**
            - **Kinesis** - real-time streaming for large volumes of data
@@ -292,12 +292,12 @@ Bonus: Sending Data to a Cloud Destination
 Creating a Cloud Profile
 ++++++++++++++++++++++++
 
-Karbon Platform Services for IoT has the ability to natively output Data Pipelines from the edge to several public cloud services such as AWS S3, or GCP Cloud Datastore. 
+Xi IoT has the ability to natively output Data Pipelines from the edge to several public cloud services such as AWS S3, or GCP Cloud Datastore. 
 
-In this tutorial, output will be directed to an AWS S3 bucket that is secured using an IAM policy. The credentials for access will be securely stored using a Karbon Platform Services for IoT Cloud Profile
+In this tutorial, output will be directed to an AWS S3 bucket that is secured using an IAM policy. The credentials for access will be securely stored using a Xi IoT Cloud Profile
 and later assigned to a Project for use.
 
-#. From the **Karbon Platform Services for IoT** management portal, select :fa:`bars` **> Administration > Cloud Profiles> + Create**.
+#. From the **Xi IoT** management portal, select :fa:`bars` **> Administration > Cloud Profiles> + Create**.
 
 #. Fill out the following fields and click **Create**:
 
@@ -310,7 +310,7 @@ and later assigned to a Project for use.
 Edit Project
 ++++++++++++
 
-#. From the **Karbon Platform Services for IoT** management portal, select :fa:`bars` **> Projects**.
+#. From the **Xi IoT** management portal, select :fa:`bars` **> Projects**.
 
 #. Click the :fa:`check` box beside the MQTT Pipeline Project, then click **Edit**. 
 
@@ -323,7 +323,7 @@ Edit Project
 Edit Data Pipeline
 ++++++++++++++++++
 
-#. From the **Karbon Platform Services for IoT** management portal, select :fa:`bars` **> Projects > MQTT Pipeline > Apps & Data > Data Pipelines**.
+#. From the **Xi IoT** management portal, select :fa:`bars` **> Projects > MQTT Pipeline > Apps & Data > Data Pipelines**.
 
 #. On the temp-filter data pipeline tile, click **Actions**, then click **Edit**.
 
@@ -352,7 +352,7 @@ Project, then edit your data pipeline (or create a new one) to use them.
 Takeaways
 #########
 
-What are the key takeaways and other things you should know about **Nutanix Karbon Platform Services for IoT**?
+What are the key takeaways and other things you should know about **Nutanix Xi IoT**?
 
 - A single platform that can run AI-based apps, containers, and functions.
 

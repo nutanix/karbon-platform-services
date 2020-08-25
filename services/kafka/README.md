@@ -28,13 +28,13 @@ We automatically size the number of Kafka brokers to be equal to number of nodes
 The service can be instantiated using CLI as follows:
 
 ```
-$ kps create -f kafka-with-defaults.yaml
+$ xi-iot create -f kafka-with-defaults.yaml
 ```
 
 We can query back service instance in project Kafka:
 
 ```
-kps get service -p KafkaTest Kafka -o yaml
+xi-iot get service -p KafkaTest Kafka -o yaml
 kind: service
 name: Kafka
 project: KafkaTest
@@ -47,13 +47,13 @@ You can see serviceYaml property which is null in config. That means default con
 You can update the configuration after creating it. Depending on the updates, Kafka cluster availability might be affected.
 
 ```
-$ kps update -f changed-kafka-config.yaml
+$ xi-iot update -f changed-kafka-config.yaml
 ```
 
 If you no longer require the Kafka data service, you can delete it from the project.
 
 ```
-$ kps delete service -p KafkaTest Kafka
+$ xi-iot delete service -p KafkaTest Kafka
 ```
 
 Of course, deleting the service might affect running applications and data pipelines.
@@ -164,7 +164,7 @@ This app YAML starts Kafdrop, a Kafka UI on any Service Domain.
 
 External clients must specify a list of Kafka brokers (IP:port) as usual for Kafka clients. We publish list of Kafka endpoints in UI.
 
-To see externally exposed Kafka brokers for your project: From the Projects page in the Karbon Platform Services for IoT cloud management console, click your project name. Open Data Services > Kafka and click the Deployments tab.
+To see externally exposed Kafka brokers for your project: From the Projects page in the Xi IoT cloud management console, click your project name. Open Data Services > Kafka and click the Deployments tab.
 
 ## Kafka settings
 
