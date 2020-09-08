@@ -19,7 +19,7 @@ If you're not already a customer, resources found here can be leveraged in minut
 
 ### Signing up for a Karbon Platform Services trial
 Do any of these steps to sign up for a Karbon Platform Services trial.
-1. Sign up at [https://www.nutanix.com/kps-trial](https://www.nutanix.com/kps-trial).
+1. Sign up at [https://www.nutanix.com/products/karbon-platform-services/free-trial](https://www.nutanix.com/products/karbon-platform-services/free-trial).
 1. If you already have a My Nutanix account, log on to [https://my.nutanix.com](https://my.nutanix.com) with your existing account credentials and click Launch in the Karbon Platform Services panel.
 
 ## Support for and learning more about Karbon Platform Services
