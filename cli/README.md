@@ -80,7 +80,7 @@ For example, create a context named local_user_ctx_1 for an existing local user 
 (A local user is a user that does not have My Nutanix portal credentials.) 
 
 **Note**: You can only specify an existing local user email name and password in this example. 
-If you do not have a local user, create one according to the [Creating a User topic](https://portal.nutanix.com/page/documents/details?targetId=Xi-IoT-Project-User-Guide:Xi-IoT-Project-User-Guide) at the Nutanix Support Portal.
+If you do not have a local user, create one according to the [Creating a User topic](https://portal.nutanix.com/page/documents/details?targetId=Karbon-Platform-Services-Admin-Guide:Karbon-Platform-Services-Admin-Guide) at the Nutanix Support Portal.
 
 ```
 kps config create-context local_user_ctx_1 --email user1@contoso.com --password nutanix/4u
