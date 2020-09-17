@@ -12,7 +12,7 @@ type: Sensor
 authType: CERTIFICATE
 ifcInfo:
   class: DATAINTERFACE
-  img: dataifc/nats:v1.0
+  img: registry.hub.docker.com/xiiot/nats:v1.0
   kind: IN
   protocol: nats
   ports:
@@ -50,7 +50,7 @@ type: Sensor
 authType: CERTIFICATE
 ifcInfo:
   class: DATAINTERFACE
-  img: dataifc/nats:v1.0
+  img: registry.hub.docker.com/xiiot/litmus:v1.0
   kind: IN
   protocol: nats
   ports:
