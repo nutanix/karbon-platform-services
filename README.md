@@ -1,6 +1,6 @@
-![KPS!](/img/icn-karbon-color.png "KPS")
-
- # Karbon Platform Services
+<p align="center">
+    <img src="/img/logo.png">
+</p>
 
 ## Overview
 Karbon Platform Services (KPS) is a Kubernetes based multi-cloud PaaS that enables rapid development and deployment of microservices-based applications ranging from simple stateful containerized applications to complex AI, IoT and hybrid applications across any cloud. KPS eliminates complexity, accelerates deployments, and elevates developers to focus on the business logic powering applications and services.
