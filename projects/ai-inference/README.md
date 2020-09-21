@@ -331,7 +331,8 @@ You should now have a directory in your workspace called ```fashion_classifier``
 1. Recursively *zip* all the contents of the SavedModel directory. 
 	* The AI Inferencing service requires a compressed zip of the objects to be uploaded.
 ```bash
-zip fashion_classifier.zip fashion_classifier/* -r
+cd fashion_classifier/
+zip fashion_classifier.zip saved_model.pb variables/ -r
 ```
 
 </details>
