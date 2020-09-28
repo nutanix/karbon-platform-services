@@ -76,14 +76,14 @@ Configure the kps CLI to interact with Karbon Platform Services API, including y
 A kps CLI user operates under a specific context. A user email address, password, and context name defines the context.
 The user operates according to the role assigned to their user name and email for Karbon Platform Services users. 
 
-For example, create a context named local_user_ctx_1 for an existing local user user1@contoso.com with a password of nutanix/4u.
+For example, create a context named local_user_ctx_1 for an existing local user user1@contoso.com.
 (A local user is a user that does not have My Nutanix portal credentials.) 
 
 **Note**: You can only specify an existing local user email name and password in this example. 
 If you do not have a local user, create one according to the [Creating a User topic](https://portal.nutanix.com/page/documents/details?targetId=Karbon-Platform-Services-Admin-Guide:Karbon-Platform-Services-Admin-Guide) at the Nutanix Support Portal.
 
 ```
-kps config create-context local_user_ctx_1 --email user1@contoso.com --password nutanix/4u
+kps config create-context local_user_ctx_1 --email user1@contoso.com --password <password>
 ```
 
 
