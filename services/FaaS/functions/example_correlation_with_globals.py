@@ -21,10 +21,11 @@ Args:
 1. ctx - context object that has the following methods defined on it.
     1.1. get_topic() - returns the MQTT topic on which the payload was received.
                        Useful if same pipeline receives from multiple topics.
-    1.2. get_selector() - returns the categories defined on the topic.
+    1.2. get_selector(id: UUID) - Takes ID of a category as input and returns value of category used as selector in pipeline.
     1.3. get_timestamp() - returns the timestamp at which the payload was received by Sherlock edge.
     1.4. get_payload() - returns the payload received on the topic.
-    1.5. send() - used to send the processed output back onto the pipeline. Needs bytes as input.
+    1.5. send(msg: bytes) - Takes bytes as input and forwards it to the next stage in the pipeline. If the input is not of type bytes, an error is thrown and a corresponding alert is raised in Karbon Platform Services.
+    1.6. get_config() - returns a dict of parameters passed to the function.
 
 2. msg - payload, same as the returned by ctx.get_payload()
 '''
