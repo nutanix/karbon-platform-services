@@ -1,0 +1,21 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: 
+  labels:
+    app: 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app:  
+  template:
+    metadata:
+      labels:
+        app: 
+    spec:
+      containers:
+      - name: app-container
+        image: registry.hub.docker.com/skekre98/:0.0.1
+        imagePullPolicy: Always
+        command: ["/usr/local/bin/python", "animal.py"]

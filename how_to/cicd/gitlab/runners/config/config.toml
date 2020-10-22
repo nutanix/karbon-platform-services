@@ -1,0 +1,30 @@
+concurrent = 1
+check_interval = 0
+
+[[runners]]
+  name = "Python Runner"
+  url = "https://gitlab.com/"
+  token = "<project token>"
+  executor = "docker"
+  [runners.docker]
+    tls_verify = false
+    image = "python:3.5"
+    privileged = false
+    disable_cache = false
+    volumes = ["/cache"]
+    shm_size = 0
+  [runners.cache]
+
+[[runners]]
+  name = "Docker Runner"
+  url = "https://gitlab.com/"
+  token = "<project token>"
+  executor = "docker"
+  [runners.docker]
+    tls_verify = false
+    image = "docker:stable"
+    privileged = false
+    disable_cache = false
+    volumes = ["/var/run/docker.sock:/var/run/docker.sock", "/cache"]
+    shm_size = 0
+  [runners.cache]

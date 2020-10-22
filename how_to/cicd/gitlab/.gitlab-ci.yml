@@ -1,0 +1,47 @@
+variables:
+  KPS_CLUSTER_URL: https://karbon.nutanix.com/
+  KPS_PROJECT: Cat Dog
+  KPS_TOKEN: $TOKEN
+  DOCKER_RUNNER: 'docker:stable'
+  PYTHON_RUNNER: 'python:3.5'
+  VERSION: 0.0.1
+
+stages:
+  - Build image
+  - Push to Docker Hub
+  - Deploy to KPS
+
+docker build:
+  image: $DOCKER_RUNNER
+  stage: Build image
+  tags: 
+  - docker
+  only:
+  - master
+  script:
+  - docker build -t registry.hub.docker.com/$REGISTRY_USER/$app .
+  - docker tag registry.hub.docker.com/$REGISTRY_USER/$app:latest $REGISTRY_USER/$app:$VERSION
+
+docker push:
+  image: $DOCKER_RUNNER
+  stage: Push to Docker Hub
+  tags: 
+  - docker
+  only:
+  - master
+  script:
+  - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
+  - docker push $REGISTRY_USER/$app:$VERSION
+
+kps app push:
+  image: $PYTHON_RUNNER
+  stage: Deploy to KPS
+  tags:
+  - python
+  only:
+  - master
+  script:
+      - pip3 install requests
+      - python3 manage.py -u $KPS_CLUSTER_URL -p "$KPS_PROJECT" -t $KPS_TOKEN -a "$app"
+  allow_failure: true
+  
