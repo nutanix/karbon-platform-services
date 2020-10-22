@@ -16,6 +16,7 @@ You will start by setting up your environment.
     * Create a variable called **REGISTRY_USER** which will refer to your container registry username
     * Create a variable called **REGISTRY_PASS** which will refer to your container registry password
     * Create a variable called **TOKEN** which will refer to your KPS API Token
+
 **Note**: This example will be using Dockerhub as a container registry, but this framework can be used with any container registry.
 
 ## CI/CD Pipeline
@@ -40,3 +41,38 @@ docker build:
 
 There are a few labels to note in this job. The first is __tag__ which lets the project runners know who is meant to pick up the job. The __only__ label
 is used to signify which branches this job should be triggered on. Finally, __script__ signifies the commands that are to be executed inside the docker container.
+
+### Push
+
+The following is a job configured to push the cat-dog container to the container registry.
+```yaml
+docker push:
+  image: $DOCKER_RUNNER
+  stage: Push to Docker Hub
+  tags: 
+  - docker
+  only:
+  - master
+  script:
+  - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
+  - docker push $REGISTRY_USER/$app:$VERSION
+```
+
+The labels in this job are similar to the previous step. The script is logging into and then pushing to 
+the specified container registry.
+
+### Deploy
+
+The following job is configured to deploy the recently built application to KPS.
+```yaml
+  image: $PYTHON_RUNNER
+  stage: Deploy to KPS
+  tags:
+  - python
+  only:
+  - master
+  script:
+  - pip3 install requests
+  - python3 manage.py -u $KPS_CLUSTER_URL -p "$KPS_PROJECT" -t $KPS_TOKEN -a "$app"
+  allow_failure: true
+```
