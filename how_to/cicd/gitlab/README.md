@@ -21,7 +21,7 @@ You will start by setting up your environment.
 
 ## CI/CD Pipeline
 
-This section will take a deep dive into the different steps being used in the CI/CD pipeline.
+This section will take a deep dive into the different steps being used in the CI/CD pipeline. These steps have been configured in [.gitlab-ci.yml](.gitlab-ci.yml).
 
 ### Build
 
@@ -76,3 +76,22 @@ The following job is configured to deploy the recently built application to KPS.
   - python3 manage.py -u $KPS_CLUSTER_URL -p "$KPS_PROJECT" -t $KPS_TOKEN -a "$app"
   allow_failure: true
 ```
+
+Notice the new label in this job which tags the commands for the python runner. This script also allows for failure because the KPS API may return an error 
+we would like to log. At a high level, this job will be taking the deployment yaml and creating or updating the application in KPS with API calls. You can 
+find how the API calls are being made by refering to [manage.py](manage.py)
+
+## Using the Pipeline
+
+When you merge a change into the branches you have tagged in your CI yaml, the pipeline will trigger the jobs 
+that have been specified. You can view the results and logs of these jobs at **CI/CD** -> **Pipelines**. You can view the logs of the job to debug
+failures in the pipeline.
+![Jobs!](img/jobs.png "Pipeline Jobs")
+
+## Takeaways
+
+* How to set up Runners in a Gitlab project
+* Configuring environment variables in a Gitlab Project
+* How to configure a Gitlab CI job
+* How to trigger a Gitlab CI/CD pipeline
+* Using the KPS API to run a deployment job

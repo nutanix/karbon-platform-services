@@ -1,1 +1,0 @@
-# Jenkins with Karbon Platform Services

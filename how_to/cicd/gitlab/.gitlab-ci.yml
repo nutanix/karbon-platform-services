@@ -41,7 +41,7 @@ kps app push:
   only:
   - master
   script:
-      - pip3 install requests
-      - python3 manage.py -u $KPS_CLUSTER_URL -p "$KPS_PROJECT" -t $KPS_TOKEN -a "$app"
+  - pip3 install requests
+  - python3 manage.py -u $KPS_CLUSTER_URL -p "$KPS_PROJECT" -t $KPS_TOKEN -a "$app"
   allow_failure: true
   
