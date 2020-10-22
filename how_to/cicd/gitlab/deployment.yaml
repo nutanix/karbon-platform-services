@@ -1,21 +1,21 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: 
+  name: cat-dog
   labels:
-    app: 
+    app: cat-dog
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app:  
+      app: cat-dog 
   template:
     metadata:
       labels:
-        app: 
+        app: cat-dog
     spec:
       containers:
       - name: app-container
-        image: registry.hub.docker.com/skekre98/:0.0.1
+        image: <image path>
         imagePullPolicy: Always
         command: ["/usr/local/bin/python", "animal.py"]
