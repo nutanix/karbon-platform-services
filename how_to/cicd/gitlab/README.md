@@ -5,7 +5,7 @@ This guide will show you how to implement a CI/CD pipeline in Gitlab with KPS.
 
 ## Setup
 
-You will start by setting up your environment.
+You will start by setting up your environment. This guide assumes you already have a gitlab repository set up.
 
 1. Install [Docker](https://www.docker.com/) on your local machine.
 2. Create an API Token in your KPS account
@@ -25,7 +25,7 @@ This section will take a deep dive into the different steps being used in the CI
 
 ### Build
 
-The following is a job configured to build the cat-dog application.
+The following is a job configured to build the cat-dog image.
 ```yaml
 docker build:
   image: $DOCKER_RUNNER
