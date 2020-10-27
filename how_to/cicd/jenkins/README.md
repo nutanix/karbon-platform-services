@@ -66,7 +66,7 @@ find how the API calls are being made by refering to [manage.py](../manage.py)
 ## Using the Pipeline
 
 You can select **Build Now** which will checkout the git repository in its current state and trigger the CI/CD pipeline. You can view 
-the progress of your pipeline by selecting the build number then **Pipeline Steps**.
+the progress of your pipeline by selecting the build number then **Pipeline Steps** or **Console Output**.
 ![Jobs!](img/jobs.png "Pipeline Jobs")
 
 ## Takeaways
