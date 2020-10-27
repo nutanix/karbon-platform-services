@@ -16,8 +16,9 @@ You will start by setting up your environment. This guide assumes you already ha
     * Create a variable called **REGISTRY_USER** which will refer to your container registry username
     * Create a variable called **REGISTRY_PASS** which will refer to your container registry password
     * Create a variable called **TOKEN** which will refer to your KPS API Token
+5. Create a Docker Hub repository for you application.
 
-**Note**: This example will be using Dockerhub as a container registry, but this framework can be used with any container registry.
+**Note**: This example will be using Docker Hub as a container registry, but this framework can be used with any container registry.
 
 ## CI/CD Pipeline
 
@@ -79,7 +80,7 @@ The following job is configured to deploy the recently built application to KPS.
 
 Notice the new label in this job which tags the commands for the python runner. This script also allows for failure because the KPS API may return an error 
 we would like to log. At a high level, this job will be taking the deployment yaml and creating or updating the application in KPS with API calls. You can 
-find how the API calls are being made by refering to [manage.py](manage.py)
+find how the API calls are being made by refering to [manage.py](../manage.py)
 
 ## Using the Pipeline
 
