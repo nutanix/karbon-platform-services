@@ -12,7 +12,7 @@ You will start by setting up your environment. This guides assumes you already h
     * You will find a section labeled **Manage API Keys** under your username in the top right corner of the KPS UI
 3. In Jenkins, head to **Manage Jenkins** -> **Manage Credentials** -> **Global credentials (unrestricted)** -> **Add Credentials** and add your Dockerhub credentials with the label _dockerhub_.
 ![Dockerhub!](img/dockerhub.png "Dockerhub Credentials")
-4. Finally, head to **Manage Jenkins** -> **Configure System** and add your KPS API Token as an environment variable.
+4. Next, head to **Manage Jenkins** -> **Configure System** and add your KPS API Token as an environment variable.
     * Label the variable **TOKEN** otherwise you can change the variable in the Jenkinsfile to your unique name.
 5. Create a Docker Hub repository for you application.
 
@@ -65,7 +65,8 @@ find how the API calls are being made by refering to [manage.py](../manage.py)
 
 ## Using the Pipeline
 
-You can trigger the pipeline with **Build Now** which will checkout the git repository in its current state and trigger the CI/CD pipeline.
+You can select **Build Now** which will checkout the git repository in its current state and trigger the CI/CD pipeline. You can view 
+the progress of your pipeline by selecting **#<build number>** -> **Pipeline Steps**.
 ![Jobs!](img/jobs.png "Pipeline Jobs")
 
 ## Takeaways
