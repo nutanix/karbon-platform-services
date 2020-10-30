@@ -1,6 +1,6 @@
 # Deploying a Service Domain with KPS
 
-Enter the cloud provider directory of your choice
+Enter the cloud provider directory of your choice. You will see a file called `variables.tf` where you can configure values such as provider info, cloud info, image config, etc.
 
 ### Workflow
 
