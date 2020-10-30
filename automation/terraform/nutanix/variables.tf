@@ -15,7 +15,7 @@ variable "provider_info" {
         "password" = "<password>"
         "endpoint" = "<endpoint>"
         "insecure" = true
-        "port"     = <port>
+        "port"     = 9440
     }
 }
 
@@ -101,7 +101,7 @@ variable "node_info" {
         node_gateway: string
         node_subnet: string
     })
-    node_info = {
+    default = {
         "node_gateway": "x.x.x.x"
         "node_subnet": "x.x.x.x"
     }
@@ -127,7 +127,7 @@ variable "nutanix_volumes_config" {
         prismElementUserName: string
         prismElementPassword: string
     })
-    nutanix_volumes_config = {
+    default = {
         "dataServicesIP": "x.x.x.x"
         "dataServicesPort": "<port>"
         "flashMode": "false"

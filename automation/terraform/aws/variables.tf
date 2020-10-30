@@ -36,23 +36,33 @@ variable "security_group" {
 variable "amis" {
   description = "AWS AMI for EC2 snapshot creation"
   type = object({
-      "us-west-2": "ami-xxxxxxxxxxxxx" #ami created from sherlock raw file
+      us-west-2: string #ami created from sherlock raw file
   })
+  default = {
+      "us-west-2": "ami-xxxxxxxxxxxxx" #ami created from sherlock raw file
+  }
 }
 
 variable "instance_info" {
   description = "EC2 instance description"
   type = object({
-    "instance_count" = 3
-    "instance_name_prefix" = "kps_instance"
+    instance_count = number
+    instance_name_prefix = string
   })
+  default = {
+    "instance_count" = 3
+    "instance_name_prefix" = "kps_instance"    
+  }
 }
 
 variable "ec2_vm_config" {
   description = ""
   type = object({
-    "instance_type" = "t2.2xlarge"
+    instance_type = string
   })
+  default = {
+    "instance_type" = "t2.2xlarge"
+  }
 }
 #################################################
 # Karbon Platform Services Configuration
@@ -60,27 +70,41 @@ variable "ec2_vm_config" {
 variable "cloud_info" {
   description = "KPS cloud information for user"
   type = object({
+    cloud_fqdn = string
+    cloud_user_name = string
+    cloud_user_pwd = string
+  })
+  default = {
     "cloud_fqdn" = "karbon.nutanix.com"
     "cloud_user_name" = "<cloud_username>"
     "cloud_user_pwd" = "<cloud_password>"
-  })
+  }
 }
 
 variable "service_domain_info" {
   description = "KPS service domain information"
   type = object({
+    sd_name: string
+    sd_description: string
+    sd_virtual_ip: string
+  })
+  default = {
     "sd_name": "awstf1"
     "sd_description": "aws sd created thru tf"
-    "sd_virtual_ip": "x.x.x.x"
-  })
+    "sd_virtual_ip": "x.x.x.x"  
+  }
 }
 
 variable "node_info" {
   description = "KPS node information"
   type = object({
+    node_gateway: string
+    node_subnet: string
+  })
+  default = {
     "node_gateway": "x.x.x.x"
     "node_subnet": "x.x.x.x"
-  })
+  }
 }
 #################################################
 # AWS Storage Profile Configuration
@@ -95,10 +119,15 @@ variable "create_storage_profile" {
 variable "storage_profile_info" {
   description = "AWS Storage Profile information"
   type = object({
+    type: string
+    name: string
+    isDefault: string
+  })
+  default = {
     "type": "EBS"
     "name": "tf_sp"
     "isDefault": "true"
-  })
+  }
 }
 #################################################
 # AWS EC2 EBS Volume Configuration
@@ -106,10 +135,15 @@ variable "storage_profile_info" {
 variable "ebs_storage_config" {
   description = "Configuration for AWS EBS Storage Profile to attach to EC2 instance"
   type = object({
-    "encrypted": "false",
-    "iops_per_gb": "10",
-    "type": "gp2"
+    encrypted: string
+    iops_per_gb: string
+    type: string
   })
+  default = {
+    "encrypted": "false"
+    "iops_per_gb": "10"
+    "type": "gp2"
+  }
 }
 
 variable "data_partition_size_gb" {
