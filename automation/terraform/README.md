@@ -1,5 +1,7 @@
 # Deploying a Service Domain with KPS
 
+Enter the cloud provider directory of your choice
+
 ### Workflow
 
 #### Download Terraform Plugins
