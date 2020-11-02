@@ -61,12 +61,12 @@ $ sudo kps/install /my/custom/dir
 Download the kps CLI for Microsoft Windows:
 
 **64-bit**
-[kps-v1.0.0-rc10-windows_amd64.zip](https://kps-cli.s3-us-west-2.amazonaws.com/kps-v1.0.0-rc10-windows_amd64.zip)
+[kps-v1.0.0-rc10-windows_amd64.tar.gz](https://kps-cli.s3-us-west-2.amazonaws.com/kps-v1.0.0-rc10-windows_amd64.tar.gz)
 
 **32-bit**
-[kps-v1.0.0-rc10-windows_386.zip](https://kps-cli.s3-us-west-2.amazonaws.com/kps-v1.0.0-rc10-windows_386.zip)
+[kps-v1.0.0-rc10-windows_386.tar.gz](https://kps-cli.s3-us-west-2.amazonaws.com/kps-v1.0.0-rc10-windows_386.tar.gz)
 
-1. Extract the .EXE file from the zip file.
+1. Extract the .EXE file from the tar file.
 2. Rename the extracted .EXE file to kps.exe
 2. Open a command windows, navigate to the .EXE file, and run it.
 
