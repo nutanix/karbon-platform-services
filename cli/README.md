@@ -14,15 +14,15 @@ Note that autocompletion for zsh is experimental in this release.
 Download the kps CLI for MacOS:
 
 **64-bit**
-[kps-v1.0.0-rc9-darwin_amd64.tar.gz](https://kps-cli.s3-us-west-2.amazonaws.com/kps-v1.0.0-rc9-darwin_amd64.tar.gz)
+[kps-v1.0.0-rc10-darwin_amd64.tar.gz](https://kps-cli.s3-us-west-2.amazonaws.com/kps-v1.0.0-rc10-darwin_amd64.tar.gz)
 
 **32-bit**
-[kps-v1.0.0-rc9-darwin_386.tar.gz](https://kps-cli.s3-us-west-2.amazonaws.com/kps-v1.0.0-rc9-darwin_386.tar.gz)
+[kps-v1.0.0-rc10-darwin_386.tar.gz](https://kps-cli.s3-us-west-2.amazonaws.com/kps-v1.0.0-rc10-darwin_386.tar.gz)
 
 Optionally, from your terminal or shell, use `wget`.
 ```
-$ wget https://kps-cli.s3-us-west-2.amazonaws.com/kps-v1.0.0-rc9-darwin_amd64.tar.gz
-$ mkdir kps && tar zxvf kps-v1.0.0-rc9-darwin_amd64.tar.gz -C kps
+$ wget https://kps-cli.s3-us-west-2.amazonaws.com/kps-v1.0.0-rc10-darwin_amd64.tar.gz
+$ mkdir kps && tar zxvf kps-v1.0.0-rc10-darwin_amd64.tar.gz -C kps
 $ sudo kps/install [*optional_path*]
 ```
 
@@ -37,15 +37,15 @@ $ sudo kps/install /my/custom/dir
 Download the kps CLI for Linux:
 
 **64-bit**
-[kps-v1.0.0-rc9-linux_amd64.tar.gz](https://kps-cli.s3-us-west-2.amazonaws.com/kps-v1.0.0-rc9-linux_amd64.tar.gz)
+[kps-v1.0.0-rc10-linux_amd64.tar.gz](https://kps-cli.s3-us-west-2.amazonaws.com/kps-v1.0.0-rc10-linux_amd64.tar.gz)
 
 **32-bit**
-[kps-v1.0.0-rc9-linux_386.tar.gz](https://kps-cli.s3-us-west-2.amazonaws.com/kps-v1.0.0-rc9-linux_386.tar.gz)
+[kps-v1.0.0-rc10-linux_386.tar.gz](https://kps-cli.s3-us-west-2.amazonaws.com/kps-v1.0.0-rc10-linux_386.tar.gz)
 
 Optionally, from your terminal or shell, use `wget`.
 ```
-$ wget https://kps-cli.s3-us-west-2.amazonaws.com/kps-v1.0.0-rc9-linux_amd64.tar.gz
-$ mkdir kps && tar zxvf kps-v1.0.0-rc9-linux_amd64.tar.gz -C kps
+$ wget https://kps-cli.s3-us-west-2.amazonaws.com/kps-v1.0.0-rc10-linux_amd64.tar.gz
+$ mkdir kps && tar zxvf kps-v1.0.0-rc10-linux_amd64.tar.gz -C kps
 $ sudo kps/install [*optional_path*]
 ```
 
@@ -61,10 +61,10 @@ $ sudo kps/install /my/custom/dir
 Download the kps CLI for Microsoft Windows:
 
 **64-bit**
-[kps-v1.0.0-rc9-windows_amd64.zip](https://kps-cli.s3-us-west-2.amazonaws.com/kps-v1.0.0-rc9-windows_amd64.zip)
+[kps-v1.0.0-rc10-windows_amd64.zip](https://kps-cli.s3-us-west-2.amazonaws.com/kps-v1.0.0-rc10-windows_amd64.zip)
 
 **32-bit**
-[kps-v1.0.0-rc9-windows_386.zip](https://kps-cli.s3-us-west-2.amazonaws.com/kps-v1.0.0-rc9-windows_386.zip)
+[kps-v1.0.0-rc10-windows_386.zip](https://kps-cli.s3-us-west-2.amazonaws.com/kps-v1.0.0-rc10-windows_386.zip)
 
 1. Extract the .EXE file from the zip file.
 2. Rename the extracted .EXE file to kps.exe
