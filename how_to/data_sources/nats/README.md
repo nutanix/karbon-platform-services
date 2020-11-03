@@ -22,6 +22,8 @@ edge: myprovideredge
 fields:
 - name: topic
   topic: "<Device Topic>"
+- name: host
+  topic: "natshost-x.x.x.x"
 - name: port
   topic: "natsport-4222"
 ```
@@ -61,7 +63,7 @@ fields:
 - name: secret
   topic: "<LoopEdge Secret>"
 - name: host
-  topic: "<LoopEdge Address>"
+  topic: "natshost-<LoopEdge IP>"
 - name: port
   topic: "natsport-4222"
 ```
