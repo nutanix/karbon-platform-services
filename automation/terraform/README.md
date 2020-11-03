@@ -2,6 +2,11 @@
 
 Enter the cloud provider directory of your choice. You will see a file called `variables.tf` where you can configure values such as provider info, cloud info, image config, etc.
 
+### Nutanix Setup
+
+You will need to download the Karbon Platform Services Service Domain qcow2 image from the [Nutanix Support Portal](https://portal.nutanix.com/page/downloads?product=karbonplatformservices) and add it to your 
+workspace.
+
 ### Workflow
 
 #### Download Terraform Plugins

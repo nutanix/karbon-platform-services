@@ -16,5 +16,7 @@ edge: myprovideredge
 fields:
 - name: topic
   topic: "<Device Topic>"
+- name: host
+  topic: "natshost-x.x.x.x"
 - name: port
   topic: "natsport-4222"
