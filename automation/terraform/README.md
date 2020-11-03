@@ -4,7 +4,7 @@ Enter the cloud provider directory of your choice. You will see a file called `v
 
 ### Nutanix Setup
 
-You will need to download our `qcow2` image from the [Karbon Platform Service Support Portal](https://portal.nutanix.com/page/downloads?product=karbonplatformservices) and add it to your 
+You will need to download the Karbon Platform Services Service Domain qcow2 image from our [Support Portal](https://portal.nutanix.com/page/downloads?product=karbonplatformservices) and add it to your 
 workspace.
 
 ### Workflow
