@@ -11,9 +11,8 @@ from kps_api.api.application_api import ApplicationApi
 from kps_api.rest import ApiException
 from pprint import pprint
 
-KPS_CLOUD_ENDPOINT='https://deepak.ntnxsherlock.com'
-KPS_API_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRlZXBha20tZGV2QHRlc3Rpb3QuY29tIiwiaWQiOiI2ZDg4ZTA5ZC1mZDA5LTQ3YjYtODA4OC05OGJjMTc4MDNkZTUiLCJuYW1lIjoiZGVlcGFrbS1kZXYiLCJuYmYiOjE0NDQ0Nzg0MDAsInJvbGVzIjpbXSwic2NvcGVzIjpbXSwic3BlY2lhbFJvbGUiOiJhZG1pbiIsInRlbmFudElkIjoidGVuYW50LWlkLWRlZXBha20iLCJ0b2tlbklkIjoiNjU2OWRhN2EtZWVlZi00YTJmLWFhNmYtZmU4ZWMzN2JiMWNkIiwidHlwZSI6ImFwaSJ9._KcVj6gblPA5I8L7KWflrih_RjvhAtZZDhXAJ_kLu7k"
-
+KPS_CLOUD_ENDPOINT='https://karbon.nutanix.com'
+KPS_API_KEY="<KPS API TOKEN>"
 class ServiceDomainClient():
 
     def __init__(self, kps_cloud_endpoint, api_key):
