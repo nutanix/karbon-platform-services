@@ -1,10 +1,10 @@
 # Deploying a Service Domain with Karbon Platform Services
 
-Enter the cloud provider directory of your choice. You will see a file called `variables.tf` where you can configure values such as provider info, cloud info, image config, etc.
+Enter the cloud provider directory of choice. There is a file labelled `variables.tf` where  values such as provider info, cloud info, image config, etc can be configured.
 
 ### Nutanix Setup
 
-You will need to download the Karbon Platform Services Service Domain qcow2 image from the [Nutanix Support Portal](https://portal.nutanix.com/page/downloads?product=karbonplatformservices) and add it to the 
+The Karbon Platform Services Service Domain qcow2 image will need to downloaded from the [Nutanix Support Portal](https://portal.nutanix.com/page/downloads?product=karbonplatformservices) and added to the 
 workspace.
 
 ### Infrastructure Design
@@ -13,7 +13,7 @@ workspace.
 
 ### Terraform Installation 
 
-1. These scripts deploy a KPS service domain image onto different cloud providers as a VM and then onboard the created VM to your KPS account. This is performed in several steps such as image upload, VM creation, storage profile creation/attachment, and finally service domain onboarding.
+1. These scripts deploy a KPS service domain image onto different cloud providers as a VM and then onboard the created VM to the KPS account. This is performed in several steps such as image upload, VM creation, storage profile creation/attachment, and finally service domain onboarding.
 
 2. These scripts require the following:
     * Terraform 0.12 or later

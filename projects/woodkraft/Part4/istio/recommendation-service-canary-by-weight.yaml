@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: recomm-svc
+spec:
+  hosts:
+  - recommendation-service
+  http:
+  - route:
+    - destination:
+       host: recommendation-service
+       subset: v2
+      weight: 50    
+    - destination:
+       host: recommendation-service
+       subset: v1
+      weight: 50
+---
+

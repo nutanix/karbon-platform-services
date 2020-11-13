@@ -1,0 +1,114 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: wordpress-secret
+  labels:
+    app: wordpress
+type: Opaque
+data:
+  mysql-password: "<password>"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress
+  labels:
+    app: wordpress
+spec:
+  ports:
+    - port: 80
+      targetPort: http
+  selector:
+    app: wordpress
+  type: ClusterIP
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: wordpress
+  labels:
+    app: wordpress
+spec:
+  selector:
+    matchLabels:
+      app: wordpress
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: wordpress
+    spec:
+      containers:
+      - name: wordpress
+        image: xiiot/ecomm-wordpress:v10
+        env:
+        - name: WORDPRESS_DB_HOST
+          value: mysql
+        - name: WORDPRESS_DB_USER
+          value: wordpress
+        - name: WORDPRESS_DB_NAME
+          value: wordpress_db
+        - name: WP_HOST
+          value: "https://woodkraft.ntnxdomain.com"
+        - name: WORDPRESS_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: wordpress-secret
+              key: mysql-password
+        ports:
+        - containerPort: 80
+          name: http
+        livenessProbe:
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 6
+          tcpSocket:
+            port: http
+        readinessProbe:
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 6
+          tcpSocket:
+            port: http
+        resources:
+          limits: {}
+          requests:
+            cpu: 300m
+            memory: 512Mi
+
+---
+# Source: wordpress/templates/ingress.yaml
+
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: wordpress
+  labels:
+    app.kubernetes.io/name: wordpress
+    app: wordpress
+spec:
+  tls:
+  - hosts:
+      - woodkraft.ntnxdomain.com
+    secretName: tls-cert
+  rules:
+    - host: woodkraft.ntnxdomain.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: wordpress
+              servicePort: http
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: tls-cert
+data:
+  tls.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURXVENDQWtHZ0F3SUJBZ0lVZEJkZ3pBUzc0V3FFQkNxUExOekRWamk1VkRnd0RRWUpLb1pJaHZjTkFRRUwKQlFBd1BERVpNQmNHQTFVRUF3d1FLaTV1ZEc1NFpHOXRZV2x1TG1OdmJURVNNQkFHQTFVRUNnd0pWMjl2Wkd0eQpZV1owTVFzd0NRWURWUVFHRXdKVlV6QWVGdzB5TURBMU1qRXlNVEUzTlRsYUZ3MHlNVEExTWpFeU1URTNOVGxhCk1Ed3hHVEFYQmdOVkJBTU1FQ291Ym5SdWVHUnZiV0ZwYmk1amIyMHhFakFRQmdOVkJBb01DVmR2YjJScmNtRm0KZERFTE1Ba0dBMVVFQmhNQ1ZWTXdnZ0VpTUEwR0NTcUdTSWIzRFFFQkFRVUFBNElCRHdBd2dnRUtBb0lCQVFEaQpCd2FxNzJ4Rm9zOWN4OFZ5RUVSWFlvUGVXR3VpUmp4b1N6UXczdVl4SDF6cHZneDVKemVaalBXZVJ5aHhlOGI1ClBjSUJPb3ZXRzk3L2VseDFSa1lRNXBLQ1VzdGxNWDFqcFZzZDFYMFhyTzJaQVZLMnlHYXdWMUlDNnZoV2xhNjcKcFB0VzFSckFCQ01wMWltcEY0dlR2YUpRYlVoK0kzVkVDdVpjS1hQcHhMZG5XMnJzS0t1bW12TEZQaGNleFhCKwpsQWNJMXFueEtiTndzK3NZVGE4NUxNK2QyQUprZG1rdlRpVmNDUjFzck1lM0hvNEg2bTVTV2tKNVNpTmJMemRXCksweEJldDNYQ0plejRuSHRRTGZnbU5SdzhGemY1Lzl4SDB5eVFpek9KT0dVTTN5QTNsQndUOTZuRTZVMDltV1YKWFovZ0YxY3VNNWM3VXdvczdBaHpBZ01CQUFHalV6QlJNQjBHQTFVZERnUVdCQlRMdW5QZjVzWWM4L1dIc3A5RAp4SlFUY2VMSFJ6QWZCZ05WSFNNRUdEQVdnQlRMdW5QZjVzWWM4L1dIc3A5RHhKUVRjZUxIUnpBUEJnTlZIUk1CCkFmOEVCVEFEQVFIL01BMEdDU3FHU0liM0RRRUJDd1VBQTRJQkFRRFN4OS8rcFA3aCtxbVNtZGQ4TVhNeWN4bjQKTG1xajFsbmNYL1V0cDRZZ0MxZmZPUi9iOW56SXlZQzh2VVRleEFYb3NvQUV5UjdFWkxXU0tEY3FabFhCVUI0QgpmMThKdDN2V1gxcVZyYzhHZk5HcnNsQW9lNnU0Y3NiMEhRb2ZibDM0RDMyS1VYYnlPUTJqdHhDN21XMXJnanRlCnNxbmdOWDRWN3gyaUFnT3Zhc25wQmxFcnpMMmdZVUlrcVdoVVJQMHZjZWE4clhlYW1RdTVQaURLaC8wQURQZHMKTXBBRHRmaDRha2JTQnJ5cEorcTRPYkF2SjlKOWZ2VVZ5bWRpNDJZeW5SMXU0MEJiOTdpK2xDKzdSLzhQcThKaApGdjBwQ0JpL055ejJzUkVUOTFOSHFNeTdhS25XRVd0eDkxd2VJMHM3NUVYYUJiSm5RN3FIaDFoR1FyWTQKLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+  tls.key: LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JSUV2UUlCQURBTkJna3Foa2lHOXcwQkFRRUZBQVNDQktjd2dnU2pBZ0VBQW9JQkFRRGlCd2FxNzJ4Rm9zOWMKeDhWeUVFUlhZb1BlV0d1aVJqeG9TelF3M3VZeEgxenB2Z3g1SnplWmpQV2VSeWh4ZThiNVBjSUJPb3ZXRzk3LwplbHgxUmtZUTVwS0NVc3RsTVgxanBWc2QxWDBYck8yWkFWSzJ5R2F3VjFJQzZ2aFdsYTY3cFB0VzFSckFCQ01wCjFpbXBGNHZUdmFKUWJVaCtJM1ZFQ3VaY0tYUHB4TGRuVzJyc0tLdW1tdkxGUGhjZXhYQitsQWNJMXFueEtiTncKcytzWVRhODVMTStkMkFKa2Rta3ZUaVZjQ1Ixc3JNZTNIbzRINm01U1drSjVTaU5iTHpkV0sweEJldDNYQ0plego0bkh0UUxmZ21OUnc4RnpmNS85eEgweXlRaXpPSk9HVU0zeUEzbEJ3VDk2bkU2VTA5bVdWWFovZ0YxY3VNNWM3ClV3b3M3QWh6QWdNQkFBRUNnZ0VBWHMvNXNReDd5MzR2SThrOC9zcnFFQW5vTFFYRUtLN3p1Z0FKNVpJcTEySkQKbEYwL1dEYm1NTWdiWkFpUFk0TTdoT091Rk52ZE9yUTRSOHlwS2h5UFdabU96Wkl6ZGNCYnk4ZmFQOXFFL2NCeApibVJLc1JmQlU2bGRZcEgwR0VYenBRemd6WnpZK3NFQml4UW1KNk1UNlg4N3JpY1phS2d4RVpqTTVzNFFySGNwCmRGaUV3Rk80VDgxOEUyL0kxcnZGRzVkNlNaSFpkNGl6SS94OElOVTIrR0MrRVdEWmJKOVJpRTZjbW1Nb1N2c0YKb3dwMndOUWlBMjk1NmpOSkVXUHI1ZkxUTWFQNzEyVWFzV3FWc2haOG1RRXVZRTdXUUlIL1drNXp3b2xEUW9zWgpmQS85TG5QUTZSZXU4K01oeWo2ekIyNHpFUWVJRkE1TXc5SzBBOXJYRVFLQmdRRHhpZzNwMXlYV25IM3dOSlN2CmlnVVE1ZDkrdmRNa1hwcmdNU0djclpLcjlBWTM0UWV1b1paK1ByNzh4TmlYTVRZVlpFVEVYbkpKWkVqdS9nMlIKQnRPWmRYS1NTMzNuN2w5b3c5TXlwVXhtYzBUQnAvVllUZWg5VUU4c3FrMmJxWmJlOUNrQkN6R1lFenBGRW5qbApDZkpEb3I1VTFqYmEwS3pXMUt1Wm5hY3IrUUtCZ1FEdmp6cmphM0VqU05kKy9EeWk0cCtLVVRYaERrNkF0VDU3CnE2dVkxaWxWNUNZZEdIYnhHcUo1akp4V0NLa0IvVVBUOHYyYXFURG1CODFIYnpzOHlvNlVVTUl0U1pKOWk4RVIKYzE0UWFDVU5LaDJPZTZRb2g5T3Z5c1ZKQVMwSFFuL010emJtSGVZRHJsaUxZaXRPVlR1YU96N1h1V2UzTm12UwprVjFPcUlQNnl3S0JnRmUvd05oQU9sWGlXbnBtajlIS0FaY20rKy91aElPRS94ME5uRmx3VVlXNHpIMkdlaVQrClBVODErbXFZRk51d25DWmZYQUEvRTZRSUU5c0hYdVJlSjRkcnZLamJWaTFwVXk0YlhtSGEzWXVtdXNiai91VUsKd0xpdDhXV1hwVVEwODBPaVRqYzcydE9Wd0tpUlVteGJGYkZ1c1ZqZXplVG14TFB6WlRnVXAwUDVBb0dCQUtucgpDUlVJUDM2TWl6V3FDZ1JyQkVpaW83blhZUDFRRVZxOUFJRHUzdkRxVzlKbGFQQkpPUmRJRWhmQUdzaXJjTEhrCmQ5ZDh6STlNMTJFazEzcWVIaFc3Vm8reTBMSTJMNktHRnlGQ0RZM1I0cGNPd2ZoeHAwZllacWtLcVhxdHcySmMKVGhkWSs2NSt1cFZhODJhamRCeElpNkdPQTYvamJRVTFVRjZianNtVEFvR0FZeS9nL1BjanhtVU5pS0tzZzNyYgpnbE9jRm5vbDhPUXdWZm9IY2JUeDJ5andYQWlDTUM3TEVtQVdzL0ZCRG01ZU5VdVlTMUk1d1hmdjlPc3RMRytnClFBVUIwUmE0QS9OMTQ1emJmcEVMVnBIR2R1Ui9GRkp1YkdaekpqdERRMHJLVnd1Y0RrOW0xRjZtRngybmJyNGIKRnFnbWNhd0s5aWZjZnhTL3BtTXhPT0k9Ci0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS0K
