@@ -1,0 +1,96 @@
+---
+# Source: prometheus-mysql-exporter/templates/secret-env.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: test-mysql-prometheus-mysql-exporter
+type: Opaque
+stringData:
+  DATA_SOURCE_NAME: "root:R00tMysql@(mysql:3306)/"
+---
+# Source: prometheus-mysql-exporter/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-mysql-prometheus-mysql-exporter
+  labels:
+    app: prometheus-mysql-exporter
+    chart: prometheus-mysql-exporter-0.5.3
+    release: test-mysql
+    heritage: Helm
+spec:
+  type: ClusterIP
+  ports:
+    - port: 9104
+      targetPort: 9104
+      protocol: TCP
+      name: mysql-exporter
+  selector:
+    app: prometheus-mysql-exporter
+    release: test-mysql
+---
+# Source: prometheus-mysql-exporter/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-mysql-prometheus-mysql-exporter
+  labels:
+    app: prometheus-mysql-exporter
+    chart: prometheus-mysql-exporter-0.5.3
+    release: test-mysql
+    heritage: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus-mysql-exporter
+      release: test-mysql
+  template:
+    metadata:
+      labels:
+        app: prometheus-mysql-exporter
+        release: test-mysql
+      annotations:
+        prometheus.io/path: /metrics
+        prometheus.io/port: "9104"
+        prometheus.io/scrape: "true"
+    spec:
+      containers:
+        - name: prometheus-mysql-exporter
+          image: "prom/mysqld-exporter:v0.11.0"
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - secretRef:
+                name: test-mysql-prometheus-mysql-exporter
+          ports:
+            - containerPort: 9104
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 9104
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 9104
+          resources:
+            {}
+---
+# Source: prometheus-mysql-exporter/templates/servicemonitor.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: test-mysql-prometheus-mysql-exporter
+  labels:
+    app: prometheus-mysql-exporter
+    chart: prometheus-mysql-exporter-0.5.3
+    release: test-mysql
+    heritage: Helm
+    app: collect-metrics-servicemonitor
+spec:
+  selector:
+    matchLabels:
+      app: prometheus-mysql-exporter
+      release: test-mysql
+  endpoints:
+    - path: /metrics
+      port: mysql-exporter

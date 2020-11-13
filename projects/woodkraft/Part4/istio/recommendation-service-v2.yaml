@@ -1,0 +1,90 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recommendation-service-v2
+  labels:
+    app: recommendation-service
+    version: v2
+spec:
+  selector:
+    matchLabels:
+      app: recommendation-service
+      version: v2
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: recommendation-service
+        version: v2
+    spec:
+      volumes:
+      - name: shared-data
+        emptyDir: {}
+      initContainers:
+      - name: init-recommendation-service
+        image: xiiot/ecomm-recommendation-svc:v8
+        command: ['sh', '/debezium-setup.sh']
+      containers:
+      - name: nginx
+        image: nginx
+        volumeMounts:
+        - name: shared-data
+          mountPath: /usr/share/nginx/html
+        ports:
+        - name: http
+          containerPort: 80
+      - name: recommendation-service
+        image: xiiot/ecomm-recommendation-svc:v8
+        env:
+        - name: KAFKA_BROKER
+          value: "{{.Services.Kafka.Endpoint}}"
+        - name: COLOR 
+          value: "g"
+        - name: GROUP
+          value: "grouid2"
+        - name: VERSION_STRING
+          value: "V2"
+        - name: MOUNT_PATH
+          value: "/www"
+        volumeMounts:
+        - name: shared-data
+          mountPath: /www
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: recomm-svc
+spec:
+  hosts:
+  - recommendation-service
+  http:
+  - match:
+    - headers:
+        user-agent:
+          regex: .*Firefox.*
+    route:
+    - destination:
+        host: recommendation-service
+        subset: v2
+  - route:
+    - destination:
+        host: recommendation-service
+        subset: v1
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: recomm-svc
+spec:
+  host: recommendation-service
+  trafficPolicy:
+    loadBalancer:
+      simple: RANDOM
+  subsets:
+  - name: v1
+    labels:
+      version: v1
+  - name: v2
+    labels:
+      version: v2
+---

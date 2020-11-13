@@ -1,0 +1,20 @@
+node {
+    checkout scm
+    // Environment variables 
+    def kps_url = "https://karbon.ntnxsherlock.com/"
+    def kps_token = "${env.TOKEN}"
+    def kps_project = "Cat Dog"
+    def app = "cat-dog"
+
+    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+
+        def customImage = docker.build("<dockerhub username>/cat-dog")
+
+        /* Push the container to the custom Registry */
+        customImage.push()
+    }
+
+    // Deploy to Karbon Platform Services
+    sh 'pip install requests'
+    sh "python manage.py -u ${kps_url} -p \"${kps_project}\" -t ${kps_token} -a ${app}"
+}
