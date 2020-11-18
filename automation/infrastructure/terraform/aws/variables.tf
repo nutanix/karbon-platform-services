@@ -33,14 +33,10 @@ variable "security_group" {
   default = "sg-xxxxxxxx"
 }
 
-variable "amis" {
-  description = "AWS AMI for EC2 snapshot creation"
-  type = object({
-      us-west-2: string #ami created from sherlock raw file
-  })
-  default = {
-      "us-west-2": "ami-xxxxxxxxxxxxx" #ami created from sherlock raw file
-  }
+variable "kps_raw_diskimage_version" {
+  description = "version of kps raw image"
+  type = number
+  default = 782
 }
 
 variable "instance_info" {

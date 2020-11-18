@@ -22,6 +22,32 @@ data "aws_vpc" "kps_vpc" {
   id = data.aws_security_group.kps_security_group.vpc_id
 }
 
+resource "null_resource" "kps_ami" {
+  provisioner "local-exec" {
+    command = "${path.module}/scripts/kps_ami.sh create_ami"
+    environment = {
+      VERSION = var.kps_raw_diskimage_version
+      SNAPSHOT_ID_OUTPUT_FILE_PATH = "${path.module}/generated/snapshot_id.txt"
+      AMI_ID_OUTPUT_FILE_PATH = "${path.module}/generated/ami_id.txt"
+    }
+  }
+  provisioner "local-exec" {
+    when = destroy
+    command = "${path.module}/scripts/kps_ami.sh delete_ami"
+    environment = {
+      SNAPSHOT_ID_OUTPUT_FILE_PATH = "${path.module}/generated/snapshot_id.txt"
+      AMI_ID_OUTPUT_FILE_PATH = "${path.module}/generated/ami_id.txt"
+    }
+  }
+}
+
+data "local_file" "ami_id" {
+  filename = "${path.module}/generated/ami_id.txt"
+  depends_on = [
+    null_resource.kps_ami
+  ]
+}
+
 resource "aws_iam_role" "role" {
   name        = "ebs_role_trf"
   force_detach_policies = true
@@ -86,7 +112,7 @@ resource "aws_iam_instance_profile" "instance_profile" {
 }
 
 resource "aws_instance" "kps_servicedomain_instance" {
-  ami = var.amis[var.region]
+  ami = data.local_file.ami_id.content
   instance_type = var.ec2_vm_config["instance_type"]
   security_groups = [data.aws_security_group.kps_security_group.name]
   iam_instance_profile = aws_iam_instance_profile.instance_profile.name
