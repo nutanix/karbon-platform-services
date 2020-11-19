@@ -7,7 +7,7 @@ resource "null_resource" "fetch_instance_serialnumber" {
     command = "${path.module}/scripts/kps_sd_node_client.sh get_serial_number"
     environment = {
       NODE_IP = var.public_instance_ips[count.index]
-      NODE_SN_FILE_PATH = "${path.module}/generated/sn-${count.index}.txt"
+      NODE_SN_FILE_PATH = "${path.module}/generated/sn-${count.index}_${terraform.workspace}.txt"
     }
   }
 }
@@ -22,8 +22,8 @@ resource "null_resource" "fetch_instance_ips" {
     environment = {
       NODE_PRIVATE_IP = var.private_instance_ips[count.index]
       NODE_PUBLIC_IP = var.public_instance_ips[count.index]
-      NODE_PRIVATE_IP_FILE_PATH = "${path.module}/generated/private_ip_${count.index}.txt"
-      NODE_PUBLIC_IP_FILE_PATH = "${path.module}/generated/public_ip_${count.index}.txt"
+      NODE_PRIVATE_IP_FILE_PATH = "${path.module}/generated/private_ip_${count.index}_${terraform.workspace}.txt"
+      NODE_PUBLIC_IP_FILE_PATH = "${path.module}/generated/public_ip_${count.index}_${terraform.workspace}.txt"
     }
   }
 }
@@ -57,7 +57,7 @@ resource "null_resource" "login_to_kps_cloud" {
       CLOUD_FQDN = var.cloud_info["cloud_fqdn"]
       CLOUD_USER_NAME = var.cloud_info["cloud_user_name"]
       CLOUD_USER_PWD = var.cloud_info["cloud_user_pwd"]
-      LOGIN_TOKEN_OUTPUT_FILE_PATH = "${path.module}/generated/login-token.txt"
+      LOGIN_TOKEN_OUTPUT_FILE_PATH = "${path.module}/generated/login-token_${terraform.workspace}.txt"
     }
   }
 
@@ -67,7 +67,7 @@ resource "null_resource" "login_to_kps_cloud" {
 }
 
 data "local_file" "kps_cloud_login_token" {
-  filename = "${path.module}/generated/login-token.txt"
+  filename = "${path.module}/generated/login-token_${terraform.workspace}.txt"
 
   depends_on = [
     null_resource.login_to_kps_cloud
@@ -85,7 +85,7 @@ resource "null_resource" "service_domain" {
       BEARER_TOKEN = data.local_file.kps_cloud_login_token.content
       SERVICE_DOMAIN_DESC = var.service_domain_info["sd_description"]
       SERVICE_DOMAIN_NAME = var.service_domain_info["sd_name"]
-      SERVICE_DOMAIN_ID_OUTPUT_FILE_PATH = "${path.module}/generated/new_servicedomain.txt"
+      SERVICE_DOMAIN_ID_OUTPUT_FILE_PATH = "${path.module}/generated/new_servicedomain_${terraform.workspace}.txt"
       SERVICE_DOMAIN_VIRTUAL_IP = var.service_domain_info["sd_virtual_ip"]
     }
   }
@@ -96,7 +96,7 @@ resource "null_resource" "service_domain" {
 }
 
 data "local_file" "service_domain_id" {
-  filename = "${path.module}/generated/new_servicedomain.txt"
+  filename = "${path.module}/generated/new_servicedomain_${terraform.workspace}.txt"
 
   depends_on = [
     null_resource.service_domain
@@ -117,7 +117,7 @@ resource "null_resource" "service_domain_destroy" {
       CLOUD_FQDN = "${self.triggers.cloud_fqdn}"
       BEARER_TOKEN = "${self.triggers.bearer_token}"
       SERVICE_DOMAIN_ID = "${self.triggers.service_domain_id}"
-      SERVICE_DOMAIN_ID_OUTPUT_FILE_PATH = "${path.module}/generated/new_servicedomain.txt"
+      SERVICE_DOMAIN_ID_OUTPUT_FILE_PATH = "${path.module}/generated/new_servicedomain_${terraform.workspace}.txt"
     }
   }
 
@@ -128,7 +128,7 @@ resource "null_resource" "service_domain_destroy" {
 }
 
 data "local_file" "node_sn" {
-  filename = "${path.module}/generated/sn-${count.index}.txt"
+  filename = "${path.module}/generated/sn-${count.index}_${terraform.workspace}.txt"
   count = var.instance_info["instance_count"]
   depends_on = [
     null_resource.fetch_instance_serialnumber
@@ -136,7 +136,7 @@ data "local_file" "node_sn" {
 }
 
 data "local_file" "node_private_ip" {
-  filename = "${path.module}/generated/private_ip_${count.index}.txt"
+  filename = "${path.module}/generated/private_ip_${count.index}_${terraform.workspace}.txt"
   count = var.instance_info["instance_count"]
   depends_on = [
     null_resource.fetch_instance_ips
@@ -144,7 +144,7 @@ data "local_file" "node_private_ip" {
 }
 
 data "local_file" "node_public_ip" {
-  filename = "${path.module}/generated/public_ip_${count.index}.txt"
+  filename = "${path.module}/generated/public_ip_${count.index}_${terraform.workspace}.txt"
   count = var.instance_info["instance_count"]
   depends_on = [
     null_resource.fetch_instance_ips
@@ -167,7 +167,7 @@ resource "null_resource" "service_domain_node" {
       NODE_SUBNET = var.node_info["node_subnet"]
       NODE_SERIAL_NUMBER = element(data.local_file.node_sn.*.content, count.index)
       SERVICE_DOMAIN_ID = data.local_file.service_domain_id.content
-      NODE_ID_OUTPUT_FILE_PATH = "${path.module}/generated/new_node_${count.index}.txt"
+      NODE_ID_OUTPUT_FILE_PATH = "${path.module}/generated/new_node_${count.index}_${terraform.workspace}.txt"
     }
   }
 
@@ -180,7 +180,7 @@ resource "null_resource" "service_domain_node" {
 }
 
 data "local_file" "node_id" {
-  filename = "${path.module}/generated/new_node_${count.index}.txt"
+  filename = "${path.module}/generated/new_node_${count.index}_${terraform.workspace}.txt"
   count = var.instance_info["instance_count"]
   depends_on = [
     null_resource.service_domain_node
@@ -201,7 +201,7 @@ resource "null_resource" "service_domain_node_destroy" {
       CLOUD_FQDN = "${self.triggers.cloud_fqdn}"
       BEARER_TOKEN = "${self.triggers.bearer_token}"
       NODE_ID = "${self.triggers.node_id}"
-      NODE_ID_OUTPUT_FILE_PATH = "${path.module}/generated/new_node_${count.index}.txt"
+      NODE_ID_OUTPUT_FILE_PATH = "${path.module}/generated/new_node_${count.index}_${terraform.workspace}.txt"
     }
   }
 
