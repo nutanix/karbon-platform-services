@@ -56,20 +56,6 @@ my/custom/dir is the installation path:
 $ sudo kps/install /my/custom/dir
 ```
 
-## Windows
-
-Download the kps CLI for Microsoft Windows:
-
-**64-bit**
-[kps-v1.0.0-rc10-windows_amd64.tar.gz](https://kps-cli.s3-us-west-2.amazonaws.com/kps-v1.0.0-rc10-windows_amd64.tar.gz)
-
-**32-bit**
-[kps-v1.0.0-rc10-windows_386.tar.gz](https://kps-cli.s3-us-west-2.amazonaws.com/kps-v1.0.0-rc10-windows_386.tar.gz)
-
-1. Extract the .EXE file from the tar file.
-2. Rename the extracted .EXE file to kps.exe
-2. Open a command windows, navigate to the .EXE file, and run it.
-
 
 # Configuring kps CLI
 Configure the kps CLI to interact with Karbon Platform Services API, including your user role and credentials.
