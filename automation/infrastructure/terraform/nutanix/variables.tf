@@ -127,7 +127,7 @@ variable "nutanix_volumes_config" {
         prismElementUserName: string
         prismElementPassword: string
     })
-    nutanix_volumes_config = {
+    default = {
         "dataServicesIP": "x.x.x.x"
         "dataServicesPort": "3260"
         "flashMode": "false"
