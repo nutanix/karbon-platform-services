@@ -5,6 +5,14 @@ The Karbon Platform Services (KPS) Python SDK.
 
 # Steps to install KPS Python SDK
 
+## PyPi
+
+The Karbon Platform Services SDK can also be found on [PyPi](https://pypi.org/project/kps-api/)
+
+```bash
+pip install kps-api
+```
+
 ## Manually
 <pre>
 tar -xvzf ./kps_api_1.0.<version>.tar.gz
@@ -17,14 +25,6 @@ if [[ "$retval" -ne "0" ]] ; then
 fi
 popd
 </pre>
-
-## PyPi
-
-The Karbon Platform Services SDK can also be found on [PyPi](https://pypi.org/project/kps-api/)
-
-```bash
-pip install kps-api
-```
 
 ## Manage API Keys
 
