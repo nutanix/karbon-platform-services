@@ -1,0 +1,21 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: facial-recognition
+  labels:
+    app: facial-recognition
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: facial-recognition 
+  template:
+    metadata:
+      labels:
+        app: facial-recognition
+    spec:
+      containers:
+      - name: app-container
+        image: <image path>
+        imagePullPolicy: Always
+        command: ["python3", "src/app.py"]

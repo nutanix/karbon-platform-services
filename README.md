@@ -40,6 +40,115 @@ Supported web browsers include the current and two previous versions of Google C
 * If you are logging on for the first time, click to read the Terms and Conditions, then click to Accept and Continue.
 * Take a few moments to read about Karbon Platform Services, then click Get Started.
 
+### Repository Structure
+```
+.
+├── applications
+│   ├── echo-app
+│   ├── facenet
+│   │   └── src
+│   │       └── align
+│   ├── facial-recognition
+│   │   └── src
+│   ├── infrared-detect
+│   ├── mqtt-sensor-app
+│   └── youtube-8m-app
+├── automation
+│   ├── cicd
+│   │   ├── gitlab
+│   │   │   ├── img
+│   │   │   └── runners
+│   │   │       └── config
+│   │   ├── jenkins
+│   │   │   └── img
+│   │   └── kps_api
+│   └── infrastructure
+│       ├── calm
+│       │   └── service_domain_deployment
+│       └── terraform
+│           ├── aws
+│           ├── img
+│           ├── modules
+│           │   ├── kps_cli
+│           │   ├── kps_sdk
+│           │   │   ├── kps_sdk_release
+│           │   │   └── python_cli
+│           │   └── service_domain
+│           │       └── scripts
+│           └── nutanix
+├── cli
+│   └── samples
+│       ├── applications
+│       ├── datapipelines
+│       ├── datasources
+│       ├── functions
+│       └── logcollectors
+├── how_to
+│   ├── data_sources
+│   │   ├── gige_vision
+│   │   │   └── client_samples
+│   │   │       └── python
+│   │   ├── mqtt
+│   │   │   ├── client_samples
+│   │   │   │   └── python2.7
+│   │   │   └── data_source
+│   │   ├── nats
+│   │   └── rtsp
+│   │       └── client_samples
+│   │           └── python
+│   ├── realtime_data_pipeline
+│   │   ├── nodejs
+│   │   ├── python2
+│   │   └── python3
+│   ├── runtimes
+│   │   ├── NodeJS
+│   │   └── Python3
+│   └── service_domain_deployment
+│       ├── aws
+│       └── baremetal
+├── img
+├── projects
+│   ├── IoT_Starter
+│   │   ├── facefeed
+│   │   │   ├── applications
+│   │   │   └── functions
+│   │   └── mqtt_pipeline
+│   │       └── functions
+│   ├── MySQL
+│   │   └── img
+│   ├── ai-inference
+│   │   └── img
+│   └── woodkraft
+│       ├── Part1
+│       │   ├── mysql
+│       │   └── wordpress
+│       ├── Part2
+│       │   ├── loader
+│       │   └── recommendation-service
+│       ├── Part3
+│       │   └── prometheus
+│       ├── Part4
+│       │   └── istio
+│       └── img
+├── sdk
+│   └── python
+│       └── samples
+│           └── data
+└── services
+    ├── FaaS
+    │   ├── built-in_runtimes
+    │   │   ├── Golang\ Env
+    │   │   ├── Node\ Env
+    │   │   ├── Python2\ Env
+    │   │   ├── Python3\ Env
+    │   │   └── Tensorflow\ Python
+    │   ├── cloud_connectors
+    │   │   └── AWS
+    │   └── functions
+    ├── ingress
+    └── kafka
+```
+
 ### Applications
 
 In the [applications](applications) folder, you will find YAML files that you can deploy directly in Karbon Platform Services via Kubernetes Apps. These containerized applications are in a Kubernetes YAML format. You can find more information about each sample app in its specific folder. 

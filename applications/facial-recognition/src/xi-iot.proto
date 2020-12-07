@@ -1,0 +1,32 @@
+syntax = "proto3";
+package sherlock;
+option go_package = "datastream";
+// See gswagger.DataSourceFieldSelector
+message DataSourceFieldSelector {
+    string id = 1;
+    string value = 2;
+}
+enum TopicType {
+    MQTT = 0;
+    NATS = 1;
+    RTSP = 2;
+    GIGEVISION = 3;
+    DATAINTERFACE = 4;
+}
+message DataSourceError {
+    string message = 1;
+    string context = 2;
+}
+message DataStreamMetaData {
+    string topic = 1;
+    repeated DataSourceFieldSelector categories = 2;
+    TopicType topicType = 3;
+    string ifcTopicType = 4;
+    string ifcArtifact = 5;
+}
+message DataStreamMessage {
+    int64  timestamp = 1; // Epoch time in nanosecs
+    DataStreamMetaData metaData = 2;
+    bytes payload = 3;
+    DataSourceError sourceError = 4;
+}

@@ -1,0 +1,21 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: infrared-detect
+  labels:
+    app: infrared-detect
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: infrared-detect 
+  template:
+    metadata:
+      labels:
+        app: infrared-detect
+    spec:
+      containers:
+      - name: app-container
+        image: <image path>
+        imagePullPolicy: Always
+        command: ["python3", "infrared-app.py"]
