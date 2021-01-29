@@ -123,9 +123,9 @@ aws iam put-role-policy --role-name vmimport --policy-name vmimport --policy-doc
 	* For the Instance Type select an instance with a minimum of 4 vCPU and 16GiB of memory.
 	* You can skip to **Add Storage**. Create an EBS Volume with a minimum size of 100 GIB and proceed to **Review**.
 	* Before launching, use an existing key pair for which you already possess the private key, or select **Create** a new key pair and download the .pem file corresponding to the new key pair.
-14. Run the following command to get the Public and Private IP address of your instance.
+14. Run the following command to get the Private IP address of your instance.
 ```
-aws ec2 describe-instances --instance-id <instance-id> --query 'Reservations[].Instances[].[PublicIpAddress]' --output text | sed '$!N;s/\n/ /'
+aws ec2 describe-instances --instance-id <instance-id> --query 'Reservations[].Instances[].[PrivateIpAddress]' --output text | sed '$!N;s/\n/ /'
 ```
 15. Select **Connect** in your EC2 console and follow the instructions to SSH into your instance.
 16. Once on your EC2 instance run the following commands to grab your Serial Number and Gateway/Subnet:
