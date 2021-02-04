@@ -1,8 +1,11 @@
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: facefeed-deployment
 spec:
+  selector:
+    matchLabels:
+      app: facefeed-deployment
   replicas: 1
   template:
     metadata:
@@ -36,11 +39,14 @@ spec:
   - protocol: TCP
     port: 8888
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: facefeed-proxy
 spec:
+  selector:
+    matchLabels:
+      app: facefeed-proxy
   replicas: 1
   template:
     metadata:
