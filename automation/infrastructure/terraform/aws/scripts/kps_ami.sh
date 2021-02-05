@@ -55,7 +55,6 @@ sub_create_ami() {
   test -n "${VERSION}"
   test -n "${SNAPSHOT_ID_OUTPUT_FILE_PATH}"
   test -n "${AMI_ID_OUTPUT_FILE_PATH}"
-
   mkdir generated
 
   KEY=$(echo sherlock-aws_${VERSION}.raw)
@@ -107,7 +106,6 @@ sub_create_ami() {
   echo "Writing AMI id to file..."
   ami_id=$(jq -r .ImageId <<< "${resp}")
   echo -n ${ami_id} > "${AMI_ID_OUTPUT_FILE_PATH}"
-  aws ec2 modify-image-attribute --image-id ${ami_id} --launch-permission "Add=[{Group=all}]"
 }
 
 # Function to delete AMI and Snapshot 

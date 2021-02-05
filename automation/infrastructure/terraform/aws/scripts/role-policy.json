@@ -25,6 +25,8 @@
         "Resource": [
            "arn:aws:s3:::sherlock-raw-images",
            "arn:aws:s3:::sherlock-raw-images/*"
+           "arn:aws:s3:::sherlock-raw-sd-image",
+           "arn:aws:s3:::sherlock-raw-sd-image/*"
         ]
      },
      {
