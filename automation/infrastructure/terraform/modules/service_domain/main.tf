@@ -7,7 +7,7 @@ resource "null_resource" "fetch_instance_serialnumber" {
     command = "${path.module}/scripts/kps_sd_node_client.sh get_serial_number"
     environment = {
       NODE_IP = var.public_instance_ips[count.index]
-      NODE_SN_FILE_PATH = "${path.module}/generated/sn-${count.index}.txt"
+      NODE_SN_FILE_PATH = "${path.module}/generated/sn-${count.index}_${terraform.workspace}.txt"
     }
   }
 }
@@ -22,8 +22,8 @@ resource "null_resource" "fetch_instance_ips" {
     environment = {
       NODE_PRIVATE_IP = var.private_instance_ips[count.index]
       NODE_PUBLIC_IP = var.public_instance_ips[count.index]
-      NODE_PRIVATE_IP_FILE_PATH = "${path.module}/generated/private_ip_${count.index}.txt"
-      NODE_PUBLIC_IP_FILE_PATH = "${path.module}/generated/public_ip_${count.index}.txt"
+      NODE_PRIVATE_IP_FILE_PATH = "${path.module}/generated/private_ip_${count.index}_${terraform.workspace}.txt"
+      NODE_PUBLIC_IP_FILE_PATH = "${path.module}/generated/public_ip_${count.index}_${terraform.workspace}.txt"
     }
   }
 }
@@ -57,7 +57,7 @@ resource "null_resource" "login_to_kps_cloud" {
       CLOUD_FQDN = var.cloud_info["cloud_fqdn"]
       CLOUD_USER_NAME = var.cloud_info["cloud_user_name"]
       CLOUD_USER_PWD = var.cloud_info["cloud_user_pwd"]
-      LOGIN_TOKEN_OUTPUT_FILE_PATH = "${path.module}/generated/login-token.txt"
+      LOGIN_TOKEN_OUTPUT_FILE_PATH = "${path.module}/generated/login-token_${terraform.workspace}.txt"
     }
   }
 
@@ -67,68 +67,25 @@ resource "null_resource" "login_to_kps_cloud" {
 }
 
 data "local_file" "kps_cloud_login_token" {
-  filename = "${path.module}/generated/login-token.txt"
+  filename = "${path.module}/generated/login-token_${terraform.workspace}.txt"
 
   depends_on = [
     null_resource.login_to_kps_cloud
   ]
 }
 
-resource "null_resource" "service_domain" {
-  triggers  =  {
-    always_run = "${timestamp()}"
-  }
-  provisioner "local-exec" {
-    command = "${path.module}/scripts/kps_cloud_client.sh create_servicedomain"
-    environment = {
-      CLOUD_FQDN = var.cloud_info["cloud_fqdn"]
-      BEARER_TOKEN = data.local_file.kps_cloud_login_token.content
-      SERVICE_DOMAIN_DESC = var.service_domain_info["sd_description"]
-      SERVICE_DOMAIN_NAME = var.service_domain_info["sd_name"]
-      SERVICE_DOMAIN_ID_OUTPUT_FILE_PATH = "${path.module}/generated/new_servicedomain.txt"
-      SERVICE_DOMAIN_VIRTUAL_IP = var.service_domain_info["sd_virtual_ip"]
-    }
-  }
-
-  depends_on = [
-    data.local_file.kps_cloud_login_token
-  ]
+resource "nutanixkps_servicedomain" "service_domain" {  
+  name = var.service_domain_info["sd_name"]
+  description = var.service_domain_info["sd_description"]
+  virtual_ip = var.service_domain_info["sd_virtual_ip"]
 }
 
-data "local_file" "service_domain_id" {
-  filename = "${path.module}/generated/new_servicedomain.txt"
-
-  depends_on = [
-    null_resource.service_domain
-  ]
-}
-
-
-resource "null_resource" "service_domain_destroy" {
-  triggers ={
-    cloud_fqdn = var.cloud_info["cloud_fqdn"]
-    bearer_token = data.local_file.kps_cloud_login_token.content
-    service_domain_id = data.local_file.service_domain_id.content
-  }
-  provisioner "local-exec" {
-    when = destroy
-    command = "${path.module}/scripts/kps_cloud_client.sh delete_servicedomain"
-    environment = {
-      CLOUD_FQDN = "${self.triggers.cloud_fqdn}"
-      BEARER_TOKEN = "${self.triggers.bearer_token}"
-      SERVICE_DOMAIN_ID = "${self.triggers.service_domain_id}"
-      SERVICE_DOMAIN_ID_OUTPUT_FILE_PATH = "${path.module}/generated/new_servicedomain.txt"
-    }
-  }
-
-  depends_on = [
-    data.local_file.kps_cloud_login_token,
-    data.local_file.service_domain_id
-  ]
+output "servicedomains" {
+  value = nutanixkps_servicedomain.service_domain
 }
 
 data "local_file" "node_sn" {
-  filename = "${path.module}/generated/sn-${count.index}.txt"
+  filename = "${path.module}/generated/sn-${count.index}_${terraform.workspace}.txt"
   count = var.instance_info["instance_count"]
   depends_on = [
     null_resource.fetch_instance_serialnumber
@@ -136,7 +93,7 @@ data "local_file" "node_sn" {
 }
 
 data "local_file" "node_private_ip" {
-  filename = "${path.module}/generated/private_ip_${count.index}.txt"
+  filename = "${path.module}/generated/private_ip_${count.index}_${terraform.workspace}.txt"
   count = var.instance_info["instance_count"]
   depends_on = [
     null_resource.fetch_instance_ips
@@ -144,101 +101,58 @@ data "local_file" "node_private_ip" {
 }
 
 data "local_file" "node_public_ip" {
-  filename = "${path.module}/generated/public_ip_${count.index}.txt"
+  filename = "${path.module}/generated/public_ip_${count.index}_${terraform.workspace}.txt"
   count = var.instance_info["instance_count"]
   depends_on = [
     null_resource.fetch_instance_ips
   ]
 }
 
-resource "null_resource" "service_domain_node" {
-  triggers  =  {
-    always_run = "${timestamp()}"
-  }
+resource "nutanixkps_node" "nodes" {
   count = var.instance_info["instance_count"]
-  provisioner "local-exec" {
-    command = "${path.module}/scripts/kps_cloud_client.sh add_node_to_servicedomain"
-    environment = {
-      CLOUD_FQDN = var.cloud_info["cloud_fqdn"]
-      BEARER_TOKEN = data.local_file.kps_cloud_login_token.content
-      NODE_NAME = "node-${count.index}1"
-      NODE_GATEWAY = var.node_info["node_gateway"]
-      NODE_IP = element(data.local_file.node_private_ip.*.content, count.index)
-      NODE_SUBNET = var.node_info["node_subnet"]
-      NODE_SERIAL_NUMBER = element(data.local_file.node_sn.*.content, count.index)
-      SERVICE_DOMAIN_ID = data.local_file.service_domain_id.content
-      NODE_ID_OUTPUT_FILE_PATH = "${path.module}/generated/new_node_${count.index}.txt"
-    }
+  name = "${var.instance_info["instance_name_prefix"]}-${count.index}"
+  description = "Node added to Service Domain through Terraform"
+  service_domain_id = nutanixkps_servicedomain.service_domain.id
+  serial_number = upper(element(data.local_file.node_sn.*.content, count.index))
+  ip_address = element(data.local_file.node_private_ip.*.content, count.index)
+  gateway = var.node_info["node_gateway"]
+  subnet = var.node_info["node_subnet"]
+  role {
+    master = true
+    worker = true
   }
+  wait_for_onboarding = var.wait_for_onboarding
 
   depends_on = [
-    data.local_file.kps_cloud_login_token,
-    data.local_file.service_domain_id,
+    nutanixkps_servicedomain.service_domain,
     data.local_file.node_sn,
     data.local_file.node_private_ip,
   ]
 }
 
-data "local_file" "node_id" {
-  filename = "${path.module}/generated/new_node_${count.index}.txt"
-  count = var.instance_info["instance_count"]
-  depends_on = [
-    null_resource.service_domain_node
-  ]
+output "nodes" {
+  value = nutanixkps_node.nodes
 }
 
-resource "null_resource" "service_domain_node_destroy" {
-  count = var.instance_info["instance_count"]
-  triggers ={
-    cloud_fqdn = var.cloud_info["cloud_fqdn"]
-    bearer_token = data.local_file.kps_cloud_login_token.content
-    node_id = element(data.local_file.node_id.*.content, count.index)
-  }
-  provisioner "local-exec" {
-    when = destroy
-    command = "${path.module}/scripts/kps_cloud_client.sh remove_node_from_servicedomain"
-    environment = {
-      CLOUD_FQDN = "${self.triggers.cloud_fqdn}"
-      BEARER_TOKEN = "${self.triggers.bearer_token}"
-      NODE_ID = "${self.triggers.node_id}"
-      NODE_ID_OUTPUT_FILE_PATH = "${path.module}/generated/new_node_${count.index}.txt"
-    }
-  }
-
-  depends_on = [
-    data.local_file.kps_cloud_login_token,
-    data.local_file.node_id
-  ]
-}
-
-resource "null_resource" "nutanixvolumes_storage_profile" {
-  triggers  =  {
-    always_run = "${timestamp()}"
-  }
-  // count is used as boolean here
+resource "nutanixkps_storageprofile" "nutanixvolumes_storage_profile" {
+  // count is used as a boolean here, only effective when creating Nutanix VM based service domain
   count = var.create_nutanixvolumes_storage_profile
-  provisioner "local-exec" {
-    command = "${path.module}/scripts/kps_cloud_client.sh add_nutanixvolumes_storage_profile_to_servicedomain"
-    environment = {
-      CLOUD_FQDN = var.cloud_info["cloud_fqdn"]
-      BEARER_TOKEN = data.local_file.kps_cloud_login_token.content
-      SERVICE_DOMAIN_ID = data.local_file.service_domain_id.content
-      DATA_SERVICES_IP = var.storage_config["dataServicesIP"]
-      DATA_SERVICES_PORT = var.storage_config["dataServicesPort"]
-      FLASH_MODE = var.storage_config["flashMode"]
-      PE_CLUSTER_VIP = var.storage_config["prismElementClusterVIP"]
-      PE_CLUSTER_PORT = var.storage_config["prismElementClusterPort"]
-      STORAGE_CONTAINER_NAME = var.storage_config["storageContainerName"]
-      PE_USER_NAME = var.storage_config["prismElementUserName"]
-      PE_USER_PWD = var.storage_config["prismElementPassword"]
-      STORAGE_PROFILE_NAME = var.storage_profile_info["name"]
-      IS_DEFAULT = var.storage_profile_info["isDefault"]
-    }
+  name = var.storage_profile_info["name"]
+  service_domain_id = nutanixkps_servicedomain.service_domain.id
+  is_default = var.storage_profile_info["isDefault"]
+  nutanix_volumes_config {
+    data_services_ip = var.storage_config["dataServicesIP"]
+    data_services_port = var.storage_config["dataServicesPort"]
+    flash_mode = var.storage_config["flashMode"]
+    prism_element_cluster_vip = var.storage_config["prismElementClusterVIP"]
+    prism_element_cluster_port = var.storage_config["prismElementClusterPort"]
+    prism_element_password = var.storage_config["prismElementPassword"]
+    prism_element_username = var.storage_config["prismElementUserName"]
+    prism_element_storage_container_name = var.storage_config["storageContainerName"]
   }
 
   depends_on = [
-    data.local_file.kps_cloud_login_token,
-    data.local_file.service_domain_id
+    nutanixkps_servicedomain.service_domain
   ]
 }
 
@@ -253,10 +167,9 @@ resource "null_resource" "ebs_storage_profile" {
     environment = {
       CLOUD_FQDN = var.cloud_info["cloud_fqdn"]
       BEARER_TOKEN = data.local_file.kps_cloud_login_token.content
-      SERVICE_DOMAIN_ID = data.local_file.service_domain_id.content
+      SERVICE_DOMAIN_ID = nutanixkps_servicedomain.service_domain.id
       STORAGE_PROFILE_NAME = var.storage_profile_info["name"]
       IS_DEFAULT = var.storage_profile_info["isDefault"]
-      ENCRYPTED = var.storage_config["encrypted"]
       IOPS_PER_GB = var.storage_config["iops_per_gb"]
       TYPE = var.storage_config["type"]
     }
@@ -264,6 +177,6 @@ resource "null_resource" "ebs_storage_profile" {
 
   depends_on = [
     data.local_file.kps_cloud_login_token,
-    data.local_file.service_domain_id
+    nutanixkps_servicedomain.service_domain
   ]
 }

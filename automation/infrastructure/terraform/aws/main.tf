@@ -1,12 +1,9 @@
 #https://learn.hashicorp.com/tutorials/terraform/aws-variables
 
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 2.70"
-    }
-  }
+provider "nutanixkps" {
+  host = var.cloud_info["cloud_fqdn"]
+  username = var.cloud_info["cloud_user_name"]
+  password = var.cloud_info["cloud_user_pwd"]
 }
 
 provider "aws" {
@@ -22,8 +19,34 @@ data "aws_vpc" "kps_vpc" {
   id = data.aws_security_group.kps_security_group.vpc_id
 }
 
+resource "null_resource" "kps_ami" {
+  provisioner "local-exec" {
+    command = "${path.module}/scripts/kps_ami.sh create_ami"
+    environment = {
+      VERSION = var.kps_raw_diskimage_version
+      SNAPSHOT_ID_OUTPUT_FILE_PATH = "${path.module}/generated/snapshot_id.txt"
+      AMI_ID_OUTPUT_FILE_PATH = "${path.module}/generated/ami_id.txt"
+    }
+  }
+  provisioner "local-exec" {
+    when = destroy
+    command = "${path.module}/scripts/kps_ami.sh delete_ami"
+    environment = {
+      SNAPSHOT_ID_OUTPUT_FILE_PATH = "${path.module}/generated/snapshot_id.txt"
+      AMI_ID_OUTPUT_FILE_PATH = "${path.module}/generated/ami_id.txt"
+    }
+  }
+}
+
+data "local_file" "ami_id" {
+  filename = "${path.module}/generated/ami_id.txt"
+  depends_on = [
+    null_resource.kps_ami
+  ]
+}
+
 resource "aws_iam_role" "role" {
-  name        = "ebs_role_trf"
+  name        = var.iam_config["aws_iam_role_name"]
   force_detach_policies = true
   assume_role_policy = <<EOF
 {
@@ -43,7 +66,7 @@ EOF
 }
 
 resource "aws_iam_policy" "policy" {
-  name        = "role-policy-trf"
+  name        = var.iam_config["aws_iam_policy_name"]
   policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -81,15 +104,16 @@ resource "aws_iam_policy_attachment" "policy-attach" {
 }
 
 resource "aws_iam_instance_profile" "instance_profile" {
-  name = "instance_profile_trf"
+  name = var.iam_config["aws_iam_instance_profile_name"]
   role = aws_iam_role.role.name
 }
 
 resource "aws_instance" "kps_servicedomain_instance" {
-  ami = var.amis[var.region]
+  ami = data.local_file.ami_id.content
   instance_type = var.ec2_vm_config["instance_type"]
   security_groups = [data.aws_security_group.kps_security_group.name]
   iam_instance_profile = aws_iam_instance_profile.instance_profile.name
+  availability_zone = var.availability_zone
   count = var.instance_info["instance_count"]
   tags = {
     Name = join("-", [var.instance_info["instance_name_prefix"], count.index])
@@ -130,4 +154,5 @@ module "service_domain" {
   create_nutanixvolumes_storage_profile = 0
   private_instance_ips = aws_instance.kps_servicedomain_instance[*].private_ip
   public_instance_ips = aws_instance.kps_servicedomain_instance[*].public_ip
+  wait_for_onboarding = var.wait_for_onboarding
 }

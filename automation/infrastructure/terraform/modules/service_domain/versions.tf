@@ -1,9 +1,7 @@
 terraform {
   required_providers {
-    nutanix = {
-      source = "terraform-providers/nutanix"
-    }
     nutanixkps = {
+      version = "~> 0.1"
       source = "hashicorp.com/nutanix/nutanixkps"
     }
   }
