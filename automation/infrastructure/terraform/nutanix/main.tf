@@ -1,3 +1,9 @@
+provider "nutanixkps" {
+  host = "samnsnew5.ntnxsherlock.com"
+  username = "test@ntnxsherlock.com"
+  password = "test"
+}
+
 provider "nutanix" {
   username = var.provider_info["username"]
   password = var.provider_info["password"]
@@ -13,8 +19,7 @@ data "nutanix_clusters" "clusters" {}
 resource "nutanix_image" "kps_servicedomain_image" {
   name        = var.image_config["name"]
   description = var.image_config["description"]
-  source_path  = var.image_config["source_path"]
-
+  source_uri  = var.image_config["source_http"]
   depends_on = [
     data.nutanix_clusters.clusters
   ]
@@ -26,6 +31,10 @@ data "nutanix_image" "kps_servicedomain_image" {
   depends_on = [
     nutanix_image.kps_servicedomain_image
   ]
+}
+
+data "nutanix_subnet" "sherlock_net" {
+  subnet_name = "sherlock_net"
 }
 
 # Create Nutanix KPS SD VM Instance
@@ -43,8 +52,8 @@ resource "nutanix_virtual_machine" "kps_servicedomain_instance" {
   memory_size_mib      = var.nutanix_vm_config["memory_size_mib"]
 
   nic_list {
-    subnet_name = var.nutanix_vm_config["subnet_name"]
-    subnet_uuid = var.nutanix_vm_config["subnet_uuid"]
+    subnet_name = data.nutanix_subnet.sherlock_net.name
+    subnet_uuid = data.nutanix_subnet.sherlock_net.metadata.uuid
   }
 
   disk_list {
@@ -78,4 +87,5 @@ module "service_domain" {
   create_nutanixvolumes_storage_profile = var.create_storage_profile
   private_instance_ips = nutanix_virtual_machine.kps_servicedomain_instance[*].nic_list[0].ip_endpoint_list[0].ip
   public_instance_ips = nutanix_virtual_machine.kps_servicedomain_instance[*].nic_list[0].ip_endpoint_list[0].ip
+  wait_for_onboarding = var.wait_for_onboarding
 }

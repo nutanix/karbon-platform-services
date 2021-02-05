@@ -13,7 +13,7 @@ create_container_json() {
       "Description": "sherlock raw image",
       "Format": "RAW",
       "UserBucket": {
-          "S3Bucket": "sherlock-raw-sd-image",
+          "S3Bucket": "sherlock-raw-images",
           "S3Key": "$KEY"
       }
   }
@@ -24,11 +24,14 @@ EOF
 raw_upload_s3() {
   echo "Uploading sherlock raw file to S3..."
 
-  # Create S3 bucket 
-  aws s3 mb s3://sherlock-raw-sd-image
+  if aws s3api head-bucket --bucket sherlock-raw-images 2>/dev/null
+  then
+    # Create S3 bucket 
+    aws s3 mb s3://sherlock-raw-images
+  fi
 
   # Upload raw file to bucket 
-  aws s3 cp ../raw/${key} s3://sherlock-raw-sd-image
+  aws s3 cp ../raw/${key} s3://sherlock-raw-images
 }
 
 # Function to create role and attach necessary policy 
@@ -52,6 +55,7 @@ sub_create_ami() {
   test -n "${VERSION}"
   test -n "${SNAPSHOT_ID_OUTPUT_FILE_PATH}"
   test -n "${AMI_ID_OUTPUT_FILE_PATH}"
+  mkdir generated
 
   KEY=$(echo sherlock-aws_${VERSION}.raw)
   create_container_json ${KEY}

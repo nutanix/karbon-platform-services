@@ -9,8 +9,8 @@
            "s3:ListBucket" 
         ],
         "Resource": [
-           "arn:aws:s3:::sherlock-raw-sd-image",
-           "arn:aws:s3:::sherlock-raw-sd-image/*"
+           "arn:aws:s3:::sherlock-raw-images",
+           "arn:aws:s3:::sherlock-raw-images/*"
         ]
      },
      {
@@ -23,6 +23,8 @@
            "s3:GetBucketAcl"
         ],
         "Resource": [
+           "arn:aws:s3:::sherlock-raw-images",
+           "arn:aws:s3:::sherlock-raw-images/*"
            "arn:aws:s3:::sherlock-raw-sd-image",
            "arn:aws:s3:::sherlock-raw-sd-image/*"
         ]

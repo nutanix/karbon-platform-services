@@ -41,7 +41,7 @@ variable "kps_raw_diskimage_version" {
 
 variable "instance_info" {
   description = "EC2 instance description"
-  type = object({
+   type = object({
     instance_count = number
     instance_name_prefix = string
   })
@@ -52,12 +52,26 @@ variable "instance_info" {
 }
 
 variable "ec2_vm_config" {
-  description = ""
+  description = "EC2 instance configuration"
   type = object({
     instance_type = string
   })
   default = {
     "instance_type" = "t2.2xlarge"
+  }
+}
+
+variable "iam_config" {
+    description = "AWS IAM configuration"
+    type = object({
+    aws_iam_role_name = string
+    aws_iam_policy_name = string
+    aws_iam_instance_profile_name = string
+  })
+  default = {
+    "aws_iam_role_name" = "sam_ebs_role_tf"
+    "aws_iam_policy_name" = "sam_role_policy_tf"
+    "aws_iam_instance_profile_name" = "sam_instance_profile_tf"
   }
 }
 #################################################
@@ -102,6 +116,13 @@ variable "node_info" {
     "node_subnet": "x.x.x.x"
   }
 }
+
+variable "wait_for_onboarding" {
+  description = "Set to true for synchronous onboarding"
+  type = bool
+  default = false
+}
+
 #################################################
 # AWS Storage Profile Configuration
 #################################################
@@ -110,7 +131,6 @@ variable "create_storage_profile" {
   type = number
   default = 1
 }
-
 
 variable "storage_profile_info" {
   description = "AWS Storage Profile information"
@@ -131,12 +151,10 @@ variable "storage_profile_info" {
 variable "ebs_storage_config" {
   description = "Configuration for AWS EBS Storage Profile to attach to EC2 instance"
   type = object({
-    encrypted: string
     iops_per_gb: string
     type: string
   })
   default = {
-    "encrypted": "false"
     "iops_per_gb": "10"
     "type": "gp2"
   }

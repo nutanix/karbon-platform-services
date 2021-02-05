@@ -34,16 +34,12 @@ variable "instance_info" {
 variable "nutanix_vm_config" {
     description = "AHV  Virtual Machine configuration"
     type = object({
-        subnet_name = string
-        subnet_uuid = string
         description = string
         num_vcpus_per_socket = number
         num_sockets          = number
         memory_size_mib      = number
     })
     default = {
-        "subnet_name" = "<name>"
-        "subnet_uuid" = "<uuid>"
         "description" = ""
         "num_vcpus_per_socket" = 2
         "num_sockets"          = 1
@@ -57,13 +53,16 @@ variable "image_config" {
         name        = string
         description = string
         source_path  = string
+        source_http = string
     })
     default = {
         "name"        = "kps_servicedomain_image"
         "description" = "kps_servicedomain_image"
         "source_path"  = "<path to qcow2 file>"
+        "source_http" = "<http uri to qcow file: Avoids the need to download and upload the file>"
     }
 }
+
 #################################################
 # Karbon Platform Services Configuration
 #################################################
@@ -106,6 +105,13 @@ variable "node_info" {
         "node_subnet": "x.x.x.x"
     }
 }
+
+variable "wait_for_onboarding" {
+    description = "Set to true to wait synchronously for node onboarding to complete."
+    type = bool
+    default = false
+}
+
 #################################################
 # Nutanix Storage Profile Configuration
 #################################################
