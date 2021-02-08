@@ -40,3 +40,7 @@ variable "private_instance_ips" {
 variable "public_instance_ips" {
   type = list
 }
+
+variable "wait_for_onboarding" {
+  type = bool
+}

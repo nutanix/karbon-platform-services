@@ -61,6 +61,35 @@ workspace.
 | `ebs_storage_config` | yes | The information for the EBS volume such as name and IOPS per Gib. |
 | `data_partition_size_gb` | yes | The partition size of the EBS volume in Gib. |
 
+
+### Terraform Workspaces
+
+Each Terraform configuration has an associated [backend](https://www.terraform.io/docs/backends/index.html) that defines how operations are executed and where persistent data such as the [Terraform state](https://www.terraform.io/docs/state/purpose.html) are stored.
+
+The persistent data stored in the backend belongs to a *workspace*. Initially the backend has only one workspace, called "default", and thus there is only one Terraform state associated with that configuration.
+
+#### How to use Terraform Workspaces
+
+A new Terraform workspace can be created with:
+```
+$ terraform workspace new dev
+Created and switched to workspace "dev"!
+```
+
+Similarly a Terraform workspace can be selected with:
+```
+$ terraform workspace list
+  default
+* dev
+  test
+
+$ terraform workspace select default
+Switched to workspace "default".
+```
+
+More *workspace* subcommands can be found in the [Terraform docs](https://www.terraform.io/docs/commands/workspace/index.html)
+
+
 ### Cluster Deployment
 
 #### Download Terraform Plugins
