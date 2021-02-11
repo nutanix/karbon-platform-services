@@ -1,0 +1,70 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress-exporter
+  labels:
+    app: wordpress-exporter
+    tier: metrics
+spec:
+  ports:
+    - name: "metrics"
+      port: 8888
+      targetPort: 8888
+  selector:
+    app: wordpress-exporter
+
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: wordpress-exporter
+  labels:
+    app: wordpress-exporter
+    tier: metrics
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wordpress-exporter
+      tier: metrics
+  template:
+    metadata:
+      labels:
+        app: wordpress-exporter
+        tier: metrics
+    spec:
+      containers:
+        - image: erwin82/wordpress_exporter:latest
+          name: wordpress-exporter
+          env:
+            - name: WORDPRESS_DB_NAME
+              value: "wordpress_db"
+            - name: WORDPRESS_DB_USER
+              value: "wordpress"
+            - name: WORDPRESS_DB_PASSWORD
+              value: "wordpress"
+            - name: WORDPRESS_DB_HOST
+              value: "mysql"
+            - name: WORDPRESS_DB_PORT
+              value: "3306"
+          ports:
+            - containerPort: 8888
+              name: "metrics"
+      restartPolicy: Always
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: wordpress-exporter
+  labels:
+    app: collect-metrics-servicemonitor
+spec:
+  selector:
+    matchLabels:
+      app: wordpress-exporter
+  endpoints:
+    - path: /metrics
+      interval: 15s
+    - port: metrics
+

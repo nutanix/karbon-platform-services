@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loader
+spec:
+  selector:
+    matchLabels:
+      app: loader
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: loader
+    spec:
+      containers:
+      - name: loader 
+        image: xiiot/ecomm-loader:v4
+        env:
+        - name: WP_HOST
+          value: "https://ingress-nginx.project-ingress"
+        - name: USER
+          value: "10"
+        - name: API_KEY
+          value: "ck_d5a6a9f4317965fd8bd4a8cfac0cdd4359a6a86b"
+        - name: API_SECRET
+          value: "cs_8a6f036a4544b99b686e76ffcc76e347e636a1bb"
+        - name: WAIT_TIME_LRANGE
+          value: "10"
+        - name: WAIT_TIME_RRANGE
+          value: "300"

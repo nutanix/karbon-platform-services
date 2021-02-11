@@ -1,0 +1,6 @@
+confluent-kafka
+numpy
+matplotlib
+pandas
+mpld3
+jinja2

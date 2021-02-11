@@ -6,7 +6,7 @@ metadata:
     app: wordpress
 type: Opaque
 data:
-  mysql-password: "<password>"
+  mysql-password: "d29yZHByZXNz"
 ---
 apiVersion: v1
 kind: Service
