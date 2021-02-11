@@ -6,8 +6,8 @@ metadata:
     app: mysql
 type: Opaque
 data:
-  mysql-root-password: "UjAwdE15c3Fs"
-  mysql-password: "d29yZHByZXNz"
+  mysql-root-password: "<root password>"
+  mysql-password: "<password>"
 ---
 apiVersion: v1
 kind: Service

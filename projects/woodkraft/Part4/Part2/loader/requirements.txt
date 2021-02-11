@@ -1,3 +1,0 @@
-locust
-essential_generators
-Faker

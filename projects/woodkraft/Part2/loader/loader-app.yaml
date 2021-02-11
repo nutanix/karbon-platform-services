@@ -21,9 +21,9 @@ spec:
         - name: USER
           value: "10"
         - name: API_KEY
-          value: "ck_d5a6a9f4317965fd8bd4a8cfac0cdd4359a6a86b"
+          value: "<api key>"
         - name: API_SECRET
-          value: "cs_8a6f036a4544b99b686e76ffcc76e347e636a1bb"
+          value: "<api secret>"
         - name: WAIT_TIME_LRANGE
           value: "10"
         - name: WAIT_TIME_RRANGE
