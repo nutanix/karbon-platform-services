@@ -4,7 +4,7 @@ terraform {
       source = "terraform-providers/nutanix"
     }
     nutanixkps = {
-      source = "hashicorp.com/nutanix/nutanixkps"
+      source = "nutanix/nutanixkps"
     }
   }
   required_version = ">= 0.13"
