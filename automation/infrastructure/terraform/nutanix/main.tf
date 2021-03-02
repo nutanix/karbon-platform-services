@@ -1,7 +1,7 @@
 provider "nutanixkps" {
-  host = "samnsnew5.ntnxsherlock.com"
-  username = "test@ntnxsherlock.com"
-  password = "test"
+  host = var.cloud_info["cloud_fqdn"]
+  username = var.cloud_info["cloud_user_name"]
+  password = var.cloud_info["cloud_user_pwd"]
 }
 
 provider "nutanix" {
