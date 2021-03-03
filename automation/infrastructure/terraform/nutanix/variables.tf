@@ -1,21 +1,4 @@
 #################################################
-# Karbon Platform Services Configuration
-#################################################
-variable "cloud_info" {
-  description = "KPS cloud information for user"
-  type = object({
-    cloud_fqdn = string
-    cloud_user_name = string
-    cloud_user_pwd = string
-  })
-  default = {
-    "cloud_fqdn" = "karbon.nutanix.com"
-    "cloud_user_name" = "<cloud_username>"
-    "cloud_user_pwd" = "<cloud_password>"
-  }
-}
-
-#################################################
 # AHV Configuration 
 #################################################
 variable "provider_info" {
