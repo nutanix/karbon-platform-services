@@ -19,7 +19,7 @@ data "nutanix_clusters" "clusters" {}
 resource "nutanix_image" "kps_servicedomain_image" {
   name        = var.image_config["name"]
   description = var.image_config["description"]
-  source_uri  = var.image_config["source_http"]
+  source_path = var.image_config["source_path"]
   depends_on = [
     data.nutanix_clusters.clusters
   ]
