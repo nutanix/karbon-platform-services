@@ -44,7 +44,7 @@ resource "nutanix_virtual_machine" "kps_servicedomain_instance" {
   cluster_uuid= data.nutanix_clusters.clusters.entities.0.metadata.uuid
 
   count = var.instance_info["instance_count"]
-  name = join("-", [var.instance_info["instance_name_prefix"], count.index])
+  name = join("_", [var.instance_info["instance_name_prefix"], count.index])
   description = var.nutanix_vm_config["description"]
 
   num_vcpus_per_socket = var.nutanix_vm_config["num_vcpus_per_socket"]
