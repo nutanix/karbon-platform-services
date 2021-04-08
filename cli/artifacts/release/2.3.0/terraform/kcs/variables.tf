@@ -100,10 +100,14 @@ variable "etcd_node_pool" {
   type = object({
     node_os_version = string
     num_instances   = number
+    cpu             = number
+    memory_mib      = number
   })
   default = {
     node_os_version = "ntnx-1.0"
-    num_instances   = 1
+    num_instances   = 3
+    cpu             = 4
+    memory_mib      = 8192
   }
 }
 
@@ -112,10 +116,14 @@ variable "master_node_pool" {
   type = object({
     node_os_version = string
     num_instances   = number
+    cpu             = number
+    memory_mib      = number
   })
   default = {
     node_os_version = "ntnx-1.0"
-    num_instances   = 1
+    num_instances   = 2
+    cpu             = 4
+    memory_mib      = 8192
   }
 }
 
@@ -127,7 +135,6 @@ variable "helm_release" {
   })
   default = {
     name = "servicedomain"
-    # temporary location until we publish helm charts to a well known address
-    chart = "http://uranus.corp.nutanix.com/~kevin.thomas/helm/servicedomain-2.3.0.tgz"
+    chart = ""
   }
 }
