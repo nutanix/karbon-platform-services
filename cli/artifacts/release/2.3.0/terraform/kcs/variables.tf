@@ -127,6 +127,13 @@ variable "master_node_pool" {
   }
 }
 
+variable "active_passive_config" {
+  description = "Virtual IP Address"
+  type = object({
+    external_ipv4_address = string
+  })
+}
+
 variable "helm_release" {
   description = "Helm release configuration"
   type = object({
@@ -134,7 +141,7 @@ variable "helm_release" {
     chart = string
   })
   default = {
-    name = "servicedomain"
+    name  = "servicedomain"
     chart = ""
   }
 }
