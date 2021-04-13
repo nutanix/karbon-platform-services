@@ -48,8 +48,8 @@ variable "instance_info" {
     }
 }
 
-variable "nutanix_vm_config" {
-    description = "AHV  Virtual Machine configuration"
+variable "nutanix_vm_spec" {
+    description = "AHV  Virtual Machine configuration specification"
     type = object({
         description = string
         num_vcpus_per_socket = number

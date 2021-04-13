@@ -107,7 +107,6 @@ output "nodes" {
 }
 
 resource "nutanixkps_storageprofile" "nutanixvolumes_storage_profile" {
-  // count is used as a boolean here, only effective when creating Nutanix VM based service domain
   count = var.create_storage_profile
   name = var.storage_profile_info["name"]
   service_domain_id = nutanixkps_servicedomain.kps_servicedomain.id
