@@ -55,7 +55,7 @@ sub_create_ami() {
   test -n "${VERSION}"
   test -n "${SNAPSHOT_ID_OUTPUT_FILE_PATH}"
   test -n "${AMI_ID_OUTPUT_FILE_PATH}"
-  mkdir generated
+  mkdir -p generated
 
   KEY=$(echo sherlock-aws_${VERSION}.raw)
   create_container_json ${KEY}

@@ -1,5 +1,3 @@
-#https://learn.hashicorp.com/tutorials/terraform/aws-variables
-
 provider "nutanixkps" {
   host = var.cloud_info["cloud_fqdn"]
   username = var.cloud_info["cloud_user_name"]
@@ -26,6 +24,7 @@ resource "null_resource" "kps_ami" {
       VERSION = var.kps_raw_diskimage_version
       SNAPSHOT_ID_OUTPUT_FILE_PATH = "${path.module}/generated/snapshot_id.txt"
       AMI_ID_OUTPUT_FILE_PATH = "${path.module}/generated/ami_id.txt"
+      AMI_NAME = var.kps_sd_ami_name
     }
   }
   provisioner "local-exec" {
@@ -127,32 +126,65 @@ resource "aws_ebs_volume" "kps_volume" {
 }
 
 resource "aws_volume_attachment" "kps_volume_attachment" {
+  count = var.instance_info["instance_count"]
   device_name = "/dev/xvdf"
   volume_id = aws_ebs_volume.kps_volume[count.index].id
-  count = var.instance_info["instance_count"]
   instance_id = aws_instance.kps_servicedomain_instance.*.id[count.index]
   force_detach = true
+}
+
+resource "nutanixkps_servicedomain" "service_domain" {  
+  name = var.service_domain_info["sd_name"]
+  description = var.service_domain_info["sd_description"]
+  virtual_ip = var.service_domain_info["sd_virtual_ip"]
+}
+
+output "servicedomains" {
+  value = nutanixkps_servicedomain.service_domain
+}
+
+data "nutanixkps_vm_config" "kps_vm_config" {
+  count = var.instance_info["instance_count"]
+  public_ip_address =  aws_instance.kps_servicedomain_instance[count.index].public_ip
+}
+
+resource "nutanixkps_vm_cloud_config" "kps_vm_cloud_config" {
+  count = var.instance_info["instance_count"]
+  public_ip_address =  aws_instance.kps_servicedomain_instance[count.index].public_ip
+  cloud_fqdn = var.cloud_info["cloud_fqdn"]
+}
+
+resource "nutanixkps_node" "nodes" {
+  count = var.instance_info["instance_count"]
+  name = "${var.instance_info["instance_name_prefix"]}-${count.index}"
+  description = "Node added to Service Domain through Terraform"
+  service_domain_id = nutanixkps_servicedomain.service_domain.id
+  serial_number = data.nutanixkps_vm_config.kps_vm_config[count.index].serial_number
+  ip_address = aws_instance.kps_servicedomain_instance[count.index].private_ip
+  gateway = var.node_info["node_gateway"]
+  subnet = var.node_info["node_subnet"]
+  role {
+    master = true
+    worker = true
+  }
+  wait_for_onboarding = var.wait_for_onboarding
   depends_on = [
-    aws_ebs_volume.kps_volume,
-    aws_instance.kps_servicedomain_instance
+    nutanixkps_vm_cloud_config.kps_vm_cloud_config
   ]
 }
 
-module "service_domain" {
-  source = "../modules/service_domain"
-  depends_on = [
-    aws_volume_attachment.kps_volume_attachment
-  ]
-  instance_info = var.instance_info
-  cloud_info = var.cloud_info
-  node_info = var.node_info
-  storage_config = var.ebs_storage_config
-  service_domain_info = var.service_domain_info
-  storage_profile_info = var.storage_profile_info
-  kps_servicedomain_instance_details = aws_instance.kps_servicedomain_instance
-  create_ebs_storage_profile = var.create_storage_profile
-  create_nutanixvolumes_storage_profile = 0
-  private_instance_ips = aws_instance.kps_servicedomain_instance[*].private_ip
-  public_instance_ips = aws_instance.kps_servicedomain_instance[*].public_ip
-  wait_for_onboarding = var.wait_for_onboarding
+output "nodes" {
+  value = nutanixkps_node.nodes
+}
+
+resource "nutanixkps_storageprofile" "ebs_storage_profile" {
+  count = var.create_storage_profile
+  name = var.storage_profile_info["name"]
+  service_domain_id = nutanixkps_servicedomain.service_domain.id
+  is_default = var.storage_profile_info["isDefault"]
+  ebs_storage_config {
+    encrypted = var.ebs_storage_config["encrypted"]
+    iops_per_gb = var.ebs_storage_config["iops_per_gb"]
+    type = var.ebs_storage_config["type"]
+  }
 }
