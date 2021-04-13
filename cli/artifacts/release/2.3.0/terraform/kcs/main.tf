@@ -76,8 +76,11 @@ resource "nutanix_karbon_cluster" "cluster" {
       prism_element_cluster_uuid = data.nutanix_cluster.ntnxcluster.id
     }
   }
-  active_passive_config {
-    external_ipv4_address = var.active_passive_config["external_ipv4_address"]
+  dynamic "active_passive_config" {
+    for_each = var.active_passive_config["external_ipv4_address"] == "" ? [] : [1]
+    content {
+      external_ipv4_address = var.active_passive_config["external_ipv4_address"]
+    }
   }
 }
 
