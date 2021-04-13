@@ -132,6 +132,9 @@ variable "active_passive_config" {
   type = object({
     external_ipv4_address = string
   })
+  default = {
+    external_ipv4_address = null
+  }
 }
 
 variable "helm_release" {
