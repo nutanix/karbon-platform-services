@@ -100,10 +100,14 @@ variable "etcd_node_pool" {
   type = object({
     node_os_version = string
     num_instances   = number
+    cpu             = number
+    memory_mib      = number
   })
   default = {
     node_os_version = "ntnx-1.0"
-    num_instances   = 1
+    num_instances   = 3
+    cpu             = 4
+    memory_mib      = 8192
   }
 }
 
@@ -112,10 +116,24 @@ variable "master_node_pool" {
   type = object({
     node_os_version = string
     num_instances   = number
+    cpu             = number
+    memory_mib      = number
   })
   default = {
     node_os_version = "ntnx-1.0"
-    num_instances   = 1
+    num_instances   = 2
+    cpu             = 4
+    memory_mib      = 8192
+  }
+}
+
+variable "active_passive_config" {
+  description = "Virtual IP Address"
+  type = object({
+    external_ipv4_address = string
+  })
+  default = {
+    external_ipv4_address = ""
   }
 }
 
@@ -127,9 +145,8 @@ variable "helm_release" {
     values = string
   })
   default = {
-    name = "servicedomain"
-    # temporary location until we publish helm charts to a well known address
-    chart = "http://uranus.corp.nutanix.com/~kevin.thomas/helm/servicedomain-2.3.0.tgz"
+    name   = "servicedomain"
+    chart  = ""
     values = "values.yaml"
   }
 }

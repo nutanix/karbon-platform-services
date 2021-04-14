@@ -17,6 +17,7 @@ module "karbon_cluster" {
   worker_node_pool           = var.worker_node_pool
   etcd_node_pool             = var.etcd_node_pool
   master_node_pool           = var.master_node_pool
+  active_passive_config      = var.active_passive_config
 }
 
 module "karbon_kube_config" {

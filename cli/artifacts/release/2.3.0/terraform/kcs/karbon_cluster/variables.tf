@@ -79,6 +79,48 @@ variable "cni_config" {
   }
 }
 
+variable "etcd_node_pool" {
+  description = "ETCD Node Pool Details"
+  type = object({
+    node_os_version = string
+    num_instances   = number
+    cpu             = number
+    memory_mib      = number
+  })
+  default = {
+    node_os_version = "ntnx-1.0"
+    num_instances   = 3
+    cpu             = 4
+    memory_mib      = 8192
+  }
+}
+
+variable "master_node_pool" {
+  description = "Master Node Pool Details"
+  type = object({
+    node_os_version = string
+    num_instances   = number
+    cpu             = number
+    memory_mib      = number
+  })
+  default = {
+    node_os_version = "ntnx-1.0"
+    num_instances   = 2
+    cpu             = 4
+    memory_mib      = 8192
+  }
+}
+
+variable "active_passive_config" {
+  description = "Virtual IP Address"
+  type = object({
+    external_ipv4_address = string
+  })
+  default = {
+    external_ipv4_address = null
+  }
+}
+
 variable "worker_node_pool" {
   description = "Worker Node Pool Details"
   type = object({
@@ -92,29 +134,5 @@ variable "worker_node_pool" {
     num_instances   = 3
     cpu             = 8
     memory_mib      = 16384
-  }
-}
-
-variable "etcd_node_pool" {
-  description = "ETCD Node Pool Details"
-  type = object({
-    node_os_version = string
-    num_instances   = number
-  })
-  default = {
-    node_os_version = "ntnx-1.0"
-    num_instances   = 1
-  }
-}
-
-variable "master_node_pool" {
-  description = "Master Node Pool Details"
-  type = object({
-    node_os_version = string
-    num_instances   = number
-  })
-  default = {
-    node_os_version = "ntnx-1.0"
-    num_instances   = 1
   }
 }

@@ -60,6 +60,8 @@ resource "nutanix_karbon_cluster" "cluster" {
     node_os_version = var.etcd_node_pool["node_os_version"]
     num_instances   = var.etcd_node_pool["num_instances"]
     ahv_config {
+      cpu                        = var.etcd_node_pool["cpu"]
+      memory_mib                 = var.etcd_node_pool["memory_mib"]
       network_uuid               = local.subnet_uuid[0]
       prism_element_cluster_uuid = data.nutanix_cluster.ntnxcluster.id
     }
@@ -68,8 +70,16 @@ resource "nutanix_karbon_cluster" "cluster" {
     node_os_version = var.master_node_pool["node_os_version"]
     num_instances   = var.master_node_pool["num_instances"]
     ahv_config {
+      cpu                        = var.master_node_pool["cpu"]
+      memory_mib                 = var.master_node_pool["memory_mib"]
       network_uuid               = local.subnet_uuid[0]
       prism_element_cluster_uuid = data.nutanix_cluster.ntnxcluster.id
+    }
+  }
+  dynamic "active_passive_config" {
+    for_each = var.active_passive_config["external_ipv4_address"] == "" ? [] : [1]
+    content {
+      external_ipv4_address = var.active_passive_config["external_ipv4_address"]
     }
   }
 }
