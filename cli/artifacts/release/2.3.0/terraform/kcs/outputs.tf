@@ -1,39 +1,50 @@
 output "cluster_name" {
   description = "Name of the deployed Kubernetes Cluster"
-  value       = nutanix_karbon_cluster.cluster.name
+  value       = module.karbon_cluster.cluster_name
 }
 
 output "kube_apiserver_ip" {
   description = "IP address of kube apiserver"
-  value       = nutanix_karbon_cluster.cluster.kubeapi_server_ipv4_address
+  value       = module.karbon_cluster.kube_apiserver_ip
 }
 
 output "kubernetes_version" {
   description = "Kubernetes version"
-  value       = nutanix_karbon_cluster.cluster.version
+  value       = module.karbon_cluster.kubernetes_version
 }
 
 output "kubernetes_deployment_type" {
   description = "Type of Kubernetes deployment(single-master, multi-master etc..)"
-  value       = nutanix_karbon_cluster.cluster.deployment_type
+  value       = module.karbon_cluster.kubernetes_deployment_type
+}
+
+output "kubeconfig_filename" {
+  description = "Kubernetes config file"
+  value       = module.karbon_kube_config.kubeconfig_filename
+}
+
+output "kubeconfig_content" {
+  description = "Kubernetes config"
+  value       = module.karbon_kube_config.kubeconfig_content
+  sensitive   = true
 }
 
 output "helm_release_name" {
   description = "Helm release name"
-  value       = helm_release.kps_helm_release.name
+  value       = module.helm_chart.helm_release_name
 }
 
 output "helm_release_chart" {
   description = "Name of the chart"
-  value       = helm_release.kps_helm_release.chart
+  value       = module.helm_chart.helm_release_chart
 }
 
 output "helm_release_version" {
   description = "Helm chart revision version"
-  value       = helm_release.kps_helm_release.version
+  value       = module.helm_chart.helm_release_version
 }
 
 output "helm_release_status" {
   description = "Status of the helm release"
-  value       = helm_release.kps_helm_release.status
+  value       = module.helm_chart.helm_release_status
 }
