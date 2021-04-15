@@ -79,22 +79,6 @@ variable "cni_config" {
   }
 }
 
-variable "worker_node_pool" {
-  description = "Worker Node Pool Details"
-  type = object({
-    node_os_version = string
-    num_instances   = number
-    cpu             = number
-    memory_mib      = number
-  })
-  default = {
-    node_os_version = "ntnx-1.0"
-    num_instances   = 3
-    cpu             = 8
-    memory_mib      = 16384
-  }
-}
-
 variable "etcd_node_pool" {
   description = "ETCD Node Pool Details"
   type = object({
@@ -133,26 +117,22 @@ variable "active_passive_config" {
     external_ipv4_address = string
   })
   default = {
-    external_ipv4_address = ""
+    external_ipv4_address = null
   }
 }
 
-variable "helm_release" {
-  description = "Helm release configuration"
+variable "worker_node_pool" {
+  description = "Worker Node Pool Details"
   type = object({
-    name   = string
-    chart  = string
-    values = string
+    node_os_version = string
+    num_instances   = number
+    cpu             = number
+    memory_mib      = number
   })
   default = {
-    name   = "servicedomain"
-    chart  = ""
-    values = "values.yaml"
+    node_os_version = "ntnx-1.0"
+    num_instances   = 3
+    cpu             = 8
+    memory_mib      = 16384
   }
-}
-
-variable "kubeconfig_filename" {
-  type        = string
-  description = "Path to Kubernetes config file"
-  default     = "kube.config"
 }
