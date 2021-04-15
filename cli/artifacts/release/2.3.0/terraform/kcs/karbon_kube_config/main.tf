@@ -27,13 +27,13 @@ resource "local_file" "kubeconfig" {
   depends_on = [
     null_resource.now
   ]
-  sensitive_content        = templatefile("${path.module}/kube.config.tpl", {
+  sensitive_content = templatefile("${path.module}/kube.config.tpl", {
     cluster_name           = data.nutanix_karbon_cluster_kubeconfig.configbyname.name
     host                   = data.nutanix_karbon_cluster_kubeconfig.configbyname.cluster_url
     cluster_ca_certificate = data.nutanix_karbon_cluster_kubeconfig.configbyname.cluster_ca_certificate
     token                  = data.nutanix_karbon_cluster_kubeconfig.configbyname.access_token
   })
-  filename        = var.kubeconfig_filename
-  file_permission = "0600"
+  filename             = var.kubeconfig_filename
+  file_permission      = "0600"
   directory_permission = "0600"
 }
