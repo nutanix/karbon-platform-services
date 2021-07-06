@@ -14,15 +14,15 @@ Note that autocompletion for zsh is experimental in this release.
 Download the kps CLI for MacOS:
 
 **64-bit**
-[kps-2.3.0.1068-darwin_amd64.tar.gz](https://kps-cli.s3-us-west-2.amazonaws.com/kps-2.3.0.1068-darwin_amd64.tar.gz)
+[kps-2.3.0.1069-darwin_amd64.tar.gz](https://kps-cli.s3-us-west-2.amazonaws.com/kps-2.3.0.1069-darwin_amd64.tar.gz)
 
 **32-bit**
-[kps-2.3.0.1068-darwin_386.tar.gz](https://kps-cli.s3-us-west-2.amazonaws.com/kps-2.3.0.1068-darwin_386.tar.gz)
+[kps-2.3.0.1069-darwin_386.tar.gz](https://kps-cli.s3-us-west-2.amazonaws.com/kps-2.3.0.1069-darwin_386.tar.gz)
 
 Optionally, from your terminal or shell, use `wget`.
 ```
-$ wget https://kps-cli.s3-us-west-2.amazonaws.com/kps-2.3.0.1068-darwin_amd64.tar.gz
-$ mkdir kps && tar zxvf kps-2.3.0.1068-darwin_amd64.tar.gz -C kps
+$ wget https://kps-cli.s3-us-west-2.amazonaws.com/kps-2.3.0.1069-darwin_amd64.tar.gz
+$ mkdir kps && tar zxvf kps-2.3.0.1069-darwin_amd64.tar.gz -C kps
 $ sudo kps/install [*optional_path*]
 ```
 
@@ -37,15 +37,15 @@ $ sudo kps/install /my/custom/dir
 Download the kps CLI for Linux:
 
 **64-bit**
-[kps-2.3.0.1068-linux_amd64.tar.gz](https://kps-cli.s3-us-west-2.amazonaws.com/kps-2.3.0.1068-linux_amd64.tar.gz)
+[kps-2.3.0.1069-linux_amd64.tar.gz](https://kps-cli.s3-us-west-2.amazonaws.com/kps-2.3.0.1069-linux_amd64.tar.gz)
 
 **32-bit**
-[kps-2.3.0.1068-linux_386.tar.gz](https://kps-cli.s3-us-west-2.amazonaws.com/kps-2.3.0.1068-linux_386.tar.gz)
+[kps-2.3.0.1069-linux_386.tar.gz](https://kps-cli.s3-us-west-2.amazonaws.com/kps-2.3.0.1069-linux_386.tar.gz)
 
 Optionally, from your terminal or shell, use `wget`.
 ```
-$ wget https://kps-cli.s3-us-west-2.amazonaws.com/kps-2.3.0.1068-linux_amd64.tar.gz
-$ mkdir kps && tar zxvf kps-2.3.0.1068-linux_amd64.tar.gz -C kps
+$ wget https://kps-cli.s3-us-west-2.amazonaws.com/kps-2.3.0.1069-linux_amd64.tar.gz
+$ mkdir kps && tar zxvf kps-2.3.0.1069-linux_amd64.tar.gz -C kps
 $ sudo kps/install [*optional_path*]
 ```
 
