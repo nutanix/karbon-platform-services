@@ -31,7 +31,7 @@ prismElement:
   cluster: ""
   storageContainer: ""
   subnet: ""
-externalIp: ""
+clusterVIP: ""
 
 #############################################################
 # OPTIONAL PARAMETERS:
@@ -45,7 +45,7 @@ masterPool:
     memoryMib: ~
   numInstances: ~
   nodeOsVersion: ~
-  externalIp: ~
+  clusterVIP: ~
 etcdPool:
   ahvConfig:
     cpu: ~
