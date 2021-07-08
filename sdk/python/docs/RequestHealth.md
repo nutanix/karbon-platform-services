@@ -1,0 +1,11 @@
+# RequestHealth
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**error_ratio** | **float** |  | [optional] 
+**inbound_error_ratio** | **float** |  | [optional] 
+**outbound_error_ratio** | **float** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
