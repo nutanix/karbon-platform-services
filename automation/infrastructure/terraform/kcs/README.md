@@ -6,7 +6,7 @@
 ## Steps:
 1. Clone the repo and cd into the "kcs" directory where the tf files are located
 2. Run `terraform init` (this will download the nutanix terraform plugin)
-3. Create/download a custom tfvars file if you don't want to be prompted for inputs. [See samples here:] (http://uranus.corp.nutanix.com/~kevin.thomas/terraform/)
+3. Create/download a custom tfvars file if you don't want to be prompted for inputs.
 4. To validate your configuration run:
   - `terraform fmt -diff=true`
   - `terraform validate`
@@ -23,7 +23,7 @@ This will deploy a Single Master, 3 Worker Node KCS cluster and will output the 
    - `kps get svcdomaincredentials -n <NAME> -u -o helm > <PATH_TO_TERRAFORM_FOLDER>/values.yaml` (credentials are only valid for 30 minutes)
 2. `terraform init`
 3. `terraform apply -auto-approve -var-file kcs.tfvars -target module.karbon_kube_config`
-4. `terraform apply -auto-approve -var-file kcs.tfvars` (http://uranus.corp.nutanix.com/~kevin.thomas/terraform/)
+4. `terraform apply -auto-approve -var-file kcs.tfvars`
 
 This will deploy a Single Master, 3 Worker Node KCS cluster and deploy KPS on the cluster.
 
