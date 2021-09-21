@@ -60,8 +60,8 @@ variable "kubeflow_monitoring" {
   }
 }
 
-variable "prometheus_operator_version" {
+variable "kube_prometheus_stack_version" {
   type        = string
-  description = "version of prometheus"
-  default     = "0.50.0"
+  description = "version of kube_prometheus_stack helm chart"
+  default     = "18.0.12"
 }
