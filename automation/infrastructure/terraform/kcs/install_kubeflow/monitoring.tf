@@ -51,6 +51,6 @@ resource "null_resource" "install_prometheus" {
     null_resource.now,
     module.karbon_kube_config,
     null_resource.helm_setup,
-    null_resource.prepare_prometheus
+    null_resource.create_monitoring_namespace
   ]
 }
