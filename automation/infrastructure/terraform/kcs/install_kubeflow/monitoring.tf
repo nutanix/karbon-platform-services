@@ -16,7 +16,7 @@ resource "null_resource" "helm_setup" {
   }
 }
 
-resource "null_resource" "prepare_prometheus" {
+resource "null_resource" "create_monitoring_namespace" {
   triggers = {
     kubeflow_monitoring            = var.kubeflow_monitoring
     kubeconfig_filename             = var.kubeconfig_filename
