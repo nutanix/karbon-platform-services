@@ -1,7 +1,5 @@
 resource "null_resource" "install_monitoring" {
   depends_on = [null_resource.now,
-    null_resource.helm_setup,
-    null_resource.prepare_prometheus,
     null_resource.install_prometheus]
 }
 
