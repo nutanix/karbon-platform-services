@@ -1,0 +1,19 @@
+name: figlet
+namespace: knative-figlet
+runtime: go
+image: docker.io/thunderboltsid/figlet:latest
+imageDigest: sha256:99d7c274304547296f24b9ac3d97618e2111748dc4efa862b308f9e0a18182d4
+builder: paketobuildpacks/builder:base
+builders:
+  base: paketobuildpacks/builder:base
+  default: paketobuildpacks/builder:base
+  full: paketobuildpacks/builder:full
+buildpacks:
+- paketo-buildpacks/go-dist
+- ghcr.io/boson-project/go-function-buildpack:tip
+healthEndpoints: {}
+volumes: []
+envs: []
+annotations: {}
+options: {}
+labels: []

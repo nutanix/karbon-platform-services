@@ -1,0 +1,21 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"monitoring.coreos.com/v1","kind":"ServiceMonitor","metadata":{"annotations":{},"labels":{"k8s-app":"otel-export","name":"otel-export"},"name":"otel-export-servicemonitor","namespace":"metrics"},"spec":{"endpoints":[{"port":"prom-export"}],"jobLabel":"app.kubernetes.io/name","namespaceSelector":{"matchNames":["metrics"]},"selector":{"matchLabels":{"app":"otel-export"}}}}
+  labels:
+    k8s-app: otel-export-servicemonitor
+    name: otel-export-servicemonitor
+  name: otel-export-servicemonitor
+  namespace: metrics
+spec:
+  endpoints:
+    - port: prom-export
+  jobLabel: name
+  namespaceSelector:
+    matchNames:
+      - metrics
+  selector:
+    matchLabels:
+      app: otel-export
