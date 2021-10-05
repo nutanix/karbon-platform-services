@@ -47,5 +47,5 @@ variable "kubeconfig_filename" {
 variable "knative_version" {
   type        = string
   description = "version of knative"
-  default     = "0.25.0"
+  default     = "0.26.0"
 }
