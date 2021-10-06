@@ -42,7 +42,7 @@ resource "null_resource" "install_prometheus" {
   count = var.kubeflow_monitoring == "prometheus" ? 1 : 0
 
   provisioner "local-exec" {
-    command = "helm install --kubeconfig=${self.triggers.kubeconfig_filename} -f monitoring.env.yaml --version ${self.triggers.kube_prometheus_stack_version} kubeflow-monitoring prometheus-community/kube-prometheus-stack"
+    command = "helm upgrade --install --kubeconfig=${self.triggers.kubeconfig_filename} -f monitoring.env.yaml --version ${self.triggers.kube_prometheus_stack_version} kubeflow-monitoring prometheus-community/kube-prometheus-stack"
   }
 
   depends_on = [
