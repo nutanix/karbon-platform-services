@@ -47,5 +47,5 @@ variable "kubeconfig_filename" {
 variable "kubeflow_version" {
   type        = string
   description = "version of kubeflow"
-  default     = "1.3.0"
+  default     = "1.4.0"
 }
