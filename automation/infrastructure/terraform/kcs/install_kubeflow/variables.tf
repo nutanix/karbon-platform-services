@@ -50,14 +50,10 @@ variable "kubeflow_version" {
   default     = "1.3.0"
 }
 
-variable "kubeflow_monitoring" {
-  type        = string
-  description = "Install and monitoring for Kubeflow"
-  default     = "none"
-  validation {
-    condition     = contains(["none", "prometheus"], var.kubeflow_monitoring)
-    error_message = "Allowed values for input_parameter are \"none\", \"prometheus\"."
-  }
+variable "install_prometheus" {
+  type        = bool
+  description = "Install prometheus monitoring for Kubeflow"
+  default     = false
 }
 
 variable "kube_prometheus_stack_version" {

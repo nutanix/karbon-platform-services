@@ -1,10 +1,12 @@
 resource "null_resource" "install_monitoring" {
-  depends_on = [null_resource.now,
-    null_resource.install_prometheus]
+  depends_on = [
+    null_resource.now,
+    null_resource.install_prometheus_helm
+  ]
 }
 
 resource "null_resource" "helm_setup" {
-  count = var.kubeflow_monitoring == "prometheus" ? 1 : 0
+  count = var.install_prometheus ? 1 : 0
 
   provisioner "local-exec" {
     command = <<EOT
@@ -16,11 +18,10 @@ resource "null_resource" "helm_setup" {
 
 resource "null_resource" "create_monitoring_namespace" {
   triggers = {
-    kubeflow_monitoring            = var.kubeflow_monitoring
     kubeconfig_filename             = var.kubeconfig_filename
   }
 
-  count = var.kubeflow_monitoring == "prometheus" ? 1 : 0
+  count = var.install_prometheus ? 1 : 0
 
   provisioner "local-exec" {
     command = "kubectl --kubeconfig=${self.triggers.kubeconfig_filename} apply -f monitoring.ns.yaml"
@@ -32,14 +33,13 @@ resource "null_resource" "create_monitoring_namespace" {
   ]
 }
 
-resource "null_resource" "install_prometheus" {
+resource "null_resource" "install_prometheus_helm" {
   triggers = {
-    kubeflow_monitoring            = var.kubeflow_monitoring
     kube_prometheus_stack_version = var.kube_prometheus_stack_version
-    kubeconfig_filename             = var.kubeconfig_filename
+    kubeconfig_filename           = var.kubeconfig_filename
   }
 
-  count = var.kubeflow_monitoring == "prometheus" ? 1 : 0
+  count = var.install_prometheus ? 1 : 0
 
   provisioner "local-exec" {
     command = "helm upgrade --install --kubeconfig=${self.triggers.kubeconfig_filename} -f monitoring.env.yaml --version ${self.triggers.kube_prometheus_stack_version} kubeflow-monitoring prometheus-community/kube-prometheus-stack"
