@@ -24,7 +24,7 @@ resource "null_resource" "create_monitoring_namespace" {
   count = var.install_prometheus ? 1 : 0
 
   provisioner "local-exec" {
-    command = "kubectl --kubeconfig=${self.triggers.kubeconfig_filename} apply -f monitoring.ns.yaml"
+    command = "kubectl --kubeconfig=${self.triggers.kubeconfig_filename} create namespace kubeflow-monitoring"
   }
 
   depends_on = [
