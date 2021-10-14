@@ -1,0 +1,6 @@
+kubeflow
+.terraform
+env.tfvars
+*.cfg
+*.tfstate
+*.tfstate.backup

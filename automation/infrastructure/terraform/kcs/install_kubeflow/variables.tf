@@ -49,3 +49,15 @@ variable "kubeflow_version" {
   description = "version of kubeflow"
   default     = "1.4.0"
 }
+
+variable "install_prometheus" {
+  type        = bool
+  description = "Install prometheus monitoring for Kubeflow"
+  default     = false
+}
+
+variable "kube_prometheus_stack_version" {
+  type        = string
+  description = "version of kube_prometheus_stack helm chart"
+  default     = "18.0.12"
+}
