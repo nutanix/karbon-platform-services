@@ -1,0 +1,25 @@
+namespaceOverride: "metrics"
+
+nodeExporter:
+  enabled: false
+kubeStateMetrics:
+  enabled: false
+
+prometheusOperator:
+  serviceMonitorSelectorNilUsesHelmValues: false
+  namespaces:
+    releaseNamespace: true
+    additional:
+      - metrics
+
+prometheus:
+  prometheusSpec:
+    serviceMonitorSelector:
+      matchExpressions:
+        - key: name
+          operator: In
+          values:
+            - otel-export-servicemonitor
+
+grafana:
+  namespaceOverride: "metrics"
