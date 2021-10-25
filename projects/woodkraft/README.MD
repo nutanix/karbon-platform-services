@@ -99,14 +99,14 @@ The application has now been deployed and should be running successfully on your
 
 #### MacOS/Linux
 ```
-echo "<Service Domain IP> woodkraft.karbon.nutanix.com" | sudo tee -a /etc/hosts
-echo "<Service Domain IP> grafana.woodkraft.karbon.nutanix.com" | sudo tee -a /etc/hosts
+echo "<Node IP> woodkraft.karbon.nutanix.com" | sudo tee -a /etc/hosts
+echo "<Node IP> grafana.woodkraft.karbon.nutanix.com" | sudo tee -a /etc/hosts
 ```
 
 #### Windows
 ```
-echo <Service Domain IP> woodkraft.karbon.nutanix.com >> %WINDIR%\System32\Drivers\Etc\Hosts
-echo <Service Domain IP> grafana.woodkraft.karbon.nutanix.com >> %WINDIR%\System32\Drivers\Etc\Hosts
+echo <Node IP> woodkraft.karbon.nutanix.com >> %WINDIR%\System32\Drivers\Etc\Hosts
+echo <Node IP> grafana.woodkraft.karbon.nutanix.com >> %WINDIR%\System32\Drivers\Etc\Hosts
 ```
 
 #### WordPress
